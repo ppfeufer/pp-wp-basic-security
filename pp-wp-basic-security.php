@@ -44,11 +44,19 @@ class WordPressSecurity {
 		$this->removeRelationalLinks();
 		$this->removeShortlink();
 		$this->removeFeedLinks();
+		$this->additionalFilterAndActions();
+	} // END public function __construct()
 
+	public function additionalFilterAndActions() {
 		\add_filter('style_loader_src', array($this, 'removeVersionStrings'), 9999);
 		\add_filter('script_loader_src', array($this, 'removeVersionStrings'), 9999);
-		\add_action('wp_loaded', array($this, 'removeAviaDebug') , 9999);
-	} // END public function __construct()
+
+		// Removing debug from html output when Enfold theme is used
+		$theme = \wp_get_theme(); // gets the current theme
+		if($theme->name === 'Enfold' || $theme->parent_theme === 'Enfold') {
+			\add_action('wp_loaded', array($this, 'removeAviaDebug') , 9999);
+		} // END if($theme->name === 'Enfold' || $theme->parent_theme === 'Enfold')
+	} // END public function additionalFilter()
 
 	/**
 	 * removing <meta name="generator" content="WordPress x.y.z" />
@@ -142,10 +150,13 @@ class WordPressSecurity {
 		return $src;
 	} // END function yf_remove_wp_ver_css_js($src)
 
+	/**
+	 * Remove the Debug Comment when Enfold Theme is used.
+	 */
 	public function removeAviaDebug() {
 		\remove_action('wp_head', 'avia_debugging_info', 1000);
 		\remove_action('admin_print_scripts', 'avia_debugging_info', 1000);
-	}
+	} // END public function removeAviaDebug()
 } // END class Security
 
 new WordPressSecurity;
