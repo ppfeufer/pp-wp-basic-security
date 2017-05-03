@@ -5,7 +5,7 @@ Plugin Name: PP WordPress Basic Security
 Plugin URI:
 Description: Removing all non needed stuff from the HTML Output
 Version: 1.0.0
-Author: H.-Petre Pfeufer
+Author: H.-Peter Pfeufer
 Author URI: https://ppfeufer.de
 License: GPLv2
 */
@@ -47,6 +47,7 @@ class WordPressSecurity {
 
 		\add_filter('style_loader_src', array($this, 'removeVersionStrings'), 9999);
 		\add_filter('script_loader_src', array($this, 'removeVersionStrings'), 9999);
+		\add_action('wp_loaded', array($this, 'removeAviaDebug') , 9999);
 	} // END public function __construct()
 
 	/**
@@ -140,6 +141,11 @@ class WordPressSecurity {
 
 		return $src;
 	} // END function yf_remove_wp_ver_css_js($src)
+
+	public function removeAviaDebug() {
+		\remove_action('wp_head', 'avia_debugging_info', 1000);
+		\remove_action('admin_print_scripts', 'avia_debugging_info', 1000);
+	}
 } // END class Security
 
 new WordPressSecurity;
