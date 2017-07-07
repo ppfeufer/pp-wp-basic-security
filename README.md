@@ -8,7 +8,7 @@
 - Live Writer Manifest ```<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://link.net/wp-includes/wlwmanifest.xml" />```
 - Rest API Link ```<link rel='https://api.w.org/' href='http://link.net/wp-json/' />```
 - oEmbed, so your own site cannot be embedded any longer
-- X-Pingback
+- X-Pingback (XMLRPC will still work)
 - Emojis
 - Relational next/prev links
 - Shortlinks

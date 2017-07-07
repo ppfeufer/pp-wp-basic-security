@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: PP WordPress Basic Security
-Plugin URI:
+Plugin URI: https://github.com/ppfeufer/pp-wp-basic-security
 Description: Removing all non needed stuff from the HTML Output
 Version: 1.0.0
 Author: H.-Peter Pfeufer
