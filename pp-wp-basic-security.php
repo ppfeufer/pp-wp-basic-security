@@ -7,7 +7,7 @@ Description: Removing all non needed stuff from the HTML Output
 Version: 1.0.0
 Author: H.-Peter Pfeufer
 Author URI: https://ppfeufer.de
-License: GPLv2
+License: GPLv3
 */
 
 /*
