@@ -4,7 +4,7 @@
 Plugin Name: PP WordPress Basic Security
 Plugin URI: https://github.com/ppfeufer/pp-wp-basic-security
 Description: Removing all non needed stuff from the HTML Output
-Version: 1.0.0
+Version: 0.1-r20170725
 Author: H.-Peter Pfeufer
 Author URI: https://ppfeufer.de
 License: GPLv3
@@ -44,6 +44,8 @@ class WordPressSecurity {
 		$this->removeRelationalLinks();
 		$this->removeShortlink();
 		$this->removeFeedLinks();
+		$this->removeCanonical();
+		$this->removeWooCommerceGeneratorTag();
 		$this->additionalFilterAndActions();
 	} // END public function __construct()
 
@@ -112,13 +114,29 @@ class WordPressSecurity {
 	public function removeEmojis() {
 		\remove_action('wp_head', 'print_emoji_detection_script', 7);
 		\remove_action('wp_print_styles', 'print_emoji_styles');
+		\remove_action('admin_print_scripts', 'print_emoji_detection_script');
+		\remove_action('wp_print_styles', 'print_emoji_styles');
+		\remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
+		\remove_filter('the_content_feed', 'wp_staticize_emoji');
+		\remove_filter('comment_text_rss', 'wp_staticize_emoji');
+
+		\add_filter('tiny_mce_plugins', array($this, 'disableTinymceEmojicons'));
 	} // END public function removeEmojis()
+
+	public function disableTinymceEmojicons($plugins) {
+		if(\is_array($plugins)) {
+			return \array_diff($plugins, array('wpemoji'));
+		} else {
+			return array();
+		}
+	}
 
 	/**
 	 * removing relational next/prev links
 	 */
 	public function removeRelationalLinks() {
-		\remove_action('wp_head', 'adjacent_posts_rel_link_wp_head');
+		\remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
+		\remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 	} // END public function removeRelationalLinks()
 
 	/**
@@ -157,6 +175,17 @@ class WordPressSecurity {
 		\remove_action('wp_head', 'avia_debugging_info', 1000);
 		\remove_action('admin_print_scripts', 'avia_debugging_info', 1000);
 	} // END public function removeAviaDebug()
+
+	// remove canonical link
+	public function removeCanonical() {
+		\remove_action('embed_head', 'rel_canonical');
+		\add_filter('wpseo_canonical', '__return_false');
+	}
+
+	// remove woocommerce generator version
+	public function removeWooCommerceGeneratorTag() {
+		\remove_action('wp_head','wc_generator_tag');
+	}
 } // END class Security
 
 new WordPressSecurity;
