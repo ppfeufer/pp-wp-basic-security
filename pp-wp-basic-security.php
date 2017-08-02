@@ -34,6 +34,10 @@ namespace WordPress\Plugins\PP_WP_Basic_Security;
 
 class WordPressSecurity {
 	public function __construct() {
+		;
+	} // END public function __construct()
+
+	public function init() {
 		$this->removeGeneratorName();
 		$this->removeBlogClientLink();
 		$this->removeLiveWriterManifest();
@@ -47,7 +51,7 @@ class WordPressSecurity {
 		$this->removeCanonical();
 		$this->removeWooCommerceGeneratorTag();
 		$this->additionalFilterAndActions();
-	} // END public function __construct()
+	} // END public function init()
 
 	public function additionalFilterAndActions() {
 		\add_filter('style_loader_src', array($this, 'removeVersionStrings'), 9999);
@@ -124,12 +128,14 @@ class WordPressSecurity {
 	} // END public function removeEmojis()
 
 	public function disableTinymceEmojicons($plugins) {
+		$returnValue = array();
+
 		if(\is_array($plugins)) {
-			return \array_diff($plugins, array('wpemoji'));
-		} else {
-			return array();
-		}
-	}
+			$returnValue = \array_diff($plugins, array('wpemoji'));
+		} // END if(\is_array($plugins))
+
+		return $returnValue;
+	} // END public function disableTinymceEmojicons($plugins)
 
 	/**
 	 * removing relational next/prev links
@@ -176,16 +182,33 @@ class WordPressSecurity {
 		\remove_action('admin_print_scripts', 'avia_debugging_info', 1000);
 	} // END public function removeAviaDebug()
 
-	// remove canonical link
+	/**
+	 * Remove canonical link
+	 */
 	public function removeCanonical() {
 		\remove_action('embed_head', 'rel_canonical');
 		\add_filter('wpseo_canonical', '__return_false');
-	}
+	} // END public function removeCanonical()
 
-	// remove woocommerce generator version
+	/**
+	 * Remove woocommerce generator version
+	 */
 	public function removeWooCommerceGeneratorTag() {
 		\remove_action('wp_head','wc_generator_tag');
-	}
+	} // END public function removeWooCommerceGeneratorTag()
 } // END class Security
 
-new WordPressSecurity;
+/**
+ * Start the show ....
+ */
+function initializePlugin() {
+	$plugin = new WordPressSecurity;
+
+	/**
+	 * Initialize the plugin
+	 */
+	$plugin->init();
+} // END function initializePlugin()
+
+// Hook me up baby!
+\add_action('plugins_loaded', 'WordPress\Plugins\PP_WP_Basic_Security\initializePlugin');
