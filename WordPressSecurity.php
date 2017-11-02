@@ -40,7 +40,7 @@ const WP_GITHUB_FORCE_UPDATE = true;
 class WordPressSecurity {
 	public function init() {
 		new Libs\Canonical;
-		new Libs\Enfoldtheme;
+		new Libs\EnfoldTheme;
 		new Libs\Emoji;
 		new Libs\GeneratorName;
 		new Libs\Links;

@@ -25,7 +25,7 @@ namespace WordPress\Plugin\PP_WP_Basic_Security\Libs;
 /**
  * Removing the debug from html output when Enfold theme is used
  */
-class Enfoldtheme implements \WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\GenericInterface {
+class EnfoldTheme implements \WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\GenericInterface {
 	public function __construct() {
 		$theme = \wp_get_theme(); // gets the current theme
 		if($theme->name === 'Enfold' || $theme->parent_theme === 'Enfold') {
