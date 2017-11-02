@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/ppfeufer/pp-wp-basic-security
  * GitHub Plugin URI: https://github.com/ppfeufer/pp-wp-basic-security
  * Description: Removing all non needed stuff from the HTML Output
- * Version: 0.1-r20170901
+ * Version: 0.1-r20171102
  * Author: H.-Peter Pfeufer
  * Author URI: https://ppfeufer.de
  * License: GPLv3
@@ -40,7 +40,7 @@ const WP_GITHUB_FORCE_UPDATE = true;
 class WordPressSecurity {
 	public function init() {
 		new Libs\Canonical;
-		new Libs\Enfoldtheme;
+		new Libs\EnfoldTheme;
 		new Libs\Emoji;
 		new Libs\GeneratorName;
 		new Libs\Links;

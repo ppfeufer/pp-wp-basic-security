@@ -411,8 +411,15 @@ class GithubUpdater {
 	 * @return object
 	 */
 	public function getPluginInfo($false, $action, $response) {
+		/**
+		 * Since they are not even used, but propagated by WP to this callback,
+		 * let's unset them ....
+		 */
+		unset($false);
+		unset($action);
+
 		// Check if this call API is for the right plugin
-		if(!isset($response->slug) || $response->slug != $this->config['slug']) {
+		if(!isset($response->slug) || $response->slug !== $this->config['slug']) {
 			return false;
 		} // END if(!isset($response->slug) || $response->slug != $this->config['slug'])
 
