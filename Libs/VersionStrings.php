@@ -23,26 +23,26 @@ namespace WordPress\Plugin\PP_WP_Basic_Security\Libs;
 \defined('ABSPATH') or die();
 
 class VersionStrings implements \WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\GenericInterface {
-	public function __construct() {
-		$this->execute();
-	}
+    public function __construct() {
+        $this->execute();
+    }
 
-	public function execute() {
-		\add_filter('style_loader_src', array($this, 'removeVersionStrings'), 9999);
-		\add_filter('script_loader_src', array($this, 'removeVersionStrings'), 9999);
-	}
+    public function execute() {
+        \add_filter('style_loader_src', array($this, 'removeVersionStrings'), 9999);
+        \add_filter('script_loader_src', array($this, 'removeVersionStrings'), 9999);
+    }
 
-	/**
-	 * Removing the version string from any enqueued css and js source
-	 *
-	 * @param string $src the css or js source
-	 * @return string
-	 */
-	public function removeVersionStrings($src) {
-		if(strpos($src, 'ver=')) {
-			$src = \remove_query_arg('ver', $src);
-		} // END if(strpos($src, 'ver=' . get_bloginfo('version')))
+    /**
+     * Removing the version string from any enqueued css and js source
+     *
+     * @param string $src the css or js source
+     * @return string
+     */
+    public function removeVersionStrings($src) {
+        if(strpos($src, 'ver=')) {
+            $src = \remove_query_arg('ver', $src);
+        } // END if(strpos($src, 'ver=' . get_bloginfo('version')))
 
-		return $src;
-	}
+        return $src;
+    }
 }

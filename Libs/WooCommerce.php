@@ -23,14 +23,14 @@ namespace WordPress\Plugin\PP_WP_Basic_Security\Libs;
 \defined('ABSPATH') or die();
 
 class WooCommerce implements \WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\GenericInterface {
-	public function __construct() {
-		$this->execute();
-	}
+    public function __construct() {
+        $this->execute();
+    }
 
-	public function execute() {
-		/**
-		 * Remove WooCommerce generator version
-		 */
-		\remove_action('wp_head','wc_generator_tag');
-	}
+    public function execute() {
+        /**
+         * Remove WooCommerce generator version
+         */
+        \remove_action('wp_head','wc_generator_tag');
+    }
 }
