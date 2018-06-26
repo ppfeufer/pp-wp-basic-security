@@ -17,3 +17,6 @@
 - Debug output from Enfold Theme (really, no one should have that stuff in his generated HTML ...)
 - WooCOmmerce Generator Tag
 - Canonical Links
+
+### Embed
+- No Cookie Domain for Youtube Embed
