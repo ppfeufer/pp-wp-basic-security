@@ -41,7 +41,7 @@ class VersionStrings implements \WordPress\Plugin\PP_WP_Basic_Security\Libs\Inte
     public function removeVersionStrings($src) {
         if(strpos($src, 'ver=')) {
             $src = \remove_query_arg('ver', $src);
-        } // END if(strpos($src, 'ver=' . get_bloginfo('version')))
+        }
 
         return $src;
     }

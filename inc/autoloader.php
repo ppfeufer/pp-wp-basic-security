@@ -8,7 +8,7 @@ function autoload($className) {
     // If the specified $className does not include our namespace, duck out.
     if(\strpos($className, 'WordPress\Plugin\PP_WP_Basic_Security') === false) {
         return;
-    } // END if(\strpos($className, 'WordPress\Plugin\EveOnlineIntelTool') === false)
+    }
 
     // Split the class name into an array to read the namespace and class.
     $fileParts = \explode('\\', $className);
@@ -37,8 +37,8 @@ function autoload($className) {
                 $interfaceName = $interfaceNameParts[0];
 
                 $fileName = $interfaceName . '.php';
-            } // END if(\strpos(\strtolower($fileParts[\count($fileParts) - 1]), 'interface'))
-        } // END if(\count($fileParts) - 1 === $i)
+            }
+        }
 
         // Now build a path to the file using mapping to the file location.
         $filepath = \trailingslashit(\dirname(\dirname(__FILE__)) . $namespace);
@@ -47,6 +47,6 @@ function autoload($className) {
         // If the file exists in the specified path, then include it.
         if(\file_exists($filepath)) {
             include_once($filepath);
-        } // END if(\file_exists($filepath))
-    } // END for($i = \count($fileParts) - 1; $i > 0; $i--)
-} // END function autoload($className)
+        }
+    }
+}

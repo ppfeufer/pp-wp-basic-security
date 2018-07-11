@@ -28,9 +28,9 @@ namespace WordPress\Plugin\PP_WP_Basic_Security\Libs;
 class GeneratorName implements \WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\GenericInterface {
     public function __construct() {
         $this->execute();
-    } // END public function init()
+    }
 
     public function execute() {
         \remove_action('wp_head', 'wp_generator');
-    } // END public function execute()
-} // END class GeneratorName implements \WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\GenericInterface
+    }
+}

@@ -28,6 +28,7 @@ namespace WordPress\Plugin\PP_WP_Basic_Security\Libs;
 class EnfoldTheme implements \WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\GenericInterface {
     public function __construct() {
         $theme = \wp_get_theme(); // gets the current theme
+
         if($theme->name === 'Enfold' || $theme->parent_theme === 'Enfold') {
             $this->execute();
         }
@@ -43,5 +44,5 @@ class EnfoldTheme implements \WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfa
     public function removeAviaDebug() {
         \remove_action('wp_head', 'avia_debugging_info', 1000);
         \remove_action('admin_print_scripts', 'avia_debugging_info', 1000);
-    } // END public function removeAviaDebug()
+    }
 }
