@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/ppfeufer/pp-wp-basic-security
  * GitHub Plugin URI: https://github.com/ppfeufer/pp-wp-basic-security
  * Description: Removing all non needed stuff from the HTML Output
- * Version: 0.1-r20171102
+ * Version: 0.1-r20180626
  * Author: H.-Peter Pfeufer
  * Author URI: https://ppfeufer.de
  * License: GPLv3
@@ -38,50 +38,51 @@ require_once(\trailingslashit(\dirname(__FILE__)) . 'inc/autoloader.php');
 const WP_GITHUB_FORCE_UPDATE = true;
 
 class WordPressSecurity {
-	public function init() {
-		new Libs\Canonical;
-		new Libs\EnfoldTheme;
-		new Libs\Emoji;
-		new Libs\GeneratorName;
-		new Libs\Links;
-		new Libs\Oembed;
-		new Libs\Pingback;
-		new Libs\VersionStrings;
-		new Libs\WooCommerce;
+    public function init() {
+        new Libs\Canonical;
+        new Libs\EnfoldTheme;
+        new Libs\Emoji;
+        new Libs\GeneratorName;
+        new Libs\Links;
+        new Libs\Oembed;
+        new Libs\Pingback;
+        new Libs\VersionStrings;
+        new Libs\WooCommerce;
+        new Libs\YoutubeEmbed;
 
-		if(\is_admin()) {
-			/**
-			 * Check Github for updates
-			 */
-			$githubConfig = [
-				'slug' => \plugin_basename(__FILE__),
-				'proper_folder_name' => \dirname(\plugin_basename(__FILE__)),
-				'api_url' => 'https://api.github.com/repos/ppfeufer/pp-wp-basic-security',
-				'raw_url' => 'https://raw.github.com/ppfeufer/pp-wp-basic-security/master',
-				'github_url' => 'https://github.com/ppfeufer/pp-wp-basic-security',
-				'zip_url' => 'https://github.com/ppfeufer/pp-wp-basic-security/archive/master.zip',
-				'sslverify' => true,
-				'requires' => '4.7',
-				'tested' => '4.9-alpha',
-				'readme' => 'README.md',
-				'access_token' => '',
-			];
+        if(\is_admin()) {
+            /**
+             * Check Github for updates
+             */
+            $githubConfig = [
+                'slug' => \plugin_basename(__FILE__),
+                'proper_folder_name' => \dirname(\plugin_basename(__FILE__)),
+                'api_url' => 'https://api.github.com/repos/ppfeufer/pp-wp-basic-security',
+                'raw_url' => 'https://raw.github.com/ppfeufer/pp-wp-basic-security/master',
+                'github_url' => 'https://github.com/ppfeufer/pp-wp-basic-security',
+                'zip_url' => 'https://github.com/ppfeufer/pp-wp-basic-security/archive/master.zip',
+                'sslverify' => true,
+                'requires' => '4.7',
+                'tested' => '4.9-alpha',
+                'readme' => 'README.md',
+                'access_token' => '',
+            ];
 
-			new Libs\GithubUpdater($githubConfig);
-		} // END if(\is_admin())
-	} // END public function init()
+            new Libs\GithubUpdater($githubConfig);
+        } // END if(\is_admin())
+    } // END public function init()
 } // END class Security
 
 /**
  * Start the show ....
  */
 function initializePlugin() {
-	$plugin = new WordPressSecurity;
+    $plugin = new WordPressSecurity;
 
-	/**
-	 * Initialize the plugin
-	 */
-	$plugin->init();
+    /**
+     * Initialize the plugin
+     */
+    $plugin->init();
 } // END function initializePlugin()
 
 // Hook me up baby!

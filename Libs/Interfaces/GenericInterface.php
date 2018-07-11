@@ -26,13 +26,13 @@ namespace WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces;
  * extending this interface should implement.
  */
 interface GenericInterface {
-	/**
-	 * Initialize the class
-	 */
-	public function __construct();
+    /**
+     * Initialize the class
+     */
+    public function __construct();
 
-	/**
-	 * Execute the filters and so on
-	 */
-	public function execute();
+    /**
+     * Execute the filters and so on
+     */
+    public function execute();
 } // END interface GenericInterface

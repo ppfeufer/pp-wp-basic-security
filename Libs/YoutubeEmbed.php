@@ -22,29 +22,25 @@ namespace WordPress\Plugin\PP_WP_Basic_Security\Libs;
 
 \defined('ABSPATH') or die();
 
-class Emoji implements \WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\GenericInterface {
+class YoutubeEmbed implements Interfaces\GenericInterface {
     public function __construct() {
         $this->execute();
     }
 
     public function execute() {
-        \remove_action('wp_head', 'print_emoji_detection_script', 7);
-        \remove_action('wp_print_styles', 'print_emoji_styles');
-        \remove_action('admin_print_scripts', 'print_emoji_detection_script');
-        \remove_action('wp_print_styles', 'print_emoji_styles');
-        \remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
-        \remove_filter('the_content_feed', 'wp_staticize_emoji');
-        \remove_filter('comment_text_rss', 'wp_staticize_emoji');
-
-        \add_filter('tiny_mce_plugins', array($this, 'disableTinymceEmojicons'));
+        \add_filter('embed_oembed_html', [$this, 'youtubeNoCookieEmbed'], 10, 4);
     }
 
-    public function disableTinymceEmojicons($plugins) {
-        $returnValue = array();
+    public function youtubeNoCookieEmbed($html, $url, $attr, $post_ID) {
+        $returnValue = $html;
 
-        if(\is_array($plugins)) {
-            $returnValue = \array_diff($plugins, array('wpemoji'));
-        } // END if(\is_array($plugins))
+        if(\preg_match('#https?://(www\.)?youtu#i', $url)) {
+            $returnValue = \preg_replace(
+                '#src=(["\'])(https?:)?//(www\.)?youtube\.com#i',
+                'src=$1$2//$3youtube-nocookie.com',
+                $html
+            );
+        }
 
         return $returnValue;
     }

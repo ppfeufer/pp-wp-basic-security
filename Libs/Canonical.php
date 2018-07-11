@@ -23,12 +23,12 @@ namespace WordPress\Plugin\PP_WP_Basic_Security\Libs;
 \defined('ABSPATH') or die();
 
 class Canonical implements \WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\GenericInterface {
-	public function __construct() {
-		$this->execute();
-	}
+    public function __construct() {
+        $this->execute();
+    }
 
-	public function execute() {
-		\remove_action('embed_head', 'rel_canonical');
-		\add_filter('wpseo_canonical', '__return_false');
-	}
+    public function execute() {
+        \remove_action('embed_head', 'rel_canonical');
+        \add_filter('wpseo_canonical', '__return_false');
+    }
 }
