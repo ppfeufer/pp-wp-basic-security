@@ -22,15 +22,17 @@ namespace WordPress\Plugin\PP_WP_Basic_Security\Libs;
 
 \defined('ABSPATH') or die();
 
-/**
- * removing <meta name="generator" content="WordPress x.y.z" />
- */
-class GeneratorName implements \WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\GenericInterface {
+class Login implements \WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\GenericInterface {
+
     public function __construct() {
         $this->execute();
     }
 
     public function execute() {
-        \remove_action('wp_head', 'wp_generator');
+        \add_filter('login_errors', [$this, 'removeLoginErrorMessages']);
+    }
+
+    public function removeLoginErrorMessages() {
+        return \__('Ups! Something went wrong!', 'pp-wp-basic-security');
     }
 }

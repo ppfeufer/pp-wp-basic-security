@@ -18,5 +18,10 @@
 - WooCOmmerce Generator Tag
 - Canonical Links
 
-### Embed
-- No Cookie Domain for Youtube Embed
+### What will be changed
+- Youtube Embed gets a no cookie domain
+- Replacing the default login error message with something not so revealing
+
+### Additional Information
+- [License](LICENSE)
+- [Discord](https://discord.gg/YymuCZa)

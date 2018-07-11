@@ -44,7 +44,7 @@ class Emoji implements \WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\Ge
 
         if(\is_array($plugins)) {
             $returnValue = \array_diff($plugins, array('wpemoji'));
-        } // END if(\is_array($plugins))
+        }
 
         return $returnValue;
     }

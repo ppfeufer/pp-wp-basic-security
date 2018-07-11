@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/ppfeufer/pp-wp-basic-security
  * GitHub Plugin URI: https://github.com/ppfeufer/pp-wp-basic-security
  * Description: Removing all non needed stuff from the HTML Output
- * Version: 0.1-r20180626
+ * Version: 0.1-r20180711
  * Author: H.-Peter Pfeufer
  * Author URI: https://ppfeufer.de
  * License: GPLv3
@@ -38,7 +38,41 @@ require_once(\trailingslashit(\dirname(__FILE__)) . 'inc/autoloader.php');
 const WP_GITHUB_FORCE_UPDATE = true;
 
 class WordPressSecurity {
+    /**
+     * Textdomain
+     *
+     * @var string
+     */
+    private $textDomain = null;
+
+    /**
+     * Localization Directory
+     *
+     * @var string
+     */
+    private $localizationDirectory = null;
+
+    public function __construct() {
+        /**
+         * Initializing Variables
+         */
+        $this->textDomain = 'pp-wp-basic-security';
+        $this->localizationDirectory = \basename(\dirname(__FILE__)) . '/l10n/';
+    }
+
     public function init() {
+        $this->loadTextDomain();
+        $this->loadLibraries();
+        $this->doUpdateCheck();
+    }
+
+    public function loadTextDomain() {
+        if(\function_exists('\load_plugin_textdomain')) {
+            \load_plugin_textdomain($this->textDomain, false, $this->localizationDirectory);
+        }
+    }
+
+    public function loadLibraries() {
         new Libs\Canonical;
         new Libs\EnfoldTheme;
         new Libs\Emoji;
@@ -49,7 +83,10 @@ class WordPressSecurity {
         new Libs\VersionStrings;
         new Libs\WooCommerce;
         new Libs\YoutubeEmbed;
+        new Libs\Login;
+    }
 
+    public function doUpdateCheck() {
         if(\is_admin()) {
             /**
              * Check Github for updates
@@ -63,15 +100,15 @@ class WordPressSecurity {
                 'zip_url' => 'https://github.com/ppfeufer/pp-wp-basic-security/archive/master.zip',
                 'sslverify' => true,
                 'requires' => '4.7',
-                'tested' => '4.9-alpha',
+                'tested' => '5.0-alpha',
                 'readme' => 'README.md',
                 'access_token' => '',
             ];
 
             new Libs\GithubUpdater($githubConfig);
-        } // END if(\is_admin())
-    } // END public function init()
-} // END class Security
+        }
+    }
+}
 
 /**
  * Start the show ....
@@ -83,7 +120,7 @@ function initializePlugin() {
      * Initialize the plugin
      */
     $plugin->init();
-} // END function initializePlugin()
+}
 
 // Hook me up baby!
 \add_action('plugins_loaded', '\WordPress\Plugin\PP_WP_Basic_Security\initializePlugin');
