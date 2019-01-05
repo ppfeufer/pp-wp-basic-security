@@ -35,7 +35,8 @@ namespace WordPress\Plugin\PP_WP_Basic_Security;
 
 // Include the autoloader so we can dynamically include the rest of the classes.
 require_once(\trailingslashit(\dirname(__FILE__)) . 'inc/autoloader.php');
-const WP_GITHUB_FORCE_UPDATE = true;
+
+const WP_GITHUB_FORCE_UPDATE = false;
 
 class WordPressSecurity {
     /**
