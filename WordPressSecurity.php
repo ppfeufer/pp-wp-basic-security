@@ -123,5 +123,5 @@ function initializePlugin() {
     $plugin->init();
 }
 
-// Hook me up baby!
-\add_action('plugins_loaded', '\WordPress\Plugin\PP_WP_Basic_Security\initializePlugin');
+// Fire away!
+initializePlugin();
