@@ -15,7 +15,7 @@
 - RSS Feed
 - Version strings from all enqueued CSS and JavaScripts
 - Debug output from Enfold Theme (really, no one should have that stuff in his generated HTML ...)
-- WooCOmmerce Generator Tag
+- WooCommerce Generator Tag
 - Canonical Links
 
 ### What will be changed
