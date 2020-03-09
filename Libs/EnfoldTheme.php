@@ -42,7 +42,7 @@ class EnfoldTheme implements \WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfa
      * Remove the Debug Comment when Enfold Theme is used.
      */
     public function removeAviaDebug() {
-        \remove_action('wp_head', 'avia_debugging_info', 1000);
-        \remove_action('admin_print_scripts', 'avia_debugging_info', 1000);
+        \remove_action('wp_head', 'avia_debugging_info', 9999999);
+        \remove_action('admin_print_scripts', 'avia_debugging_info', 9999999);
     }
 }
