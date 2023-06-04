@@ -19,7 +19,7 @@
 
 namespace WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces;
 
-\defined('ABSPATH') or die();
+defined('ABSPATH') or die();
 
 /**
  * Defines a common set of functions that any class
@@ -35,4 +35,4 @@ interface GenericInterface {
      * Execute the filters and so on
      */
     public function execute();
-} // END interface GenericInterface
+}

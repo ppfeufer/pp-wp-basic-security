@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PP WordPress Basic Security\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-11 08:38+0000\n"
+"POT-Creation-Date: 2023-06-04 19:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/"
 
 #. Author of the plugin
-msgid "H.-Peter Pfeufer"
+msgid "H. Peter Pfeufer"
 msgstr ""
 
 #. URI of the plugin
@@ -26,7 +26,7 @@ msgstr ""
 msgid "https://ppfeufer.de"
 msgstr ""
 
-#: Libs/GithubUpdater.php:462
+#: Libs/GithubUpdater.php:472
 msgid "Plugin reactivated successfully."
 msgstr ""
 
@@ -35,22 +35,22 @@ msgid "PP WordPress Basic Security"
 msgstr ""
 
 #. Description of the plugin
-msgid "Removing all non needed stuff from the HTML Output"
+msgid "Removing all non-needed stuff from the HTML Output"
 msgstr ""
 
-#: Libs/GithubUpdater.php:75
+#: Libs/GithubUpdater.php:83
 msgid ""
 "The GitHub Updater was initialized without the minimum required "
 "configuration, please check the config in your plugin. The following params "
 "are missing: "
 msgstr ""
 
-#: Libs/GithubUpdater.php:461
+#: Libs/GithubUpdater.php:468
 msgid ""
 "The plugin has been updated, but could not be reactivated. Please reactivate "
 "it manually."
 msgstr ""
 
-#: Libs/Login.php:36
+#: Libs/Login.php:38
 msgid "Ups! Something went wrong!"
 msgstr ""

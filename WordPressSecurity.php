@@ -4,9 +4,9 @@
  * Plugin Name: PP WordPress Basic Security
  * Plugin URI: https://github.com/ppfeufer/pp-wp-basic-security
  * GitHub Plugin URI: https://github.com/ppfeufer/pp-wp-basic-security
- * Description: Removing all non needed stuff from the HTML Output
+ * Description: Removing all non-needed stuff from the HTML Output
  * Version: 0.1-r20200309
- * Author: H.-Peter Pfeufer
+ * Author: H. Peter Pfeufer
  * Author URI: https://ppfeufer.de
  * License: GPLv3
  */
@@ -31,10 +31,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 namespace WordPress\Plugin\PP_WP_Basic_Security;
 
-\defined('ABSPATH') or die();
+defined('ABSPATH') or die();
 
-// Include the autoloader so we can dynamically include the rest of the classes.
-require_once(\trailingslashit(\dirname(__FILE__)) . 'inc/autoloader.php');
+// Include the autoloader, so we can dynamically include the rest of the classes.
+require_once(trailingslashit( __DIR__ ) . 'inc/autoloader.php');
 
 const WP_GITHUB_FORCE_UPDATE = false;
 
@@ -58,7 +58,7 @@ class WordPressSecurity {
          * Initializing Variables
          */
         $this->textDomain = 'pp-wp-basic-security';
-        $this->localizationDirectory = \basename(\dirname(__FILE__)) . '/l10n/';
+        $this->localizationDirectory = basename( __DIR__ ) . '/l10n/';
     }
 
     public function init() {
@@ -68,8 +68,8 @@ class WordPressSecurity {
     }
 
     public function loadTextDomain() {
-        if(\function_exists('\load_plugin_textdomain')) {
-            \load_plugin_textdomain($this->textDomain, false, $this->localizationDirectory);
+        if(function_exists('load_plugin_textdomain')) {
+            load_plugin_textdomain($this->textDomain, false, $this->localizationDirectory);
         }
     }
 
@@ -88,13 +88,13 @@ class WordPressSecurity {
     }
 
     public function doUpdateCheck() {
-        if(\is_admin()) {
+        if(is_admin()) {
             /**
-             * Check Github for updates
+             * Check GitHub for updates
              */
             $githubConfig = [
-                'slug' => \plugin_basename(__FILE__),
-                'proper_folder_name' => \dirname(\plugin_basename(__FILE__)),
+                'slug' => plugin_basename(__FILE__),
+                'proper_folder_name' => dirname(plugin_basename(__FILE__)),
                 'api_url' => 'https://api.github.com/repos/ppfeufer/pp-wp-basic-security',
                 'raw_url' => 'https://raw.github.com/ppfeufer/pp-wp-basic-security/master',
                 'github_url' => 'https://github.com/ppfeufer/pp-wp-basic-security',
