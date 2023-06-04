@@ -1,0 +1,56 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PP WordPress Basic Security\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-06-04 19:45+0000\n"
+"PO-Revision-Date: 2023-06-04 19:53+0000\n"
+"Last-Translator: Peter Pfeufer\n"
+"Language-Team: German\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.4; wp-6.3-alpha-55851"
+
+#. Author of the plugin
+msgid "H. Peter Pfeufer"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://github.com/ppfeufer/pp-wp-basic-security"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://ppfeufer.de"
+msgstr ""
+
+#: Libs/GithubUpdater.php:472
+msgid "Plugin reactivated successfully."
+msgstr ""
+
+#. Name of the plugin
+msgid "PP WordPress Basic Security"
+msgstr ""
+
+#. Description of the plugin
+msgid "Removing all non-needed stuff from the HTML Output"
+msgstr ""
+
+#: Libs/GithubUpdater.php:83
+msgid ""
+"The GitHub Updater was initialized without the minimum required "
+"configuration, please check the config in your plugin. The following params "
+"are missing: "
+msgstr ""
+
+#: Libs/GithubUpdater.php:468
+msgid ""
+"The plugin has been updated, but could not be reactivated. Please reactivate "
+"it manually."
+msgstr ""
+
+#: Libs/Login.php:38
+msgid "Ups! Something went wrong!"
+msgstr ""
