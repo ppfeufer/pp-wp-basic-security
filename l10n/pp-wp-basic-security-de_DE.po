@@ -1,42 +1,44 @@
+# Peter Pfeufer <info@ppfeufer.de>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: PP WordPress Basic Security\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-04 19:45+0000\n"
-"PO-Revision-Date: 2023-06-04 19:53+0000\n"
-"Last-Translator: Peter Pfeufer\n"
-"Language-Team: German\n"
+"PO-Revision-Date: 2023-06-05 21:00+0000\n"
+"Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
+"Language-Team: German <https://weblate.ppfeufer.de/projects/"
+"wordpress-plugins/pp-wp-basic-security/de/>\n"
 "Language: de_DE\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.4; wp-6.3-alpha-55851"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
+"X-Loco-Version: 2.6.4; wp-6.3-alpha-55851\n"
 
 #. Author of the plugin
 msgid "H. Peter Pfeufer"
-msgstr ""
+msgstr "H. Peter Pfeufer"
 
 #. URI of the plugin
 msgid "https://github.com/ppfeufer/pp-wp-basic-security"
-msgstr ""
+msgstr "https://github.com/ppfeufer/pp-wp-basic-security"
 
 #. Author URI of the plugin
 msgid "https://ppfeufer.de"
-msgstr ""
+msgstr "https://ppfeufer.de"
 
 #: Libs/GithubUpdater.php:472
 msgid "Plugin reactivated successfully."
-msgstr ""
+msgstr "Plugin erfolgreich reaktiviert."
 
 #. Name of the plugin
 msgid "PP WordPress Basic Security"
-msgstr ""
+msgstr "PP WordPress Basic Security"
 
 #. Description of the plugin
 msgid "Removing all non-needed stuff from the HTML Output"
-msgstr ""
+msgstr "Entfernen aller nicht benötigten Inhalte aus der HTML-Ausgabe"
 
 #: Libs/GithubUpdater.php:83
 msgid ""
@@ -44,13 +46,18 @@ msgid ""
 "configuration, please check the config in your plugin. The following params "
 "are missing: "
 msgstr ""
+"Der GitHub Updater wurde ohne die erforderliche Mindestkonfiguration "
+"initialisiert. Bitte überprüfe die Konfiguration in Deinem Plugin. Die "
+"folgenden Parameter fehlen: "
 
 #: Libs/GithubUpdater.php:468
 msgid ""
 "The plugin has been updated, but could not be reactivated. Please reactivate "
 "it manually."
 msgstr ""
+"Das Plugin wurde aktualisiert, konnte aber nicht reaktiviert werden. Bitte "
+"reaktiviere es manuell."
 
 #: Libs/Login.php:38
 msgid "Ups! Something went wrong!"
-msgstr ""
+msgstr "Ups! Etwas ist schief gelaufen!"
