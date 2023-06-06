@@ -1,5 +1,11 @@
 <?php
+
 namespace WordPress\Plugin\PP_WP_Basic_Security\Libs;
+
+use stdClass;
+use WP_Error;
+use const WordPress\Plugin\PP_WP_Basic_Security\WP_GITHUB_FORCE_UPDATE;
+use const WP_PLUGIN_DIR;
 
 defined('ABSPATH') or die();
 
@@ -79,10 +85,10 @@ class GithubUpdater {
         $this->config = wp_parse_args($config, $defaults);
 
         // if the minimum config isn't set, issue a warning and bail
-        if(!$this->hasMinimumConfig()) {
+        if (!$this->hasMinimumConfig()) {
             $message = __(
-				'The GitHub Updater was initialized without the minimum required configuration, please check the config in your plugin. The following params are missing: ',
-				'pp-wp-basic-security'
+                'The GitHub Updater was initialized without the minimum required configuration, please check the config in your plugin. The following params are missing: ',
+                'pp-wp-basic-security'
             );
             $message .= implode(',', $this->missingConfig);
 
@@ -93,23 +99,6 @@ class GithubUpdater {
 
         $this->setDefaults();
         $this->init();
-    }
-
-    /**
-     * Fire all WordPress actions
-     */
-    public function init(): void {
-        add_filter('pre_set_site_transient_update_plugins', [$this, 'apiCheck']);
-
-        // Hook into the plugin details screen
-        add_filter('plugins_api', [$this, 'getPluginInfo'], 10, 3);
-        add_filter('upgrader_post_install', [$this, 'upgraderPostInstall'], 10, 3);
-
-        // set timeout
-        add_filter('http_request_timeout', [$this, 'httpRequestTimeout']);
-
-        // set sslverify for zip download
-        add_filter('http_request_args', [$this, 'httpRequestSslVerify'], 10, 2);
     }
 
     /**
@@ -130,8 +119,8 @@ class GithubUpdater {
             'readme',
         ];
 
-        foreach($requiredParams as $requiredParameter) {
-            if(empty($this->config[$requiredParameter])) {
+        foreach ($requiredParams as $requiredParameter) {
+            if (empty($this->config[$requiredParameter])) {
                 $this->missingConfig[] = $requiredParameter;
             }
         }
@@ -140,23 +129,13 @@ class GithubUpdater {
     }
 
     /**
-     * Check weather or not the transients need to be overruled
-     * and API needs to be called for every single page load
-     *
-     * @return bool overrule or not
-     */
-    public function overruleTransients(): bool {
-        return (defined('\WordPress\Plugin\PP_WP_Basic_Security\WP_GITHUB_FORCE_UPDATE') && \WordPress\Plugin\PP_WP_Basic_Security\WP_GITHUB_FORCE_UPDATE);
-    }
-
-    /**
      * Set defaults
      *
-     * @since 1.2
      * @return void
+     * @since 1.2
      */
     public function setDefaults(): void {
-        if(!empty($this->config['access_token'])) {
+        if (!empty($this->config['access_token'])) {
             // See Downloading a zipball (private repo) https://help.github.com/articles/downloading-files-from-the-command-line
             $parsedUrl = parse_url($this->config['zip_url']); // $scheme, $host, $path
 
@@ -166,87 +145,61 @@ class GithubUpdater {
             $this->config['zip_url'] = $zipUrl;
         }
 
-        if(!isset($this->config['new_version'])) {
+        if (!isset($this->config['new_version'])) {
             $this->config['new_version'] = $this->getNewVersion();
         }
 
-        if(!isset($this->config['last_updated'])) {
+        if (!isset($this->config['last_updated'])) {
             $this->config['last_updated'] = $this->getDate();
         }
 
-        if(!isset($this->config['description'])) {
+        if (!isset($this->config['description'])) {
             $this->config['description'] = $this->getDescription();
         }
 
         $pluginData = $this->getPluginData();
-        if(!isset($this->config['plugin_name'])) {
+        if (!isset($this->config['plugin_name'])) {
             $this->config['plugin_name'] = $pluginData['Name'];
         }
 
-        if(!isset($this->config['version'])) {
+        if (!isset($this->config['version'])) {
             $this->config['version'] = $pluginData['Version'];
         }
 
-        if(!isset($this->config['author'])) {
+        if (!isset($this->config['author'])) {
             $this->config['author'] = $pluginData['Author'];
         }
 
-        if(!isset($this->config['homepage'])) {
+        if (!isset($this->config['homepage'])) {
             $this->config['homepage'] = $pluginData['PluginURI'];
         }
 
-        if(!isset($this->config['readme'])) {
+        if (!isset($this->config['readme'])) {
             $this->config['readme'] = 'README.md';
         }
     }
 
     /**
-     * Callback fn for the http_request_timeout filter
+     * Get the new version from GitHub
      *
+     * @return bool|string $version the version number
      * @since 1.0
-     * @return int timeout value
      */
-    public function httpRequestTimeout(): int {
-        return 2;
-    }
-
-    /**
-     * Callback fn for the http_request_args filter
-     *
-     * @param array $args
-     * @param string $url
-     *
-     * @return array
-     */
-    public function httpRequestSslVerify( array $args, string $url): array {
-        if($this->config['zip_url'] === $url) {
-            $args['sslverify'] = $this->config['sslverify'];
-        }
-
-        return $args;
-    }
-
-	/**
-	 * Get the new version from GitHub
-	 *
-	 * @return bool|string $version the version number
-	 * @since 1.0
-	 */
-    public function getNewVersion(): bool|string {
+    public function getNewVersion(): ?string {
         $version = get_site_transient(md5($this->config['slug']) . '_new_version');
 
-        if((!isset($version) || !$version ) || $this->overruleTransients()) {
+        if ((!isset($version) || !$version) || $this->overruleTransients()) {
             $rawResponse = $this->remoteGet(trailingslashit($this->config['raw_url']) . basename($this->config['slug']));
 
-            if(is_wp_error($rawResponse)) {
+            if (is_wp_error($rawResponse)) {
                 $version = false;
             }
 
-            if(is_array($rawResponse) && ! empty($rawResponse['body'])) {
+            if (is_array($rawResponse) && !empty($rawResponse['body'])) {
                 preg_match('/.*Version:\s*(.*)$/mi', $rawResponse['body'], $matches);
             }
 
-            if(!empty($matches[1])) {
+            if (!empty($matches[1])) {
                 $version = $matches[1];
             }
 
@@ -254,26 +207,26 @@ class GithubUpdater {
              * Back compat for older readme version handling
              * only done when there is no version found in file name
              */
-            if($version === false) {
+            if ($version === false) {
                 $rawResponse = $this->remoteGet(trailingslashit($this->config['raw_url']) . $this->config['readme']);
 
-                if(is_wp_error($rawResponse)) {
+                if (is_wp_error($rawResponse)) {
                     return $version;
                 }
 
                 preg_match('#^\s*`*~Current Version:\s*([^~]*)~#im', $rawResponse['body'], $__version);
 
-                if(isset($__version[1])) {
+                if (isset($__version[1])) {
                     $version_readme = $__version[1];
 
-                    if(version_compare($version, $version_readme) === -1) {
+                    if (version_compare($version, $version_readme) === -1) {
                         $version = $version_readme;
                     }
                 }
             }
 
             // refresh every 6 hours
-            if($version !== false) {
+            if ($version !== false) {
                 set_site_transient(md5($this->config['slug']) . '_new_version', $version, 60 * 60 * 6);
             }
         }
@@ -282,47 +235,69 @@ class GithubUpdater {
     }
 
     /**
+     * Check weather or not the transients need to be overruled
+     * and API needs to be called for every single page load
+     *
+     * @return bool overrule or not
+     */
+    public function overruleTransients(): bool {
+        return (defined('\WordPress\Plugin\PP_WP_Basic_Security\WP_GITHUB_FORCE_UPDATE') && WP_GITHUB_FORCE_UPDATE);
+    }
+
+    /**
      * Interact with GitHub
      *
      * @param string $query
      *
-     * @return array|\WP_Error
+     * @return array|WP_Error
      * @since 1.6
      */
-    public function remoteGet(string $query): array|\WP_Error {
-        if(!empty($this->config['access_token'])) {
+    public function remoteGet(string $query): ?WP_Error {
+        if (!empty($this->config['access_token'])) {
             $query = add_query_arg(['access_token' => $this->config['access_token']], $query);
         }
 
-	    return wp_remote_get(
-				$query, ['sslverify' => $this->config['sslverify']]
-	    );
+        return wp_remote_get(
+            $query, ['sslverify' => $this->config['sslverify']]
+        );
     }
 
-	/**
-	 * Get GitHub Data from the specified repository
-	 *
-	 * @return false|mixed|null $github_data the data
-	 * @since 1.0
-	 */
-    public function getGithubData(): mixed {
+    /**
+     * Get update date
+     *
+     * @return bool|string $date the date
+     * @since 1.0
+     */
+    public function getDate(): ?string {
+        $githubData = $this->getGithubData();
+
+        return (!empty($githubData->updated_at)) ? date('Y-m-d', strtotime($githubData->updated_at)) : false;
+    }
+
+    /**
+     * Get GitHub Data from the specified repository
+     *
+     * @return false|mixed|null $github_data the data
+     * @since 1.0
+     */
+    public function getGithubData() {
         $githubData = null;
 
-        if(!empty($this->githubData)) {
+        if (!empty($this->githubData)) {
             $githubData = $this->githubData;
         }
 
-        if($githubData === null) {
+        if ($githubData === null) {
             $githubData = get_site_transient(md5($this->config['slug']) . '_github_data');
 
-            if((!isset($githubData) || !$githubData) || $this->overruleTransients()) {
+            if ((!isset($githubData) || !$githubData) || $this->overruleTransients()) {
                 $githubRemoteData = $this->remoteGet($this->config['api_url']);
 
-                if(is_wp_error($githubRemoteData)) {
+                if (is_wp_error($githubRemoteData)) {
                     return false;
                 }
 
-                $githubData = json_decode($githubRemoteData['body']);
+                $githubData = json_decode($githubRemoteData['body'], false);
 
                 // refresh every 6 hours
                 set_site_transient(md5($this->config['slug']) . '_github_data', $githubData, 60 * 60 * 6);
@@ -335,25 +310,13 @@ class GithubUpdater {
         return $githubData;
     }
 
-	/**
-	 * Get update date
-	 *
-	 * @return bool|string $date the date
-	 * @since 1.0
-	 */
-    public function getDate(): bool|string {
-        $githubData = $this->getGithubData();
-
-        return (!empty($githubData->updated_at)) ? date('Y-m-d', strtotime($githubData->updated_at)) : false;
-    }
-
-	/**
-	 * Get plugin description
-	 *
-	 * @return bool|string $description the description
-	 * @since 1.0
-	 */
-    public function getDescription(): bool|string {
+    /**
+     * Get plugin description
+     *
+     * @return bool|string $description the description
+     * @since 1.0
+     */
+    public function getDescription(): ?string {
         $githubData = $this->getGithubData();
 
         return (!empty($githubData->description)) ? $githubData->description : false;
@@ -368,7 +331,50 @@ class GithubUpdater {
     public function getPluginData(): array {
         include_once(ABSPATH . '/wp-admin/includes/plugin.php');
 
-	    return get_plugin_data(\WP_PLUGIN_DIR . '/' . $this->config['slug']);
+        return get_plugin_data(WP_PLUGIN_DIR . '/' . $this->config['slug']);
+    }
+
+    /**
+     * Fire all WordPress actions
+     */
+    public function init(): void {
+        add_filter('pre_set_site_transient_update_plugins', [$this, 'apiCheck']);
+
+        // Hook into the plugin details screen
+        add_filter('plugins_api', [$this, 'getPluginInfo'], 10, 3);
+        add_filter('upgrader_post_install', [$this, 'upgraderPostInstall'], 10, 3);
+
+        // set timeout
+        add_filter('http_request_timeout', [$this, 'httpRequestTimeout']);
+
+        // set sslverify for zip download
+        add_filter('http_request_args', [$this, 'httpRequestSslVerify'], 10, 2);
+    }
+
+    /**
+     * Callback fn for the http_request_timeout filter
+     *
+     * @return int timeout value
+     * @since 1.0
+     */
+    public function httpRequestTimeout(): int {
+        return 2;
+    }
+
+    /**
+     * Callback fn for the http_request_args filter
+     *
+     * @param array $args
+     * @param string $url
+     *
+     * @return array
+     */
+    public function httpRequestSslVerify(array $args, string $url): array {
+        if ($this->config['zip_url'] === $url) {
+            $args['sslverify'] = $this->config['sslverify'];
+        }
+
+        return $args;
     }
 
     /**
@@ -384,20 +390,20 @@ class GithubUpdater {
          * Check if the transient contains the 'checked' information
          * If not, just return its value without hacking it
          */
-        if(empty($transient->checked)) {
+        if (empty($transient->checked)) {
             return $transient;
         }
 
         // check the version and decide if it's new
         $update = version_compare($this->config['new_version'], $this->config['version']);
 
-        if($update === 1) {
-            $response = new \stdClass;
+        if ($update === 1) {
+            $response = new stdClass;
             $response->new_version = $this->config['new_version'];
             $response->slug = $this->config['proper_folder_name'];
             $response->url = add_query_arg(
-				['access_token' => $this->config['access_token']],
-				$this->config['github_url']
+                ['access_token' => $this->config['access_token']],
+                $this->config['github_url']
             );
             $response->package = $this->config['zip_url'];
 
@@ -407,25 +413,25 @@ class GithubUpdater {
         return $transient;
     }
 
-	/**
-	 * Get Plugin info
-	 *
-	 * @param bool $false always false
-	 * @param string $action the API function being performed
-	 * @param object $response
-	 *
-	 * @return object|bool
-	 * @since 1.0
-	 */
-    public function getPluginInfo( bool $false, string $action, object $response): object|bool {
+    /**
+     * Get Plugin info
+     *
+     * @param bool $false always false
+     * @param string $action the API function being performed
+     * @param object $response
+     *
+     * @return object|bool
+     * @since 1.0
+     */
+    public function getPluginInfo(bool $false, string $action, object $response): ?object {
         /**
          * Since they are not even used, but propagated by WP to this callback,
          * let's unset them ....
          */
-	    unset($false, $action);
+        unset($false, $action);
 
-	    // Check if this call API is for the right plugin
-        if(!isset($response->slug) || $response->slug !== $this->config['slug']) {
+        // Check if this call API is for the right plugin
+        if (!isset($response->slug) || $response->slug !== $this->config['slug']) {
             return false;
         }
 
@@ -455,19 +461,19 @@ class GithubUpdater {
      * @return array $result the result of the move
      * @since 1.0
      */
-    public function upgraderPostInstall(bool $true, mixed $hookExtra, array $result): array {
+    public function upgraderPostInstall(bool $true, $hookExtra, array $result): array {
         global $wp_filesystem;
 
         // Move & Activate
-        $proper_destination = \WP_PLUGIN_DIR . '/' . $this->config['proper_folder_name'];
+        $proper_destination = WP_PLUGIN_DIR . '/' . $this->config['proper_folder_name'];
         $wp_filesystem->move($result['destination'], $proper_destination);
         $result['destination'] = $proper_destination;
-        $activate = activate_plugin(\WP_PLUGIN_DIR . '/' . $this->config['slug']);
+        $activate = activate_plugin(WP_PLUGIN_DIR . '/' . $this->config['slug']);
 
         // Output the update message
         $fail = __(
-			'The plugin has been updated, but could not be reactivated. Please reactivate it manually.',
-			'pp-wp-basic-security'
+            'The plugin has been updated, but could not be reactivated. Please reactivate it manually.',
+            'pp-wp-basic-security'
         );
         $success = __('Plugin reactivated successfully.', 'pp-wp-basic-security');
 

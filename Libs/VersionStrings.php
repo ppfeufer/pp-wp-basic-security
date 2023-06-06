@@ -41,8 +41,8 @@ class VersionStrings implements GenericInterface {
      *
      * @return string
      */
-    public function removeVersionStrings( string $src): string {
-        if(strpos($src, 'ver=')) {
+    public function removeVersionStrings(string $src): string {
+        if (strpos($src, 'ver=')) {
             $src = remove_query_arg('ver', $src);
         }
 

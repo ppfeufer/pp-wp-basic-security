@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/ppfeufer/pp-wp-basic-security
  * GitHub Plugin URI: https://github.com/ppfeufer/pp-wp-basic-security
  * Description: Removing all non-needed stuff from the HTML Output
- * Version: 0.1-r20200309
+ * Version: 0.1-r20230606
  * Author: H. Peter Pfeufer
  * Author URI: https://ppfeufer.de
  * License: GPLv3
@@ -36,7 +36,7 @@ namespace WordPress\Plugin\PP_WP_Basic_Security;
 defined('ABSPATH') or die();
 
 // Include the autoloader, so we can dynamically include the rest of the classes.
-require_once(trailingslashit( __DIR__ ) . 'inc/autoloader.php');
+require_once(trailingslashit(__DIR__) . 'inc/autoloader.php');
 
 const WP_GITHUB_FORCE_UPDATE = false;
 
@@ -44,38 +44,38 @@ class WordPressSecurity {
     /**
      * Textdomain
      *
-     * @var string
+     * @var string|null
      */
-    private $textDomain = null;
+    private ?string $textDomain;
 
     /**
      * Localization Directory
      *
-     * @var string
+     * @var string|null
      */
-    private $localizationDirectory = null;
+    private ?string $localizationDirectory;
 
     public function __construct() {
         /**
          * Initializing Variables
          */
         $this->textDomain = 'pp-wp-basic-security';
-        $this->localizationDirectory = basename( __DIR__ ) . '/l10n/';
+        $this->localizationDirectory = basename(__DIR__) . '/l10n/';
     }
 
-    public function init() {
+    public function init(): void {
         $this->loadTextDomain();
         $this->loadLibraries();
         $this->doUpdateCheck();
     }
 
-    public function loadTextDomain() {
-        if(function_exists('load_plugin_textdomain')) {
+    public function loadTextDomain(): void {
+        if (function_exists('load_plugin_textdomain')) {
             load_plugin_textdomain($this->textDomain, false, $this->localizationDirectory);
         }
     }
 
-    public function loadLibraries() {
+    public function loadLibraries(): void {
         new Libs\Canonical;
         new Libs\EnfoldTheme;
         new Libs\Emoji;
@@ -89,8 +89,8 @@ class WordPressSecurity {
         new Libs\Login;
     }
 
-    public function doUpdateCheck() {
-        if(is_admin()) {
+    public function doUpdateCheck(): void {
+        if (is_admin()) {
             /**
              * Check GitHub for updates
              */
@@ -116,7 +116,7 @@ class WordPressSecurity {
 /**
  * Start the show ....
  */
-function initializePlugin() {
+function initialize_plugin(): void {
     $plugin = new WordPressSecurity;
 
     /**
@@ -126,4 +126,4 @@ function initializePlugin() {
 }
 
 // Fire away!
-initializePlugin();
+initialize_plugin();

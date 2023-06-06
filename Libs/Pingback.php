@@ -30,7 +30,7 @@ class Pingback implements GenericInterface {
     }
 
     public function execute(): void {
-        add_action('wp', static function() {
+        add_action('wp', static function () {
             header_remove('X-Pingback');
         }, 1000);
     }

@@ -29,7 +29,7 @@ defined('ABSPATH') or die();
  */
 class EnfoldTheme implements GenericInterface {
     public function __construct() {
-        if(esc_html(get_template()) === 'Enfold') {
+        if (esc_html(get_template()) === 'Enfold') {
             $this->execute();
         }
     }

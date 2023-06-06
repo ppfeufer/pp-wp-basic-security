@@ -38,13 +38,13 @@ class Links implements GenericInterface {
         /**
          * Removing relational next/prev links
          */
-        remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
-        remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+        remove_action('wp_head', 'adjacent_posts_rel_link', 10);
+        remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10);
 
         /**
          * Removing shortlink
          */
-        remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
+        remove_action('wp_head', 'wp_shortlink_wp_head', 10);
 
         /**
          * Removing RSS feeds
@@ -56,7 +56,7 @@ class Links implements GenericInterface {
          * Removing <link rel='https://api.w.org/' href='http://link.net/wp-json/' />
          */
         remove_action('wp_head', 'rest_output_link_wp_head', 10);
-        remove_action('template_redirect', 'rest_output_link_header', 11, 0);
+        remove_action('template_redirect', 'rest_output_link_header', 11);
 
         /**
          * Removing <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://link.net/wp-includes/wlwmanifest.xml" />

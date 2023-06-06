@@ -33,6 +33,6 @@ class WooCommerce implements GenericInterface {
         /**
          * Remove WooCommerce generator version
          */
-        remove_action('wp_head','wc_generator_tag');
+        remove_action('wp_head', 'wc_generator_tag');
     }
 }

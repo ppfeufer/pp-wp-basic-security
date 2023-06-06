@@ -42,12 +42,6 @@ class Emoji implements GenericInterface {
     }
 
     public function disableTinymceEmojicons(array $plugins): array {
-        $returnValue = [];
-
-        if(is_array($plugins)) {
-            $returnValue = array_diff($plugins, ['wpemoji'] );
-        }
-
-        return $returnValue;
+        return array_diff($plugins, ['wpemoji']);
     }
 }
