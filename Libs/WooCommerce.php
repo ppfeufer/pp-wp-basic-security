@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright (C) 2017 H.-Peter Pfeufer
+ * Copyright (C) 2017 H. Peter Pfeufer
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -20,17 +20,19 @@
 
 namespace WordPress\Plugin\PP_WP_Basic_Security\Libs;
 
-\defined('ABSPATH') or die();
+use WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\GenericInterface;
 
-class WooCommerce implements \WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\GenericInterface {
+defined('ABSPATH') or die();
+
+class WooCommerce implements GenericInterface {
     public function __construct() {
         $this->execute();
     }
 
-    public function execute() {
+    public function execute(): void {
         /**
          * Remove WooCommerce generator version
          */
-        \remove_action('wp_head','wc_generator_tag');
+        remove_action('wp_head', 'wc_generator_tag');
     }
 }

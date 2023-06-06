@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright (C) 2017 H.-Peter Pfeufer
+ * Copyright (C) 2017 H. Peter Pfeufer
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -20,16 +20,18 @@
 
 namespace WordPress\Plugin\PP_WP_Basic_Security\Libs;
 
-\defined('ABSPATH') or die();
+use WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\GenericInterface;
 
-class Pingback implements \WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\GenericInterface {
+defined('ABSPATH') or die();
+
+class Pingback implements GenericInterface {
     public function __construct() {
         $this->execute();
     }
 
-    public function execute() {
-        \add_action('wp', function() {
-            \header_remove('X-Pingback');
+    public function execute(): void {
+        add_action('wp', static function () {
+            header_remove('X-Pingback');
         }, 1000);
     }
 }

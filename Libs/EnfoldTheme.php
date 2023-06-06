@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright (C) 2017 H.-Peter Pfeufer
+ * Copyright (C) 2017 H. Peter Pfeufer
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -20,29 +20,29 @@
 
 namespace WordPress\Plugin\PP_WP_Basic_Security\Libs;
 
-\defined('ABSPATH') or die();
+use WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\GenericInterface;
+
+defined('ABSPATH') or die();
 
 /**
  * Removing the debug from html output when Enfold theme is used
  */
-class EnfoldTheme implements \WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\GenericInterface {
+class EnfoldTheme implements GenericInterface {
     public function __construct() {
-        $theme = \wp_get_theme(); // gets the current theme
-
-        if($theme->name === 'Enfold' || $theme->parent_theme === 'Enfold') {
+        if (esc_html(get_template()) === 'Enfold') {
             $this->execute();
         }
     }
 
-    public function execute() {
-        \add_action('wp_loaded', array($this, 'removeAviaDebug') , 9999);
+    public function execute(): void {
+        add_action('wp_loaded', [$this, 'removeAviaDebug'], 9999);
     }
 
     /**
      * Remove the Debug Comment when Enfold Theme is used.
      */
-    public function removeAviaDebug() {
-        \remove_action('wp_head', 'avia_debugging_info', 9999999);
-        \remove_action('admin_print_scripts', 'avia_debugging_info', 9999999);
+    public function removeAviaDebug(): void {
+        remove_action('wp_head', 'avia_debugging_info', 9999999);
+        remove_action('admin_print_scripts', 'avia_debugging_info', 9999999);
     }
 }

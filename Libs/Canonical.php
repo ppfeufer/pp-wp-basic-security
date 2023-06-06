@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright (C) 2017 H.-Peter Pfeufer
+ * Copyright (C) 2017 H. Peter Pfeufer
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -20,15 +20,17 @@
 
 namespace WordPress\Plugin\PP_WP_Basic_Security\Libs;
 
-\defined('ABSPATH') or die();
+use WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\GenericInterface;
 
-class Canonical implements \WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\GenericInterface {
+defined('ABSPATH') or die();
+
+class Canonical implements GenericInterface {
     public function __construct() {
         $this->execute();
     }
 
-    public function execute() {
-        \remove_action('embed_head', 'rel_canonical');
-        \add_filter('wpseo_canonical', '__return_false');
+    public function execute(): void {
+        remove_action('embed_head', 'rel_canonical');
+        add_filter('wpseo_canonical', '__return_false');
     }
 }

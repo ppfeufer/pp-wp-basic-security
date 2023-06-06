@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright (C) 2017 H.-Peter Pfeufer
+ * Copyright (C) 2017 H. Peter Pfeufer
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -20,45 +20,47 @@
 
 namespace WordPress\Plugin\PP_WP_Basic_Security\Libs;
 
-\defined('ABSPATH') or die();
+use WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\GenericInterface;
 
-class Links implements \WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\GenericInterface {
+defined('ABSPATH') or die();
+
+class Links implements GenericInterface {
     public function __construct() {
         $this->execute();
     }
 
-    public function execute() {
+    public function execute(): void {
         /**
-         * removing <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://link.net/xmlrpc.php?rsd" />
+         * Removing <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://link.net/xmlrpc.php?rsd" />
          */
-        \remove_action('wp_head', 'rsd_link');
+        remove_action('wp_head', 'rsd_link');
 
         /**
-         * removing relational next/prev links
+         * Removing relational next/prev links
          */
-        \remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
-        \remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+        remove_action('wp_head', 'adjacent_posts_rel_link', 10);
+        remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10);
 
         /**
-         * removing shortlink
+         * Removing shortlink
          */
-        \remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
+        remove_action('wp_head', 'wp_shortlink_wp_head', 10);
 
         /**
-         * removing RSS feeds
+         * Removing RSS feeds
          */
-        \remove_action('wp_head', 'feed_links', 2);
-        \remove_action('wp_head', 'feed_links_extra', 3);
+        remove_action('wp_head', 'feed_links', 2);
+        remove_action('wp_head', 'feed_links_extra', 3);
 
         /**
-         * removing <link rel='https://api.w.org/' href='http://link.net/wp-json/' />
+         * Removing <link rel='https://api.w.org/' href='http://link.net/wp-json/' />
          */
-        \remove_action('wp_head', 'rest_output_link_wp_head', 10);
-        \remove_action('template_redirect', 'rest_output_link_header', 11, 0);
+        remove_action('wp_head', 'rest_output_link_wp_head', 10);
+        remove_action('template_redirect', 'rest_output_link_header', 11);
 
         /**
-         * removing <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://link.net/wp-includes/wlwmanifest.xml" />
+         * Removing <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://link.net/wp-includes/wlwmanifest.xml" />
          */
-        \remove_action('wp_head', 'wlwmanifest_link');
+        remove_action('wp_head', 'wlwmanifest_link');
     }
 }

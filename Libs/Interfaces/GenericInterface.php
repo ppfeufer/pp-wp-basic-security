@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2017 H.-Peter Pfeufer
+ * Copyright (C) 2017 H. Peter Pfeufer
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -19,7 +19,7 @@
 
 namespace WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces;
 
-\defined('ABSPATH') or die();
+defined('ABSPATH') or die();
 
 /**
  * Defines a common set of functions that any class
@@ -35,4 +35,4 @@ interface GenericInterface {
      * Execute the filters and so on
      */
     public function execute();
-} // END interface GenericInterface
+}

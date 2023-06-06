@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright (C) 2017 H.-Peter Pfeufer
+ * Copyright (C) 2017 H. Peter Pfeufer
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -20,27 +20,30 @@
 
 namespace WordPress\Plugin\PP_WP_Basic_Security\Libs;
 
-\defined('ABSPATH') or die();
+use WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\GenericInterface;
 
-class VersionStrings implements \WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\GenericInterface {
+defined('ABSPATH') or die();
+
+class VersionStrings implements GenericInterface {
     public function __construct() {
         $this->execute();
     }
 
-    public function execute() {
-        \add_filter('style_loader_src', array($this, 'removeVersionStrings'), 9999);
-        \add_filter('script_loader_src', array($this, 'removeVersionStrings'), 9999);
+    public function execute(): void {
+        add_filter('style_loader_src', [$this, 'removeVersionStrings'], 9999);
+        add_filter('script_loader_src', [$this, 'removeVersionStrings'], 9999);
     }
 
     /**
      * Removing the version string from any enqueued css and js source
      *
      * @param string $src the css or js source
+     *
      * @return string
      */
-    public function removeVersionStrings($src) {
-        if(strpos($src, 'ver=')) {
-            $src = \remove_query_arg('ver', $src);
+    public function removeVersionStrings(string $src): string {
+        if (strpos($src, 'ver=')) {
+            $src = remove_query_arg('ver', $src);
         }
 
         return $src;
