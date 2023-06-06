@@ -9,6 +9,8 @@
  * Author: H. Peter Pfeufer
  * Author URI: https://ppfeufer.de
  * License: GPLv3
+ * Text Domain: pp-wp-basic-security
+ * Domain Path: /l10n
  */
 
 /*
