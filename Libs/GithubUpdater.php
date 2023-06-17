@@ -252,7 +252,7 @@ class GithubUpdater {
      * @return array|WP_Error
      * @since 1.6
      */
-    public function remoteGet(string $query): ?WP_Error {
+    public function remoteGet(string $query) {
         if (!empty($this->config['access_token'])) {
             $query = add_query_arg(['access_token' => $this->config['access_token']], $query);
         }
