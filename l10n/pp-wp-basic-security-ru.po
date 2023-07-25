@@ -1,10 +1,11 @@
 # Peter Pfeufer <info@ppfeufer.de>, 2023.
+# "Peter (Test User)" <develop@ppfeufer.de>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: PP WordPress Basic Security\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-04 19:45+0000\n"
-"PO-Revision-Date: 2023-07-05 12:19+0000\n"
+"PO-Revision-Date: 2023-07-25 14:39+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: Russian <https://weblate.ppfeufer.de/projects/"
 "wordpress-plugins/pp-wp-basic-security/ru/>\n"
@@ -30,11 +31,11 @@ msgstr "https://ppfeufer.de"
 
 #: Libs/GithubUpdater.php:472
 msgid "Plugin reactivated successfully."
-msgstr ""
+msgstr "Плагин успешно реактивирован."
 
 #. Name of the plugin
 msgid "PP WordPress Basic Security"
-msgstr ""
+msgstr "PP WordPress Basic Security"
 
 #. Description of the plugin
 msgid "Removing all non-needed stuff from the HTML Output"
@@ -52,6 +53,8 @@ msgid ""
 "The plugin has been updated, but could not be reactivated. Please reactivate "
 "it manually."
 msgstr ""
+"Плагин был обновлен, но его не удалось активировать повторно. Пожалуйста, "
+"повторно активируйте его вручную."
 
 #: Libs/Login.php:38
 msgid "Ups! Something went wrong!"
