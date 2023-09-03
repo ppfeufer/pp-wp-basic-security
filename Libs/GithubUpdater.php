@@ -51,10 +51,10 @@ class GithubUpdater {
     /**
      * Any config that is missing from the initialization of this instance
      *
-     * @var $missingConfig
+     * @var $missingConfig array
      * @access public
      */
-    public $missingConfig;
+    public array $missingConfig;
 
     /**
      * Temporarily store the data fetched from GitHub,
@@ -63,7 +63,7 @@ class GithubUpdater {
      * @var $githubData
      * @access private
      */
-    private $githubData;
+    private mixed $githubData;
 
     /**
      * Class Constructor
@@ -182,7 +182,7 @@ class GithubUpdater {
     /**
      * Get the new version from GitHub
      *
-     * @return bool|string $version the version number
+     * @return string|null $version the version number
      * @since 1.0
      */
     public function getNewVersion(): ?string {
@@ -211,17 +211,17 @@ class GithubUpdater {
                 $rawResponse = $this->remoteGet(trailingslashit($this->config['raw_url']) . $this->config['readme']);
 
                 if (is_wp_error($rawResponse)) {
-                    return $version;
+                    return false;
                 }
 
                 preg_match('#^\s*`*~Current Version:\s*([^~]*)~#im', $rawResponse['body'], $__version);
 
                 if (isset($__version[1])) {
-                    $version_readme = $__version[1];
+                    $version = $__version[1];
 
-                    if (version_compare($version, $version_readme) === -1) {
-                        $version = $version_readme;
-                    }
+//                    if (version_compare($version, $version_readme) === -1) {
+//                        $version = $version_readme;
+//                    }
                 }
             }
 
@@ -252,7 +252,7 @@ class GithubUpdater {
      * @return array|WP_Error
      * @since 1.6
      */
-    public function remoteGet(string $query) {
+    public function remoteGet(string $query): array|WP_Error {
         if (!empty($this->config['access_token'])) {
             $query = add_query_arg(['access_token' => $this->config['access_token']], $query);
         }
@@ -265,7 +265,7 @@ class GithubUpdater {
     /**
      * Get update date
      *
-     * @return bool|string $date the date
+     * @return string|null $date the date
      * @since 1.0
      */
     public function getDate(): ?string {
@@ -280,7 +280,7 @@ class GithubUpdater {
      * @return false|mixed|null $github_data the data
      * @since 1.0
      */
-    public function getGithubData() {
+    public function getGithubData(): mixed {
         $githubData = null;
 
         if (!empty($this->githubData)) {
@@ -313,7 +313,7 @@ class GithubUpdater {
     /**
      * Get plugin description
      *
-     * @return bool|string $description the description
+     * @return string|null $description the description
      * @since 1.0
      */
     public function getDescription(): ?string {
@@ -454,14 +454,14 @@ class GithubUpdater {
      * Upgrader/Updater
      * Move & activate the plugin, echo the update message
      *
-     * @param boolean $true always true
-     * @param mixed $hookExtra not used
+     * @param boolean $response always true
+     * @param array $hookExtra not used
      * @param array $result the result of the move
      *
      * @return array $result the result of the move
      * @since 1.0
      */
-    public function upgraderPostInstall(bool $true, $hookExtra, array $result): array {
+    public function upgraderPostInstall(bool $response, array $hookExtra, array $result): array {
         global $wp_filesystem;
 
         // Move & Activate
