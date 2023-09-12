@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PP WordPress Basic Security\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-04 19:45+0000\n"
+"POT-Creation-Date: 2023-09-12 12:17+0000\n"
 "PO-Revision-Date: 2023-06-05 21:00+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: German <https://weblate.ppfeufer.de/projects/wordpress-"
@@ -28,10 +28,6 @@ msgstr "https://github.com/ppfeufer/pp-wp-basic-security"
 msgid "https://ppfeufer.de"
 msgstr "https://ppfeufer.de"
 
-#: Libs/GithubUpdater.php:472
-msgid "Plugin reactivated successfully."
-msgstr "Plugin erfolgreich reaktiviert."
-
 #. Name of the plugin
 msgid "PP WordPress Basic Security"
 msgstr "PP WordPress Basic Security"
@@ -40,24 +36,25 @@ msgstr "PP WordPress Basic Security"
 msgid "Removing all non-needed stuff from the HTML Output"
 msgstr "Entfernen aller nicht benötigten Inhalte aus der HTML-Ausgabe"
 
-#: Libs/GithubUpdater.php:83
-msgid ""
-"The GitHub Updater was initialized without the minimum required "
-"configuration, please check the config in your plugin. The following params "
-"are missing: "
-msgstr ""
-"Der GitHub Updater wurde ohne die erforderliche Mindestkonfiguration "
-"initialisiert. Bitte überprüfe die Konfiguration in Deinem Plugin. Die "
-"folgenden Parameter fehlen: "
-
-#: Libs/GithubUpdater.php:468
-msgid ""
-"The plugin has been updated, but could not be reactivated. Please reactivate "
-"it manually."
-msgstr ""
-"Das Plugin wurde aktualisiert, konnte aber nicht reaktiviert werden. Bitte "
-"reaktiviere es manuell."
-
-#: Libs/Login.php:38
+#: Libs/Login.php:20
 msgid "Ups! Something went wrong!"
 msgstr "Ups! Etwas ist schief gelaufen!"
+
+#~ msgid "Plugin reactivated successfully."
+#~ msgstr "Plugin erfolgreich reaktiviert."
+
+#~ msgid ""
+#~ "The GitHub Updater was initialized without the minimum required "
+#~ "configuration, please check the config in your plugin. The following "
+#~ "params are missing: "
+#~ msgstr ""
+#~ "Der GitHub Updater wurde ohne die erforderliche Mindestkonfiguration "
+#~ "initialisiert. Bitte überprüfe die Konfiguration in Deinem Plugin. Die "
+#~ "folgenden Parameter fehlen: "
+
+#~ msgid ""
+#~ "The plugin has been updated, but could not be reactivated. Please "
+#~ "reactivate it manually."
+#~ msgstr ""
+#~ "Das Plugin wurde aktualisiert, konnte aber nicht reaktiviert werden. "
+#~ "Bitte reaktiviere es manuell."
