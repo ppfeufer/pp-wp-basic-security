@@ -1,5 +1,6 @@
 # WordPress Basic Security<a name="wordpress-basic-security"></a>
 
+![License](https://img.shields.io/badge/license-GPLv3-green "License")
 [![Translation status](https://weblate.ppfeufer.de/widget/wordpress-plugins/pp-wp-basic-security/svg-badge.svg)](https://weblate.ppfeufer.de/engage/wordpress-plugins/)
 
 **Provides some basic security by removing WordPress's tendency to talk to much**
