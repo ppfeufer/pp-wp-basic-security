@@ -1,0 +1,97 @@
+# Apply to all files without committing:
+#   pre-commit run --all-files
+# Update this file:
+#   pre-commit autoupdate
+
+default_language_version:
+  # force all unspecified python hooks to run python3
+  python: python3
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      # Identify invalid files
+      - id: check-ast
+      - id: check-yaml
+      - id: check-json
+      - id: check-toml
+      - id: check-xml
+
+      # git checks
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args:
+          - --maxkb=1000
+      - id: detect-private-key
+      - id: check-case-conflict
+
+      # General quality checks
+      - id: mixed-line-ending
+        args:
+          - --fix=lf
+      - id: trailing-whitespace
+        args:
+          - --markdown-linebreak-ext=md
+        exclude: |
+          (?x)(
+            .min(.css|.css.map|.js|.js.map)|
+            Libs/YahnisElsts/PluginUpdateChecker/
+          )
+      - id: check-executables-have-shebangs
+      - id: end-of-file-fixer
+        exclude: |
+          (?x)(
+            .min(.css|.css.map|.js|.js.map)|
+            Libs/YahnisElsts/PluginUpdateChecker/
+          )
+
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: v8.49.0
+    hooks:
+      - id: eslint
+        exclude: |
+          (?x)(
+            .min(.js|.js.map)|
+            Libs/YahnisElsts/PluginUpdateChecker/
+          )
+
+  - repo: https://github.com/awebdeveloper/pre-commit-stylelint
+    rev: 0.0.2
+    hooks:
+      - id: stylelint
+        exclude: |
+          (?x)(
+            .min(.css|.css.map)|
+            Libs/YahnisElsts/PluginUpdateChecker/
+          )
+        args:
+          - --formatter=compact
+        additional_dependencies:
+          - stylelint@15.10.3  # https://github.com/stylelint/stylelint/releases/latest
+          - stylelint-config-standard@34.0.0  # https://github.com/stylelint/stylelint-config-standard/releases/latest
+
+  - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
+    rev: 2.7.2
+    hooks:
+      - id: editorconfig-checker
+        exclude: |
+          (?x)(
+            LICENSE|
+            .min(.css|.css.map|.js|.js.map)|
+            Libs/YahnisElsts/PluginUpdateChecker/
+          )
+
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.17
+    hooks:
+      - id: mdformat
+        exclude: |
+          (?x)(
+            .github/|
+            Libs/YahnisElsts/PluginUpdateChecker/
+          )
+        additional_dependencies:
+          - mdformat-gfm==0.3.5  # Mdformat plugin for GitHub Flavored Markdown compatibility » https://github.com/hukkin/mdformat-gfm/tags
+          - mdformat-toc==0.3.0  # Mdformat plugin to generate a table of contents » https://github.com/hukkin/mdformat-toc/tags
+          - mdformat-shfmt==0.1.0  # Mdformat plugin to format shell code blocks » https://github.com/hukkin/mdformat-shfmt/tags

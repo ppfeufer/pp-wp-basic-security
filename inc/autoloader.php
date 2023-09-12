@@ -4,9 +4,9 @@ namespace WordPress\Plugin\PP_WP_Basic_Security;
 
 spl_autoload_register('\WordPress\Plugin\PP_WP_Basic_Security\autoload');
 
-function autoload($className) {
+function autoload($className): void {
     // If the specified $className does not include our namespace, duck out.
-    if (strpos($className, 'WordPress\Plugin\PP_WP_Basic_Security') === false) {
+    if (!str_contains($className, 'WordPress\Plugin\PP_WP_Basic_Security')) {
         return;
     }
 
