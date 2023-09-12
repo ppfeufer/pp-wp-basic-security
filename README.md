@@ -45,7 +45,7 @@ ______________________________________________________________________
 
 [![Translation status](https://weblate.ppfeufer.de/widget/wordpress-plugins/pp-wp-basic-security/multi-auto.svg)](https://weblate.ppfeufer.de/engage/wordpress-plugins/)
 
-Do you want to help translate this app into your language or improve the existing
+Do you want to help translate this plugin into your language or improve the existing
 translation? - [Join our team of translators][weblate engage]!
 
 <!-- Links -->
