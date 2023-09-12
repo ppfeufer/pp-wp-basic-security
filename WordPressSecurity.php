@@ -37,6 +37,9 @@ defined('ABSPATH') or die();
 
 // Include the autoloader, so we can dynamically include the rest of the classes.
 require_once(trailingslashit(__DIR__) . 'inc/autoloader.php');
+require_once(trailingslashit(__DIR__) . 'Libs/YahnisElsts/PluginUpdateChecker/plugin-update-checker.php');
+
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 const WP_GITHUB_FORCE_UPDATE = false;
 
@@ -90,26 +93,16 @@ class WordPressSecurity {
     }
 
     public function doUpdateCheck(): void {
-        if (is_admin()) {
-            /**
-             * Check GitHub for updates
-             */
-            $githubConfig = [
-                'slug' => plugin_basename(__FILE__),
-                'proper_folder_name' => dirname(plugin_basename(__FILE__)),
-                'api_url' => 'https://api.github.com/repos/ppfeufer/pp-wp-basic-security',
-                'raw_url' => 'https://raw.github.com/ppfeufer/pp-wp-basic-security/master',
-                'github_url' => 'https://github.com/ppfeufer/pp-wp-basic-security',
-                'zip_url' => 'https://github.com/ppfeufer/pp-wp-basic-security/archive/master.zip',
-                'sslverify' => true,
-                'requires' => '4.7',
-                'tested' => '5.0-alpha',
-                'readme' => 'README.md',
-                'access_token' => '',
-            ];
+        /**
+         * Check GitHub for updates
+         */
+        $myUpdateChecker = PucFactory::buildUpdateChecker(
+            'https://github.com/ppfeufer/pp-wp-basic-security/',
+            __FILE__,
+            'pp-wp-basic-security'
+        );
 
-            new Libs\GithubUpdater($githubConfig);
-        }
+        $myUpdateChecker->getVcsApi()->enableReleaseAssets();
     }
 }
 
