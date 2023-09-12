@@ -12,6 +12,7 @@ ______________________________________________________________________
 - [WordPress Basic Security](#wordpress-basic-security)
   - [What Will Be Removed](#what-will-be-removed)
   - [What Will Be Changed](#what-will-be-changed)
+  - [Minimum Requirements](#minimum-requirements)
   - [Translation Status](#translation-status)
 
 <!-- mdformat-toc end -->
@@ -40,6 +41,11 @@ ______________________________________________________________________
 
 - Youtube Embed gets a no cookie domain
 - Replacing the default login error message with something not so revealing
+
+### Minimum Requirements<a name="minimum-requirements"></a>
+
+- WordPress 6.0
+- PHP 8.2
 
 ### Translation Status<a name="translation-status"></a>
 

@@ -5,4 +5,9 @@ Tags: security
 Requires at least: 6.0
 Tested up to: 6.4
 
-Provides some basic security by removing WordPress's tendency to talk to much.
+Provides some basic security by removing WordPress' tendency to talk to much.
+
+== Description ==
+
+This plugin removes WordPress' tendency to talk too much and
+providing some basic security by doing so.
