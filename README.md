@@ -10,8 +10,8 @@ ______________________________________________________________________
 <!-- mdformat-toc start --slug=github --maxlevel=6 --minlevel=1 -->
 
 - [WordPress Basic Security](#wordpress-basic-security)
-  - [What will be removed?](#what-will-be-removed)
-  - [What will be changed](#what-will-be-changed)
+  - [What Will Be Removed](#what-will-be-removed)
+  - [What Will Be Changed](#what-will-be-changed)
   - [Additional Information](#additional-information)
   - [Translation Status](#translation-status)
 
@@ -19,7 +19,7 @@ ______________________________________________________________________
 
 ______________________________________________________________________
 
-### What will be removed?<a name="what-will-be-removed"></a>
+### What Will Be Removed<a name="what-will-be-removed"></a>
 
 - Generator name and version number `<meta name="generator" content="WordPress x.y.z" />`
 - Blog Client Link `<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://link.net/xmlrpc.php?rsd" />`
@@ -36,7 +36,7 @@ ______________________________________________________________________
 - WooCommerce Generator Tag
 - Canonical Links
 
-### What will be changed<a name="what-will-be-changed"></a>
+### What Will Be Changed<a name="what-will-be-changed"></a>
 
 - Youtube Embed gets a no cookie domain
 - Replacing the default login error message with something not so revealing
