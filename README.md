@@ -12,7 +12,6 @@ ______________________________________________________________________
 - [WordPress Basic Security](#wordpress-basic-security)
   - [What Will Be Removed](#what-will-be-removed)
   - [What Will Be Changed](#what-will-be-changed)
-  - [Additional Information](#additional-information)
   - [Translation Status](#translation-status)
 
 <!-- mdformat-toc end -->
@@ -40,11 +39,6 @@ ______________________________________________________________________
 
 - Youtube Embed gets a no cookie domain
 - Replacing the default login error message with something not so revealing
-
-### Additional Information<a name="additional-information"></a>
-
-- [License](LICENSE)
-- [Discord](https://discord.gg/YymuCZa)
 
 ### Translation Status<a name="translation-status"></a>
 
