@@ -1,8 +1,8 @@
 <?php
 
-namespace WordPress\Plugin\PP_WP_Basic_Security\Libs;
+namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs;
 
-use WordPress\Plugin\PP_WP_Basic_Security\Libs\Interfaces\GenericInterface;
+use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\Interfaces\GenericInterface;
 
 defined('ABSPATH') or die();
 

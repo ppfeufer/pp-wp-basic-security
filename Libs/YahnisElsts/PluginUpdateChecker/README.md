@@ -34,9 +34,9 @@ Getting Started
 ### Self-hosted Plugins and Themes
 
 1. Download [the latest release](https://github.com/YahnisElsts/plugin-update-checker/releases/latest) and copy the `plugin-update-checker` directory to your plugin or theme.
-2. Go to the `examples` subdirectory and open the .json file that fits your project type. Replace the placeholder data with your plugin/theme details. 
+2. Go to the `examples` subdirectory and open the .json file that fits your project type. Replace the placeholder data with your plugin/theme details.
 	- Plugin example:
-	
+
 		```json
 		{
 			"name" : "Plugin Name",
@@ -47,10 +47,10 @@ Getting Started
 			}
 		}
 		```
-		
+
         This is a minimal example that leaves out optional fields. See [this table](https://docs.google.com/spreadsheets/d/1eOBbW7Go2qEQXReOOCdidMTf_tDYRq4JfegcO1CBPIs/edit?usp=sharing) for a full list of supported fields and their descriptions.
 	- Theme example:
-	
+
 		```json
 		{
 			"version": "2.0",
@@ -58,15 +58,15 @@ Getting Started
 			"download_url": "https://example.com/example-theme-2.0.zip"
 		}
 		```
-		
-		This is actually a complete example that shows all theme-related fields. `version` and `download_url` should be self-explanatory. The `details_url` key specifies the page that the user will see if they click the "View version 1.2.3 details" link in an update notification.  
+
+		This is actually a complete example that shows all theme-related fields. `version` and `download_url` should be self-explanatory. The `details_url` key specifies the page that the user will see if they click the "View version 1.2.3 details" link in an update notification.
 3. Upload the JSON file to a publicly accessible location.
 4. Add the following code to the main plugin file or to the `functions.php` file:
 
 	```php
 	require 'path/to/plugin-update-checker/plugin-update-checker.php';
-	use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
- 
+	use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
 	$myUpdateChecker = PucFactory::buildUpdateChecker(
 		'https://example.com/path/to/details.json',
 		__FILE__, //Full path to the main plugin file or functions.php.
@@ -80,17 +80,17 @@ Getting Started
 Change the `version` number in the JSON file and make sure that `download_url` points to the latest version. Update the other fields if necessary. Tip: You can use [wp-update-server](https://github.com/YahnisElsts/wp-update-server) to automate this process.
 
 By default, the library will check the specified URL for changes every 12 hours. You can force it to check immediately by clicking the "Check for updates" link on the "Plugins" page (it's next to the "Visit plugin site" link). Themes don't have that link, but you can also trigger an update check like this:
- 
+
  1. Install [Debug Bar](https://srd.wordpress.org/plugins/debug-bar/).
  2. Click the "Debug" menu in the Admin Bar (a.k.a Toolbar).
- 3. Open the "PUC (your-slug)" panel. 
- 4. Click the "Check Now" button.  
+ 3. Open the "PUC (your-slug)" panel.
+ 4. Click the "Check Now" button.
 
 #### Notes
 - The second argument passed to `buildUpdateChecker` must be the absolute path to the main plugin file or any file in the theme directory. If you followed the "getting started" instructions, you can just use the `__FILE__` constant.
-- The third argument - i.e. the slug - is optional but recommended. In most cases, the slug should be the same as the name of your plugin directory. For example, if your plugin lives in `/wp-content/plugins/my-plugin`, set the slug to `my-plugin`. If the slug is omitted, the update checker will use the name of the main plugin file as the slug (e.g. `my-cool-plugin.php` &rarr; `my-cool-plugin`). This can lead to conflicts if your plugin has a generic file name like `plugin.php`. 
-	
-	This doesn't affect themes because PUC uses the theme directory name as the default slug. Still, if you're planning to use the slug in your own code - e.g. to filter updates or override update checker behaviour - it can be a good idea to set it explicitly. 
+- The third argument - i.e. the slug - is optional but recommended. In most cases, the slug should be the same as the name of your plugin directory. For example, if your plugin lives in `/wp-content/plugins/my-plugin`, set the slug to `my-plugin`. If the slug is omitted, the update checker will use the name of the main plugin file as the slug (e.g. `my-cool-plugin.php` &rarr; `my-cool-plugin`). This can lead to conflicts if your plugin has a generic file name like `plugin.php`.
+
+	This doesn't affect themes because PUC uses the theme directory name as the default slug. Still, if you're planning to use the slug in your own code - e.g. to filter updates or override update checker behaviour - it can be a good idea to set it explicitly.
 
 ### GitHub Integration
 
@@ -99,14 +99,14 @@ By default, the library will check the specified URL for changes every 12 hours.
 
 	```php
 	require 'plugin-update-checker/plugin-update-checker.php';
-	use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
- 
+	use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
 	$myUpdateChecker = PucFactory::buildUpdateChecker(
 		'https://github.com/user-name/repo-name/',
 		__FILE__,
 		'unique-plugin-or-theme-slug'
 	);
-	
+
 	//Set the branch that contains the stable release.
 	$myUpdateChecker->setBranch('stable-branch-name');
 
@@ -119,29 +119,29 @@ By default, the library will check the specified URL for changes every 12 hours.
 
 This library supports a couple of different ways to release updates on GitHub. Pick the one that best fits your workflow.
 
-- **GitHub releases** 
-	
+- **GitHub releases**
+
 	Create a new release using the "Releases" feature on GitHub. The tag name and release title don't matter. The description is optional, but if you do provide one, it will be displayed when the user clicks the "View version x.y.z details" link on the "Plugins" page. Note that PUC ignores releases marked as "This is a pre-release".
-	
+
 	If you want to use release assets, call the `enableReleaseAssets()` method after creating the update checker instance:
 	```php
 	$myUpdateChecker->getVcsApi()->enableReleaseAssets();
 	```
-	
-- **Tags** 
-	
+
+- **Tags**
+
 	To release version 1.2.3, create a new Git tag named `v1.2.3` or `1.2.3`. That's it.
-	
+
 	PUC doesn't require strict adherence to [SemVer](https://semver.org/). These are all valid tag names: `v1.2.3`, `v1.2-foo`, `1.2.3_rc1-ABC`, `1.2.3.4.5`. However, be warned that it's not smart enough to filter out alpha/beta/RC versions. If that's a problem, you might want to use GitHub releases or branches instead.
-	
-- **Stable branch** 
-	
-	Point the update checker at a stable, production-ready branch: 
+
+- **Stable branch**
+
+	Point the update checker at a stable, production-ready branch:
 	 ```php
 	 $updateChecker->setBranch('branch-name');
 	 ```
 	 PUC will periodically check the `Version` header in the main plugin file or `style.css` and display a notification if it's greater than the installed version.
-	 
+
 	 Caveat: If you set the branch to `master` (the default), the update checker will look for recent releases and tags first. It'll only use the `master` branch if it doesn't find anything else suitable.
 
 #### Notes
@@ -172,7 +172,7 @@ The library will pull update details from the following parts of a release/tag/b
 	- Local plugin headers (i.e. the currently installed version).
 - Ratings, banners, screenshots
 	- Not supported.
-	
+
 ### BitBucket Integration
 
 1. Download [the latest release](https://github.com/YahnisElsts/plugin-update-checker/releases/latest) and copy the `plugin-update-checker` directory to your plugin or theme.
@@ -180,8 +180,8 @@ The library will pull update details from the following parts of a release/tag/b
 
 	```php
 	require 'plugin-update-checker/plugin-update-checker.php';
-	use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
- 
+	use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
 	$myUpdateChecker = PucFactory::buildUpdateChecker(
 		'https://bitbucket.org/user-name/repo-name',
 		__FILE__,
@@ -205,27 +205,27 @@ The library will pull update details from the following parts of a release/tag/b
 
 #### How to Release an Update
 
-BitBucket doesn't have an equivalent to GitHub's releases, so the process is slightly different. You can use any of the following approaches: 
+BitBucket doesn't have an equivalent to GitHub's releases, so the process is slightly different. You can use any of the following approaches:
 
-- **`Stable tag` header** 
-	
+- **`Stable tag` header**
+
 	This is the recommended approach if you're using tags to mark each version. Add a `readme.txt` file formatted according to the [WordPress.org plugin readme standard](https://wordpress.org/plugins/readme.txt) to your repository. Set the "stable tag" header to the tag that represents the latest release. Example:
 	```text
 	Stable tag: v1.2.3
 	```
 	The tag doesn't have to start with a "v" or follow any particular format. You can use any name you like as long as it's a valid Git tag.
-	
+
 	Tip: If you explicitly set a stable branch, the update checker will look for a `readme.txt` in that branch. Otherwise it will only look at the `master` branch.
-	
-- **Tags** 
-	
+
+- **Tags**
+
 	You can skip the "stable tag" bit and just create a new Git tag named `v1.2.3` or `1.2.3`. The update checker will look at the most recent tags and pick the one that looks like the highest version number.
-	
+
 	PUC doesn't require strict adherence to [SemVer](https://semver.org/). These are all valid tag names: `v1.2.3`, `v1.2-foo`, `1.2.3_rc1-ABC`, `1.2.3.4.5`. However, be warned that it's not smart enough to filter out alpha/beta/RC versions.
-	
-- **Stable branch** 
-	
-	Point the update checker at a stable, production-ready branch: 
+
+- **Stable branch**
+
+	Point the update checker at a stable, production-ready branch:
 	 ```php
 	 $updateChecker->setBranch('branch-name');
 	 ```
@@ -238,7 +238,7 @@ BitBucket doesn't have an equivalent to GitHub's releases, so the process is sli
 
 	```php
 	require 'plugin-update-checker/plugin-update-checker.php';
-	use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+	use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 	$myUpdateChecker = PucFactory::buildUpdateChecker(
 		'https://gitlab.com/user-name/repo-name/',
@@ -252,25 +252,25 @@ BitBucket doesn't have an equivalent to GitHub's releases, so the process is sli
 
 	Alternatively, if you're using a self-hosted GitLab instance, initialize the update checker like this:
 	```php
-	use YahnisElsts\PluginUpdateChecker\v5p2\Vcs\PluginUpdateChecker;
-	use YahnisElsts\PluginUpdateChecker\v5p2\Vcs\GitLabApi;
-	
+	use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\PluginUpdateChecker;
+	use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\GitLabApi;
+
 	$myUpdateChecker = new PluginUpdateChecker(
 		new GitLabApi('https://myserver.com/user-name/repo-name/'),
 		__FILE__,
 		'unique-plugin-or-theme-slug'
 	);
-	//Optional: Add setAuthentication(...) and setBranch(...) as shown above.  
+	//Optional: Add setAuthentication(...) and setBranch(...) as shown above.
 	```
 	If you're using a self-hosted GitLab instance and [subgroups or nested groups](https://docs.gitlab.com/ce/user/group/subgroups/index.html), you have to tell the update checker which parts of the URL are subgroups:
 	```php
-	use YahnisElsts\PluginUpdateChecker\v5p2\Vcs\PluginUpdateChecker;
-	use YahnisElsts\PluginUpdateChecker\v5p2\Vcs\GitLabApi;
-   
+	use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\PluginUpdateChecker;
+	use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\GitLabApi;
+
 	$myUpdateChecker = new PluginUpdateChecker(
 		new GitLabApi(
-			'https://myserver.com/group-name/subgroup-level1/subgroup-level2/subgroup-level3/repo-name/', 
-			null, 
+			'https://myserver.com/group-name/subgroup-level1/subgroup-level2/subgroup-level3/repo-name/',
+			null,
 			'subgroup-level1/subgroup-level2/subgroup-level3'
 		),
 		__FILE__,
@@ -285,19 +285,19 @@ BitBucket doesn't have an equivalent to GitHub's releases, so the process is sli
 A GitLab repository can be checked for updates in 3 different ways.
 
 - **GitLab releases**
-	
+
 	Create a new release using the "Releases" feature on GitLab. The tag name should match the version number. You can add a `v` prefix to the tag, like `v1.2.3`. Releases that are marked as ["Upcoming Release"](https://docs.gitlab.com/ee/user/project/releases/index.html#upcoming-releases) will be automatically ignored.
-	
+
 	If you want to use custom release assets, call the `enableReleaseAssets()` method after creating the update checker instance:
 	```php
 	$myUpdateChecker->getVcsApi()->enableReleaseAssets();
 	```
-	
+
 	By default, PUC will use the first available asset link, regardless of type. You can pass a regular expression to `enableReleaseAssets()` to make it pick the first link where the URL matches the regex. For example:
 	```php
 	$myUpdateChecker->getVcsApi()->enableReleaseAssets('/\.zip($|[?&#])/i');
 	```
-	
+
 	**Tip:** You can use a Gitlab CI/CD Pipeline to automatically generate your update on release using a Generic Package. For more information about generic packages, refer to the following links:
 		- [Gitlab CI/CD Release Documentation](https://docs.gitlab.com/ee/user/project/releases/#create-release-from-gitlab-ci)
 		- [Gitlab Release Assets as Generic Package Documentation](https://gitlab.com/gitlab-org/release-cli/-/tree/master/docs/examples/release-assets-as-generic-package/)
@@ -306,7 +306,7 @@ A GitLab repository can be checked for updates in 3 different ways.
 - **Tags**
 
 	To release version 1.2.3, create a new Git tag named `v1.2.3` or `1.2.3`. The update checker will look at recent tags and use the one that looks like the highest version number.
-	
+
 	PUC doesn't require strict adherence to [SemVer](https://semver.org/). However, be warned that it's not smart enough to filter out alpha/beta/RC versions. If that's a problem, you might want to use GitLab branches instead.
 
 - **Stable branch**
@@ -320,7 +320,7 @@ A GitLab repository can be checked for updates in 3 different ways.
 Migrating from 4.x
 ------------------
 
-Older versions of the library didn't use namespaces. Code that was written for those versions will need to be updated to work with the current version. At a minimum, you'll need to change the factory class name. 
+Older versions of the library didn't use namespaces. Code that was written for those versions will need to be updated to work with the current version. At a minimum, you'll need to change the factory class name.
 
 Old code:
 ```php
@@ -333,7 +333,7 @@ $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 
 New code:
 ```php
-use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 $myUpdateChecker = PucFactory::buildUpdateChecker(
 	'https://example.com/info.json',
@@ -346,15 +346,15 @@ Other classes have also been renamed, usually by simply removing the `Puc_vXpY_`
 
 | Old class name                      | New class name                                                 |
 |-------------------------------------|----------------------------------------------------------------|
-| `Puc_v4_Factory`                    | `YahnisElsts\PluginUpdateChecker\v5\PucFactory`                |
-| `Puc_v4p13_Factory`                 | `YahnisElsts\PluginUpdateChecker\v5p2\PucFactory`              |
-| `Puc_v4p13_Plugin_UpdateChecker`    | `YahnisElsts\PluginUpdateChecker\v5p2\Plugin\UpdateChecker`    |
-| `Puc_v4p13_Theme_UpdateChecker`     | `YahnisElsts\PluginUpdateChecker\v5p2\Theme\UpdateChecker`     |
-| `Puc_v4p13_Vcs_PluginUpdateChecker` | `YahnisElsts\PluginUpdateChecker\v5p2\Vcs\PluginUpdateChecker` |
-| `Puc_v4p13_Vcs_ThemeUpdateChecker`  | `YahnisElsts\PluginUpdateChecker\v5p2\Vcs\ThemeUpdateChecker`  |
-| `Puc_v4p13_Vcs_GitHubApi`           | `YahnisElsts\PluginUpdateChecker\v5p2\Vcs\GitHubApi`           |
-| `Puc_v4p13_Vcs_GitLabApi`           | `YahnisElsts\PluginUpdateChecker\v5p2\Vcs\GitLabApi`           |
-| `Puc_v4p13_Vcs_BitBucketApi`        | `YahnisElsts\PluginUpdateChecker\v5p2\Vcs\BitBucketApi`        |
+| `Puc_v4_Factory`                    | `WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory`                |
+| `Puc_v4p13_Factory`                 | `WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\PucFactory`              |
+| `Puc_v4p13_Plugin_UpdateChecker`    | `WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Plugin\UpdateChecker`    |
+| `Puc_v4p13_Theme_UpdateChecker`     | `WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Theme\UpdateChecker`     |
+| `Puc_v4p13_Vcs_PluginUpdateChecker` | `WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\PluginUpdateChecker` |
+| `Puc_v4p13_Vcs_ThemeUpdateChecker`  | `WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\ThemeUpdateChecker`  |
+| `Puc_v4p13_Vcs_GitHubApi`           | `WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\GitHubApi`           |
+| `Puc_v4p13_Vcs_GitLabApi`           | `WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\GitLabApi`           |
+| `Puc_v4p13_Vcs_BitBucketApi`        | `WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\BitBucketApi`        |
 
 License Management
 ------------------

@@ -1,10 +1,10 @@
 <?php
-namespace YahnisElsts\PluginUpdateChecker\v5p2\Plugin;
+namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Plugin;
 
-use YahnisElsts\PluginUpdateChecker\v5p2\InstalledPackage;
-use YahnisElsts\PluginUpdateChecker\v5p2\UpdateChecker as BaseUpdateChecker;
-use YahnisElsts\PluginUpdateChecker\v5p2\Scheduler;
-use YahnisElsts\PluginUpdateChecker\v5p2\DebugBar;
+use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\InstalledPackage;
+use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\UpdateChecker as BaseUpdateChecker;
+use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Scheduler;
+use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\DebugBar;
 
 if ( !class_exists(UpdateChecker::class, false) ):
 

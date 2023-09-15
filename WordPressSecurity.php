@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Plugin Name: PP WordPress Basic Security
+ * Plugin Name: WordPress Basic Security
  * Plugin URI: https://github.com/ppfeufer/pp-wp-basic-security
  * GitHub Plugin URI: https://github.com/ppfeufer/pp-wp-basic-security
  * Description: Removing all non-needed stuff from the HTML Output
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: H. Peter Pfeufer
  * Author URI: https://ppfeufer.de
  * License: GPLv3
@@ -13,7 +13,7 @@
  * Domain Path: /l10n
  */
 
-namespace WordPress\Plugin\PP_WP_Basic_Security;
+namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity;
 
 defined('ABSPATH') or die();
 
@@ -21,7 +21,7 @@ defined('ABSPATH') or die();
 require_once(trailingslashit(__DIR__) . 'inc/autoloader.php');
 require_once(trailingslashit(__DIR__) . 'Libs/YahnisElsts/PluginUpdateChecker/plugin-update-checker.php');
 
-use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 const WP_GITHUB_FORCE_UPDATE = false;
 

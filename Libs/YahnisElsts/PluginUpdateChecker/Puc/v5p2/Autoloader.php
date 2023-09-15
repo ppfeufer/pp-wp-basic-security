@@ -1,11 +1,11 @@
 <?php
 
-namespace YahnisElsts\PluginUpdateChecker\v5p2;
+namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2;
 
 if ( !class_exists(Autoloader::class, false) ):
 
 	class Autoloader {
-		const DEFAULT_NS_PREFIX = 'YahnisElsts\\PluginUpdateChecker\\';
+		const DEFAULT_NS_PREFIX = 'WordPress\\Plugins\\Ppfeufer\WpBasicSecurity\\Libs\YahnisElsts\\PluginUpdateChecker\\';
 
 		private $prefix;
 		private $rootDir;
