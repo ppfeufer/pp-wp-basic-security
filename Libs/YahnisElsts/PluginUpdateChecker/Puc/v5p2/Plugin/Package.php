@@ -1,8 +1,8 @@
 <?php
-namespace YahnisElsts\PluginUpdateChecker\v5p2\Plugin;
+namespace WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Plugin;
 
-use YahnisElsts\PluginUpdateChecker\v5p2\InstalledPackage;
-use YahnisElsts\PluginUpdateChecker\v5p2\PucFactory;
+use WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\InstalledPackage;
+use WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\PucFactory;
 
 if ( !class_exists(Package::class, false) ):
 

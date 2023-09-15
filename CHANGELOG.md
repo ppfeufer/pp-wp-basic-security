@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## \[In Development\] - Unreleased
 
+### Fixed
+
+- Plugin namespace
+
 ## \[1.0.0\] - 2023-09-12
 
 ### Added

@@ -1,7 +1,7 @@
 <?php
-namespace YahnisElsts\PluginUpdateChecker\v5p2\Plugin;
+namespace WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Plugin;
 
-use YahnisElsts\PluginUpdateChecker\v5p2\Update as BaseUpdate;
+use WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Update as BaseUpdate;
 
 if ( !class_exists(Update::class, false) ):
 

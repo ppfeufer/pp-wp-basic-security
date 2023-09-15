@@ -1,8 +1,8 @@
 <?php
 
-namespace YahnisElsts\PluginUpdateChecker\v5p2\Vcs;
+namespace WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs;
 
-use YahnisElsts\PluginUpdateChecker\v5p2\Plugin;
+use WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Plugin;
 
 if ( !class_exists(PluginUpdateChecker::class, false) ):
 

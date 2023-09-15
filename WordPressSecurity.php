@@ -13,7 +13,7 @@
  * Domain Path: /l10n
  */
 
-namespace WordPress\Plugin\PP_WP_Basic_Security;
+namespace WordPress\Plugin\Ppfeufer\WpBasicSecurity;
 
 defined('ABSPATH') or die();
 
@@ -21,7 +21,7 @@ defined('ABSPATH') or die();
 require_once(trailingslashit(__DIR__) . 'inc/autoloader.php');
 require_once(trailingslashit(__DIR__) . 'Libs/YahnisElsts/PluginUpdateChecker/plugin-update-checker.php');
 
-use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+use WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 const WP_GITHUB_FORCE_UPDATE = false;
 

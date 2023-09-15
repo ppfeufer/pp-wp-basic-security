@@ -1,6 +1,6 @@
 <?php
 
-namespace WordPress\Plugin\PP_WP_Basic_Security\Libs;
+namespace WordPress\Plugin\Ppfeufer\WpBasicSecurity\Libs;
 
 defined('ABSPATH') or die();
 

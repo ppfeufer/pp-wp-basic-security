@@ -1,7 +1,7 @@
 <?php
-namespace YahnisElsts\PluginUpdateChecker\v5p2\DebugBar;
+namespace WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\DebugBar;
 
-use YahnisElsts\PluginUpdateChecker\v5p2\UpdateChecker;
+use WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\UpdateChecker;
 
 if ( !class_exists(Panel::class, false) && class_exists('Debug_Bar_Panel', false) ):
 
