@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Plugin Name: PP WordPress Basic Security
+ * Plugin Name: WordPress Basic Security
  * Plugin URI: https://github.com/ppfeufer/pp-wp-basic-security
  * GitHub Plugin URI: https://github.com/ppfeufer/pp-wp-basic-security
  * Description: Removing all non-needed stuff from the HTML Output
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: H. Peter Pfeufer
  * Author URI: https://ppfeufer.de
  * License: GPLv3
