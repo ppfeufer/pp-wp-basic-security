@@ -1,11 +1,11 @@
 <?php
 
-namespace WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Theme;
+namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Theme;
 
-use WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\UpdateChecker as BaseUpdateChecker;
-use WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\InstalledPackage;
-use WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Scheduler;
-use WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\DebugBar;
+use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\UpdateChecker as BaseUpdateChecker;
+use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\InstalledPackage;
+use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Scheduler;
+use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\DebugBar;
 
 if ( !class_exists(UpdateChecker::class, false) ):
 

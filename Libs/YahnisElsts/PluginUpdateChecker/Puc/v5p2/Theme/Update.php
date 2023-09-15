@@ -1,8 +1,8 @@
 <?php
 
-namespace WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Theme;
+namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Theme;
 
-use WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Update as BaseUpdate;
+use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Update as BaseUpdate;
 
 if ( !class_exists(Update::class, false) ):
 

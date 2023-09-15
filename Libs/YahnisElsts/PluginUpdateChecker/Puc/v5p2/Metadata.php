@@ -1,5 +1,5 @@
 <?php
-namespace WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2;
+namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2;
 
 use LogicException;
 use stdClass;

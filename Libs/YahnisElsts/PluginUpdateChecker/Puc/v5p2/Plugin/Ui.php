@@ -1,5 +1,5 @@
 <?php
-namespace WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Plugin;
+namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Plugin;
 
 if ( !class_exists('Ui', false) ):
 	/**

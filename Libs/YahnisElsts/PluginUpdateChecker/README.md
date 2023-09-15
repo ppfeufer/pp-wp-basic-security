@@ -65,7 +65,7 @@ Getting Started
 
 	```php
 	require 'path/to/plugin-update-checker/plugin-update-checker.php';
-	use WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+	use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 	$myUpdateChecker = PucFactory::buildUpdateChecker(
 		'https://example.com/path/to/details.json',
@@ -99,7 +99,7 @@ By default, the library will check the specified URL for changes every 12 hours.
 
 	```php
 	require 'plugin-update-checker/plugin-update-checker.php';
-	use WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+	use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 	$myUpdateChecker = PucFactory::buildUpdateChecker(
 		'https://github.com/user-name/repo-name/',
@@ -180,7 +180,7 @@ The library will pull update details from the following parts of a release/tag/b
 
 	```php
 	require 'plugin-update-checker/plugin-update-checker.php';
-	use WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+	use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 	$myUpdateChecker = PucFactory::buildUpdateChecker(
 		'https://bitbucket.org/user-name/repo-name',
@@ -238,7 +238,7 @@ BitBucket doesn't have an equivalent to GitHub's releases, so the process is sli
 
 	```php
 	require 'plugin-update-checker/plugin-update-checker.php';
-	use WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+	use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 	$myUpdateChecker = PucFactory::buildUpdateChecker(
 		'https://gitlab.com/user-name/repo-name/',
@@ -252,8 +252,8 @@ BitBucket doesn't have an equivalent to GitHub's releases, so the process is sli
 
 	Alternatively, if you're using a self-hosted GitLab instance, initialize the update checker like this:
 	```php
-	use WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\PluginUpdateChecker;
-	use WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\GitLabApi;
+	use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\PluginUpdateChecker;
+	use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\GitLabApi;
 
 	$myUpdateChecker = new PluginUpdateChecker(
 		new GitLabApi('https://myserver.com/user-name/repo-name/'),
@@ -264,8 +264,8 @@ BitBucket doesn't have an equivalent to GitHub's releases, so the process is sli
 	```
 	If you're using a self-hosted GitLab instance and [subgroups or nested groups](https://docs.gitlab.com/ce/user/group/subgroups/index.html), you have to tell the update checker which parts of the URL are subgroups:
 	```php
-	use WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\PluginUpdateChecker;
-	use WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\GitLabApi;
+	use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\PluginUpdateChecker;
+	use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\GitLabApi;
 
 	$myUpdateChecker = new PluginUpdateChecker(
 		new GitLabApi(
@@ -333,7 +333,7 @@ $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 
 New code:
 ```php
-use WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 $myUpdateChecker = PucFactory::buildUpdateChecker(
 	'https://example.com/info.json',
@@ -346,15 +346,15 @@ Other classes have also been renamed, usually by simply removing the `Puc_vXpY_`
 
 | Old class name                      | New class name                                                 |
 |-------------------------------------|----------------------------------------------------------------|
-| `Puc_v4_Factory`                    | `WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory`                |
-| `Puc_v4p13_Factory`                 | `WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\PucFactory`              |
-| `Puc_v4p13_Plugin_UpdateChecker`    | `WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Plugin\UpdateChecker`    |
-| `Puc_v4p13_Theme_UpdateChecker`     | `WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Theme\UpdateChecker`     |
-| `Puc_v4p13_Vcs_PluginUpdateChecker` | `WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\PluginUpdateChecker` |
-| `Puc_v4p13_Vcs_ThemeUpdateChecker`  | `WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\ThemeUpdateChecker`  |
-| `Puc_v4p13_Vcs_GitHubApi`           | `WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\GitHubApi`           |
-| `Puc_v4p13_Vcs_GitLabApi`           | `WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\GitLabApi`           |
-| `Puc_v4p13_Vcs_BitBucketApi`        | `WordPress\Plugins\Ppfeufer\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\BitBucketApi`        |
+| `Puc_v4_Factory`                    | `WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory`                |
+| `Puc_v4p13_Factory`                 | `WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\PucFactory`              |
+| `Puc_v4p13_Plugin_UpdateChecker`    | `WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Plugin\UpdateChecker`    |
+| `Puc_v4p13_Theme_UpdateChecker`     | `WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Theme\UpdateChecker`     |
+| `Puc_v4p13_Vcs_PluginUpdateChecker` | `WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\PluginUpdateChecker` |
+| `Puc_v4p13_Vcs_ThemeUpdateChecker`  | `WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\ThemeUpdateChecker`  |
+| `Puc_v4p13_Vcs_GitHubApi`           | `WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\GitHubApi`           |
+| `Puc_v4p13_Vcs_GitLabApi`           | `WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\GitLabApi`           |
+| `Puc_v4p13_Vcs_BitBucketApi`        | `WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5p2\Vcs\BitBucketApi`        |
 
 License Management
 ------------------
