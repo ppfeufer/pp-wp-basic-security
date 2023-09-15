@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PP WordPress Basic Security\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-12 12:17+0000\n"
+"POT-Creation-Date: 2023-09-15 19:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.6; wp-6.4-alpha-56509\n"
+"X-Loco-Version: 2.6.6; wp-6.4-alpha-56569\n"
 "X-Domain: pp-wp-basic-security"
 
 #. Author of the plugin
@@ -28,14 +28,14 @@ msgstr ""
 msgid "https://ppfeufer.de"
 msgstr ""
 
-#. Name of the plugin
-msgid "PP WordPress Basic Security"
-msgstr ""
-
 #. Description of the plugin
 msgid "Removing all non-needed stuff from the HTML Output"
 msgstr ""
 
 #: Libs/Login.php:20
 msgid "Ups! Something went wrong!"
+msgstr ""
+
+#. Name of the plugin
+msgid "WordPress Basic Security"
 msgstr ""
