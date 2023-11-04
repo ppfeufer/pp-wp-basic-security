@@ -83,7 +83,7 @@ repos:
         args:
           - --formatter=compact
         additional_dependencies:
-          - stylelint@15.10.3  # https://github.com/stylelint/stylelint/releases/latest
+          - stylelint@15.11.0  # https://github.com/stylelint/stylelint/releases/latest
           - stylelint-config-standard@34.0.0  # https://github.com/stylelint/stylelint-config-standard/releases/latest
 
   - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
