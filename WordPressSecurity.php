@@ -15,11 +15,11 @@
 
 namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity;
 
-defined('ABSPATH') or die();
+defined(constant_name: 'ABSPATH') or die();
 
 // Include the autoloader, so we can dynamically include the rest of the classes.
-require_once(trailingslashit(__DIR__) . 'inc/autoloader.php');
-require_once(trailingslashit(__DIR__) . 'Libs/YahnisElsts/PluginUpdateChecker/plugin-update-checker.php');
+require_once(trailingslashit(value: __DIR__) . 'inc/autoloader.php');
+require_once(trailingslashit(value: __DIR__) . 'Libs/YahnisElsts/PluginUpdateChecker/plugin-update-checker.php');
 
 use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
@@ -45,7 +45,7 @@ class WordPressSecurity {
          * Initializing Variables
          */
         $this->textDomain = 'pp-wp-basic-security';
-        $this->localizationDirectory = basename(__DIR__) . '/l10n/';
+        $this->localizationDirectory = basename(path: __DIR__) . '/l10n/';
     }
 
     public function init(): void {
@@ -55,8 +55,10 @@ class WordPressSecurity {
     }
 
     public function loadTextDomain(): void {
-        if (function_exists('load_plugin_textdomain')) {
-            load_plugin_textdomain($this->textDomain, false, $this->localizationDirectory);
+        if (function_exists(function: 'load_plugin_textdomain')) {
+            load_plugin_textdomain(
+                domain: $this->textDomain, plugin_rel_path: $this->localizationDirectory
+            );
         }
     }
 
@@ -79,9 +81,9 @@ class WordPressSecurity {
          * Check GitHub for updates
          */
         $myUpdateChecker = PucFactory::buildUpdateChecker(
-            'https://github.com/ppfeufer/pp-wp-basic-security/',
-            __FILE__,
-            'pp-wp-basic-security'
+            metadataUrl: 'https://github.com/ppfeufer/pp-wp-basic-security/',
+            fullPath: __FILE__,
+            slug: 'pp-wp-basic-security'
         );
 
         $myUpdateChecker->getVcsApi()->enableReleaseAssets();
