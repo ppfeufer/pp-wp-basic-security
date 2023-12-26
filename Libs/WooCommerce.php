@@ -4,7 +4,7 @@ namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs;
 
 use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\Interfaces\GenericInterface;
 
-defined('ABSPATH') or die();
+defined(constant_name: 'ABSPATH') or die();
 
 class WooCommerce implements GenericInterface {
     public function __construct() {
@@ -15,6 +15,6 @@ class WooCommerce implements GenericInterface {
         /**
          * Remove WooCommerce generator version
          */
-        remove_action('wp_head', 'wc_generator_tag');
+        remove_action(hook_name: 'wp_head', callback: 'wc_generator_tag');
     }
 }

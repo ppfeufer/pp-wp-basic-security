@@ -18,8 +18,8 @@ namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity;
 defined(constant_name: 'ABSPATH') or die();
 
 // Include the autoloader, so we can dynamically include the rest of the classes.
-require_once(trailingslashit(value: __DIR__) . 'inc/autoloader.php');
-require_once(trailingslashit(value: __DIR__) . 'Libs/YahnisElsts/PluginUpdateChecker/plugin-update-checker.php');
+require_once(trailingslashit(string: __DIR__) . 'inc/autoloader.php');
+require_once(trailingslashit(string: __DIR__) . 'Libs/YahnisElsts/PluginUpdateChecker/plugin-update-checker.php');
 
 use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
@@ -27,14 +27,14 @@ const WP_GITHUB_FORCE_UPDATE = false;
 
 class WordPressSecurity {
     /**
-     * Textdomain
+     * Text domain
      *
      * @var string|null
      */
     private ?string $textDomain;
 
     /**
-     * Localization Directory
+     * Localization directory
      *
      * @var string|null
      */
@@ -91,7 +91,7 @@ class WordPressSecurity {
 }
 
 /**
- * Start the show ....
+ * Start the show …
  */
 function initialize_plugin(): void {
     $plugin = new WordPressSecurity;

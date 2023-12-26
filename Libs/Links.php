@@ -4,7 +4,7 @@ namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs;
 
 use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\Interfaces\GenericInterface;
 
-defined('ABSPATH') or die();
+defined(constant_name: 'ABSPATH') or die();
 
 class Links implements GenericInterface {
     public function __construct() {
@@ -15,34 +15,44 @@ class Links implements GenericInterface {
         /**
          * Removing <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://link.net/xmlrpc.php?rsd" />
          */
-        remove_action('wp_head', 'rsd_link');
+        remove_action(hook_name: 'wp_head', callback: 'rsd_link');
 
         /**
          * Removing relational next/prev links
          */
-        remove_action('wp_head', 'adjacent_posts_rel_link', 10);
-        remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10);
+        remove_action(
+            hook_name: 'wp_head', callback: 'adjacent_posts_rel_link', priority: 10
+        );
+        remove_action(
+            hook_name: 'wp_head', callback: 'adjacent_posts_rel_link_wp_head', priority: 10
+        );
 
         /**
          * Removing shortlink
          */
-        remove_action('wp_head', 'wp_shortlink_wp_head', 10);
+        remove_action(
+            hook_name: 'wp_head', callback: 'wp_shortlink_wp_head', priority: 10
+        );
 
         /**
          * Removing RSS feeds
          */
-        remove_action('wp_head', 'feed_links', 2);
-        remove_action('wp_head', 'feed_links_extra', 3);
+        remove_action(hook_name: 'wp_head', callback: 'feed_links', priority: 2);
+        remove_action(hook_name: 'wp_head', callback: 'feed_links_extra', priority: 3);
 
         /**
          * Removing <link rel='https://api.w.org/' href='http://link.net/wp-json/' />
          */
-        remove_action('wp_head', 'rest_output_link_wp_head', 10);
-        remove_action('template_redirect', 'rest_output_link_header', 11);
+        remove_action(
+            hook_name: 'wp_head', callback: 'rest_output_link_wp_head', priority: 10
+        );
+        remove_action(
+            hook_name: 'template_redirect', callback: 'rest_output_link_header', priority: 11
+        );
 
         /**
          * Removing <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://link.net/wp-includes/wlwmanifest.xml" />
          */
-        remove_action('wp_head', 'wlwmanifest_link');
+        remove_action(hook_name: 'wp_head', callback: 'wlwmanifest_link');
     }
 }

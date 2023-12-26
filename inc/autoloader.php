@@ -28,7 +28,8 @@ function autoload($className): void {
             $namespace = '';
             $fileName = $current . '.php';
 
-            /* If 'interface' is contained in the parts of the file name, then
+            /**
+             * If 'interface' is contained in the parts of the file name, then
              * define the $file_name differently so that it's properly loaded.
              * Otherwise, just set the $file_name equal to that of the class
              * filename structure.
@@ -46,7 +47,7 @@ function autoload($className): void {
 
         // Now build a path to the file using mapping to the file location.
         $filepath = trailingslashit(
-            value: dirname(path: __FILE__, levels: 2) . $namespace
+            string: dirname(path: __FILE__, levels: 2) . $namespace
         );
         $filepath .= $fileName;
 

@@ -4,7 +4,7 @@ namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs;
 
 use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\Interfaces\GenericInterface;
 
-defined('ABSPATH') or die();
+defined(constant_name: 'ABSPATH') or die();
 
 class Pingback implements GenericInterface {
     public function __construct() {
@@ -12,8 +12,8 @@ class Pingback implements GenericInterface {
     }
 
     public function execute(): void {
-        add_action('wp', static function () {
-            header_remove('X-Pingback');
-        }, 1000);
+        add_action(hook_name: 'wp', callback: static function () {
+            header_remove(name: 'X-Pingback');
+        }, priority: 1000);
     }
 }

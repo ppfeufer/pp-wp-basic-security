@@ -2,7 +2,7 @@
 
 namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs;
 
-defined('ABSPATH') or die();
+defined(constant_name: 'ABSPATH') or die();
 
 class YoutubeEmbed implements Interfaces\GenericInterface {
     public function __construct() {
@@ -10,17 +10,22 @@ class YoutubeEmbed implements Interfaces\GenericInterface {
     }
 
     public function execute(): void {
-        add_filter('embed_oembed_html', [$this, 'youtubeNoCookieEmbed'], 10, 4);
+        add_filter(
+            hook_name: 'embed_oembed_html',
+            callback: [$this, 'youtubeNoCookieEmbed'],
+            priority: 10,
+            accepted_args: 4
+        );
     }
 
     public function youtubeNoCookieEmbed($html, $url, $attr, $post_ID): string {
         $returnValue = $html;
 
-        if (preg_match('#https?://(www\.)?youtu#i', $url)) {
+        if (preg_match(pattern: '#https?://(www\.)?youtu#i', subject: $url)) {
             $returnValue = preg_replace(
-                '#src=(["\'])(https?:)?//(www\.)?youtube\.com#i',
-                'src=$1$2//$3youtube-nocookie.com',
-                $html
+                pattern: '#src=(["\'])(https?:)?//(www\.)?youtube\.com#i',
+                replacement: 'src=$1$2//$3youtube-nocookie.com',
+                subject: $html
             );
         }
 

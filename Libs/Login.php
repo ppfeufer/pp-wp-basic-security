@@ -4,7 +4,7 @@ namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs;
 
 use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\Interfaces\GenericInterface;
 
-defined('ABSPATH') or die();
+defined(constant_name: 'ABSPATH') or die();
 
 class Login implements GenericInterface {
 
@@ -13,10 +13,12 @@ class Login implements GenericInterface {
     }
 
     public function execute(): void {
-        add_filter('login_errors', [$this, 'removeLoginErrorMessages']);
+        add_filter(
+            hook_name: 'login_errors', callback: [$this, 'removeLoginErrorMessages']
+        );
     }
 
     public function removeLoginErrorMessages(): ?string {
-        return __('Ups! Something went wrong!', 'pp-wp-basic-security');
+        return __(text: 'Ups! Something went wrong!', domain: 'pp-wp-basic-security');
     }
 }
