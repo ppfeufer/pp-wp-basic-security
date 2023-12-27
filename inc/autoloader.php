@@ -47,7 +47,7 @@ function autoload($className): void {
 
         // Now build a path to the file using mapping to the file location.
         $filepath = trailingslashit(
-            string: dirname(path: __FILE__, levels: 2) . $namespace
+            value: dirname(path: __FILE__, levels: 2) . $namespace
         );
         $filepath .= $fileName;
 
