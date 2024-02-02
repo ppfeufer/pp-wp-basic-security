@@ -1,16 +1,29 @@
 <?php
 
+/**
+ * Remove some link definitions link from head
+ */
+
 namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs;
 
 use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\Interfaces\GenericInterface;
 
 defined(constant_name: 'ABSPATH') or die();
 
+/**
+ * Remove some link definitions link from head
+ */
 class Links implements GenericInterface {
+    /**
+     * Constructor
+     */
     public function __construct() {
         $this->execute();
     }
 
+    /**
+     * Execute the filters and so on
+     */
     public function execute(): void {
         /**
          * Removing <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://link.net/xmlrpc.php?rsd" />

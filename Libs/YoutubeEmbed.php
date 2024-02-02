@@ -1,14 +1,27 @@
 <?php
 
+/**
+ * Change the YouTube embed to use the no-cookie domain
+ */
+
 namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs;
 
 defined(constant_name: 'ABSPATH') or die();
 
+/**
+ * Change the YouTube embed to use the no-cookie domain
+ */
 class YoutubeEmbed implements Interfaces\GenericInterface {
+    /**
+     * Constructor
+     */
     public function __construct() {
         $this->execute();
     }
 
+    /**
+     * Execute the filters and so on
+     */
     public function execute(): void {
         add_filter(
             hook_name: 'embed_oembed_html',
@@ -18,6 +31,16 @@ class YoutubeEmbed implements Interfaces\GenericInterface {
         );
     }
 
+    /**
+     * Change the YouTube embed to use the no-cookie domain
+     *
+     * @param string $html
+     * @param string $url
+     * @param array $attr
+     * @param int $post_ID
+     *
+     * @return string
+     */
     public function youtubeNoCookieEmbed($html, $url, $attr, $post_ID): string {
         $returnValue = $html;
 

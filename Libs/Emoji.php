@@ -1,16 +1,29 @@
 <?php
 
+/**
+ * Remove emoji support
+ */
+
 namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs;
 
 use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\Interfaces\GenericInterface;
 
 defined(constant_name: 'ABSPATH') or die();
 
+/**
+ * Remove emoji support
+ */
 class Emoji implements GenericInterface {
+    /**
+     * Constructor
+     */
     public function __construct() {
         $this->execute();
     }
 
+    /**
+     * Execute the filters and so on
+     */
     public function execute(): void {
         remove_action(
             hook_name: 'wp_head', callback: 'print_emoji_detection_script', priority: 7
@@ -29,6 +42,13 @@ class Emoji implements GenericInterface {
         );
     }
 
+    /**
+     * Disable the tinymce emojicons
+     *
+     * @param array $plugins
+     *
+     * @return array
+     */
     public function disableTinymceEmojicons(array $plugins): array {
         return array_diff($plugins, ['wpemoji']);
     }

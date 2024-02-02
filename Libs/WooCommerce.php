@@ -1,16 +1,29 @@
 <?php
 
+/**
+ * Remove the WooCommerce generator version
+ */
+
 namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs;
 
 use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\Interfaces\GenericInterface;
 
 defined(constant_name: 'ABSPATH') or die();
 
+/**
+ * Remove the WooCommerce generator version
+ */
 class WooCommerce implements GenericInterface {
+    /**
+     * Constructor
+     */
     public function __construct() {
         $this->execute();
     }
 
+    /**
+     * Execute the filters and so on
+     */
     public function execute(): void {
         /**
          * Remove WooCommerce generator version
