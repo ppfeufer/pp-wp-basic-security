@@ -7,8 +7,10 @@
             "email": "develop@ppfeufer.de"
         }
     ],
+    "require": {
+        "yahnis-elsts/plugin-update-checker": "*"
+    },
     "require-dev": {
-        "yahnis-elsts/plugin-update-checker": "*",
         "roave/security-advisories": "dev-latest",
         "wp-cli/wp-cli-bundle": "*",
         "squizlabs/php_codesniffer": "*"

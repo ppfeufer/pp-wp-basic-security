@@ -1,0 +1,7 @@
+!vendor/
+
+vendor/*
+!vendor/yahnis-elsts/
+
+vendor/yahnis-elsts/*
+!vendor/yahnis-elsts/plugin-update-checker/
