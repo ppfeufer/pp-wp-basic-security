@@ -18,6 +18,8 @@ ci:
   autoupdate_commit_msg: '[pre-commit.ci] pre-commit autoupdate'
   autoupdate_schedule: monthly
   skip:
+    - php-lint-all  # Skip PHP Lint checks in CI due to missing PHP environment
+    - php-cs  # Skip PHP Code Sniffer checks in CI due to missing PHP environment
     - eslint  # Skip ESLint checks in CI due to missing node environment
   submodules: false
 
