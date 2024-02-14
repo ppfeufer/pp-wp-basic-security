@@ -40,6 +40,6 @@ class Login implements GenericInterface {
      * @return string
      */
     public function removeLoginErrorMessages(): string {
-        return __(text: 'Ups! Something went wrong!', domain: 'pp-wp-basic-security');
+        return __('Ups! Something went wrong!', 'pp-wp-basic-security');
     }
 }

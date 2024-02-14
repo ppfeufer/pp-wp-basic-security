@@ -1,41 +1,44 @@
-#, fuzzy
+# Copyright (C) 2024 H. Peter Pfeufer
+# This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: PP WordPress Basic Security\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-15 19:33+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Project-Id-Version: WordPress Basic Security 1.1.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pp-wp-basic-security\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: \n"
-"Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.6; wp-6.4-alpha-56569\n"
-"X-Domain: pp-wp-basic-security"
+"POT-Creation-Date: 2024-02-14T13:38:50+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.10.0\n"
+"X-Domain: pp-wp-basic-security\n"
 
-#. Author of the plugin
-msgid "H. Peter Pfeufer"
+#. Plugin Name of the plugin
+#: WordPressSecurity.php
+msgid "WordPress Basic Security"
 msgstr ""
 
-#. URI of the plugin
+#. Plugin URI of the plugin
+#: WordPressSecurity.php
 msgid "https://github.com/ppfeufer/pp-wp-basic-security"
 msgstr ""
 
-#. Author URI of the plugin
-msgid "https://ppfeufer.de"
-msgstr ""
-
 #. Description of the plugin
+#: WordPressSecurity.php
 msgid "Removing all non-needed stuff from the HTML Output"
 msgstr ""
 
-#: Libs/Login.php:20
-msgid "Ups! Something went wrong!"
+#. Author of the plugin
+#: WordPressSecurity.php
+msgid "H. Peter Pfeufer"
 msgstr ""
 
-#. Name of the plugin
-msgid "WordPress Basic Security"
+#. Author URI of the plugin
+#: WordPressSecurity.php
+msgid "https://ppfeufer.de"
+msgstr ""
+
+#: Sources/Tweaks/Login.php:43
+msgid "Ups! Something went wrong!"
 msgstr ""
