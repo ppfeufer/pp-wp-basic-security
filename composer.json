@@ -1,0 +1,24 @@
+{
+    "name": "ppfeufer/pp-wp-basic-security",
+    "description": "WordPress Basic Security - A simple WordPress security plugin - Removing non-needed stuff from the HTML Output",
+    "authors": [
+        {
+            "name": "Peter Pfeufer",
+            "email": "develop@ppfeufer.de"
+        }
+    ],
+    "require-dev": {
+        "yahnis-elsts/plugin-update-checker": "*",
+        "roave/security-advisories": "dev-latest",
+        "wp-cli/wp-cli-bundle": "*",
+        "squizlabs/php_codesniffer": "*"
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "autoload": {
+        "psr-4": {
+            "WordPress\\Ppfeufer\\Plugin\\WpBasicSecurity\\": "Sources"
+        }
+    }
+}

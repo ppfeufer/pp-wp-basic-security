@@ -15,15 +15,34 @@
 
 namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity;
 
+// Prevent direct file access
+// phpcs:disable
 defined(constant_name: 'ABSPATH') or die();
+// phpcs:enable
 
 // Include the autoloader, so we can dynamically include the rest of the classes.
-require_once(trailingslashit(value: __DIR__) . 'inc/autoloader.php');
-require_once(trailingslashit(value: __DIR__) . 'Libs/YahnisElsts/PluginUpdateChecker/plugin-update-checker.php');
+// phpcs:disable
+require_once trailingslashit(value: __DIR__) . 'vendor/autoload.php';
+require_once trailingslashit(value: __DIR__) . 'vendor/yahnis-elsts/plugin-update-checker/plugin-update-checker.php';
+// phpcs:enable
 
-use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Tweaks\CanonicalLinks;
+use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Tweaks\Emoji;
+use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Tweaks\EnfoldTheme;
+use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Tweaks\GeneratorName;
+use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Tweaks\Links;
+use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Tweaks\Login;
+use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Tweaks\Oembed;
+use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Tweaks\Pingback;
+use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Tweaks\VersionStrings;
+use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Tweaks\WooCommerce;
+use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Tweaks\YoutubeEmbed;
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
+// Define the constant for the update check
+// phpcs:disable
 const WP_GITHUB_FORCE_UPDATE = false;
+// phpcs:enable
 
 class WordPressSecurity {
     /**
@@ -57,23 +76,24 @@ class WordPressSecurity {
     public function loadTextDomain(): void {
         if (function_exists(function: 'load_plugin_textdomain')) {
             load_plugin_textdomain(
-                domain: $this->textDomain, plugin_rel_path: $this->localizationDirectory
+                domain: $this->textDomain,
+                plugin_rel_path: $this->localizationDirectory
             );
         }
     }
 
     public function loadLibraries(): void {
-        new Libs\Canonical;
-        new Libs\EnfoldTheme;
-        new Libs\Emoji;
-        new Libs\GeneratorName;
-        new Libs\Links;
-        new Libs\Oembed;
-        new Libs\Pingback;
-        new Libs\VersionStrings;
-        new Libs\WooCommerce;
-        new Libs\YoutubeEmbed;
-        new Libs\Login;
+        new CanonicalLinks();
+        new Emoji();
+        new EnfoldTheme();
+        new GeneratorName();
+        new Links();
+        new Login();
+        new Oembed();
+        new Pingback();
+        new VersionStrings();
+        new WooCommerce();
+        new YoutubeEmbed();
     }
 
     public function doUpdateCheck(): void {
@@ -90,17 +110,7 @@ class WordPressSecurity {
     }
 }
 
-/**
- * Start the show …
- */
-function initialize_plugin(): void {
-    $plugin = new WordPressSecurity;
-
-    /**
-     * Initialize the plugin
-     */
-    $plugin->init();
-}
-
-// Fire away!
-initialize_plugin();
+// Initialize the plugin
+// phpcs:disable
+(new WordPressSecurity())->init();
+// phpcs:enable
