@@ -33,12 +33,9 @@ exclude: |
     languages/|
     node_modules/|
     vendor/|
-    assets/css/|
-    src/blocks/|
     css/libs/|
     .vscode/(.*)|
     .idea/(.*)|
-    Libs/YahnisElsts/PluginUpdateChecker/|
     .github/(.*)/(.*).md
   )
 
