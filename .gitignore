@@ -1,10 +1,11 @@
-!vendor/
+#!vendor/
 
-vendor/*
-!vendor/yahnis-elsts/
-!vendor/autoload.php
+#vendor/*
+#!vendor/yahnis-elsts/
+#!vendor/autoload.php
 
-vendor/yahnis-elsts/*
-!vendor/yahnis-elsts/plugin-update-checker/
+#vendor/yahnis-elsts/*
+#!vendor/yahnis-elsts/plugin-update-checker/
 
 /node_modules/
+/vendor/
