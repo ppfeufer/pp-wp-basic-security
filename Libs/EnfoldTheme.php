@@ -12,10 +12,17 @@ defined(constant_name: 'ABSPATH') or die();
 
 /**
  * Removing the debug from html output when Enfold theme is used
+ *
+ * @package WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs
+ * @since 1.0.0
  */
 class EnfoldTheme implements GenericInterface {
     /**
      * Constructor
+     *
+     * @since 1.0.0
+     * @access public
+     * @return void
      */
     public function __construct() {
         if (esc_html(text: get_template()) === 'Enfold') {
@@ -25,6 +32,10 @@ class EnfoldTheme implements GenericInterface {
 
     /**
      * Execute the filters and so on
+     *
+     * @return void
+     * @since 1.0.0
+     * @access public
      */
     public function execute(): void {
         add_action(
@@ -34,6 +45,10 @@ class EnfoldTheme implements GenericInterface {
 
     /**
      * Remove the Debug Comment when Enfold Theme is used.
+     *
+     * @return void
+     * @since 1.0.0
+     * @access public
      */
     public function removeAviaDebug(): void {
         remove_action(

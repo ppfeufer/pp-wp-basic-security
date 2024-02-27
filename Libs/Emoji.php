@@ -12,10 +12,17 @@ defined(constant_name: 'ABSPATH') or die();
 
 /**
  * Remove emoji support
+ *
+ * @package WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs
+ * @since 1.0.0
  */
 class Emoji implements GenericInterface {
     /**
      * Constructor
+     *
+     * @since 1.0.0
+     * @access public
+     * @return void
      */
     public function __construct() {
         $this->execute();
@@ -23,6 +30,10 @@ class Emoji implements GenericInterface {
 
     /**
      * Execute the filters and so on
+     *
+     * @return void
+     * @since 1.0.0
+     * @access public
      */
     public function execute(): void {
         remove_action(
@@ -45,9 +56,10 @@ class Emoji implements GenericInterface {
     /**
      * Disable the tinymce emojicons
      *
-     * @param array $plugins
-     *
+     * @param array $plugins The plugins
      * @return array
+     * @since 1.0.0
+     * @access public
      */
     public function disableTinymceEmojicons(array $plugins): array {
         return array_diff($plugins, ['wpemoji']);

@@ -17,29 +17,43 @@ namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity;
 
 defined(constant_name: 'ABSPATH') or die();
 
-// Include the autoloader, so we can dynamically include the rest of the classes.
+/**
+ * Include the autoloader, so we can dynamically include the rest of the classes.
+ * Also include the update checker.
+ */
 require_once(trailingslashit(value: __DIR__) . 'inc/autoloader.php');
 require_once(trailingslashit(value: __DIR__) . 'Libs/YahnisElsts/PluginUpdateChecker/plugin-update-checker.php');
 
 use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
-const WP_GITHUB_FORCE_UPDATE = false;
-
+/**
+ * Class WordPressSecurity
+ *
+ * @package WordPress\Ppfeufer\Plugin\WpBasicSecurity
+ * @since 1.0.0
+ */
 class WordPressSecurity {
     /**
      * Text domain
      *
-     * @var string|null
+     * @var string $textDomain
      */
-    private ?string $textDomain;
+    private string $textDomain;
 
     /**
      * Localization directory
      *
-     * @var string|null
+     * @var string $localizationDirectory
      */
-    private ?string $localizationDirectory;
+    private string $localizationDirectory;
 
+    /**
+     * WordPressSecurity constructor.
+     *
+     * @since 1.0.0
+     * @access public
+     * @return void
+     */
     public function __construct() {
         /**
          * Initializing Variables
@@ -48,12 +62,30 @@ class WordPressSecurity {
         $this->localizationDirectory = basename(path: __DIR__) . '/l10n/';
     }
 
+    /**
+     * Initialize the plugin
+     *
+     * @return void
+     * @since 1.0.0
+     * @access public
+     * @uses loadTextDomain()
+     * @uses loadLibraries()
+     * @uses doUpdateCheck()
+     */
     public function init(): void {
         $this->loadTextDomain();
         $this->loadLibraries();
         $this->doUpdateCheck();
     }
 
+    /**
+     * Load the text domain
+     *
+     * @return void
+     * @since 1.0.0
+     * @access public
+     * @uses load_plugin_textdomain()
+     */
     public function loadTextDomain(): void {
         if (function_exists(function: 'load_plugin_textdomain')) {
             load_plugin_textdomain(
@@ -62,6 +94,24 @@ class WordPressSecurity {
         }
     }
 
+    /**
+     * Load the libraries
+     *
+     * @return void
+     * @since 1.0.0
+     * @access public
+     * @uses Libs\Canonical
+     * @uses Libs\EnfoldTheme
+     * @uses Libs\Emoji
+     * @uses Libs\GeneratorName
+     * @uses Libs\Links
+     * @uses Libs\Oembed
+     * @uses Libs\Pingback
+     * @uses Libs\VersionStrings
+     * @uses Libs\WooCommerce
+     * @uses Libs\YoutubeEmbed
+     * @uses Libs\Login
+     */
     public function loadLibraries(): void {
         new Libs\Canonical;
         new Libs\EnfoldTheme;
@@ -76,6 +126,14 @@ class WordPressSecurity {
         new Libs\Login;
     }
 
+    /**
+     * Check for updates
+     *
+     * @return void
+     * @since 1.0.0
+     * @access public
+     * @uses PucFactory::buildUpdateChecker()
+     */
     public function doUpdateCheck(): void {
         /**
          * Check GitHub for updates
@@ -92,6 +150,11 @@ class WordPressSecurity {
 
 /**
  * Start the show …
+ *
+ * @return void
+ * @since 1.0.0
+ * @access public
+ * @uses WordPressSecurity::init()
  */
 function initialize_plugin(): void {
     $plugin = new WordPressSecurity;

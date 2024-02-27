@@ -11,11 +11,18 @@ use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\Interfaces\GenericInterface;
 defined(constant_name: 'ABSPATH') or die();
 
 /**
- * Remove canonical link from head
+ * Remove the canonical link from `<head>`
+ *
+ * @package WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs
+ * @since 1.0.0
  */
 class Canonical implements GenericInterface {
     /**
      * Constructor
+     *
+     * @since 1.0.0
+     * @access public
+     * @return void
      */
     public function __construct() {
         $this->execute();
@@ -23,6 +30,10 @@ class Canonical implements GenericInterface {
 
     /**
      * Execute the filters and so on
+     *
+     * @return void
+     * @since 1.0.0
+     * @access public
      */
     public function execute(): void {
         remove_action(hook_name: 'embed_head', callback: 'rel_canonical');

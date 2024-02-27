@@ -1,9 +1,25 @@
 <?php
 
+/**
+ * Autoloader for the plugin classes and interfaces to be loaded dynamically.
+ * This will allow us to include only the files we need when we need them.
+ *
+ * @package WordPress\Ppfeufer\Plugin\WpBasicSecurity
+ * @since 1.0.0
+ */
+
 namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity;
 
 spl_autoload_register(callback: '\WordPress\Ppfeufer\Plugin\WpBasicSecurity\autoload');
 
+/**
+ * Autoload the required files for the plugin
+ *
+ * @param string $className The name of the class to load
+ * @return void
+ * @since 1.0.0
+ * @package WordPress\Ppfeufer\Plugin\WpBasicSecurity
+ */
 function autoload($className): void {
     // If the specified $className does not include our namespace, duck out.
     if (!str_contains($className, 'WordPress\Ppfeufer\Plugin\WpBasicSecurity')) {
@@ -31,7 +47,7 @@ function autoload($className): void {
             /**
              * If 'interface' is contained in the parts of the file name, then
              * define the $file_name differently so that it's properly loaded.
-             * Otherwise, just set the $file_name equal to that of the class
+             * Otherwise, set the $file_name equal to that of the class
              * filename structure.
              */
             if (stripos($fileParts[count(value: $fileParts) - 1], 'interface')) {

@@ -11,11 +11,18 @@ use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\Interfaces\GenericInterface;
 defined(constant_name: 'ABSPATH') or die();
 
 /**
- * Remove some link definitions link from head
+ * Remove some link definitions link from `<head>`
+ *
+ * @package WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs
+ * @since 1.0.0
  */
 class Links implements GenericInterface {
     /**
      * Constructor
+     *
+     * @since 1.0.0
+     * @access public
+     * @return void
      */
     public function __construct() {
         $this->execute();
@@ -23,15 +30,23 @@ class Links implements GenericInterface {
 
     /**
      * Execute the filters and so on
+     *
+     * @return void
+     * @since 1.0.0
+     * @access public
      */
     public function execute(): void {
         /**
-         * Removing <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://link.net/xmlrpc.php?rsd" />
+         * Removing `<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://link.net/xmlrpc.php?rsd" />`
+         *
+         * @see https://developer.wordpress.org/reference/functions/rsd_link/
          */
         remove_action(hook_name: 'wp_head', callback: 'rsd_link');
 
         /**
          * Removing relational next/prev links
+         *
+         * @see https://developer.wordpress.org/reference/functions/adjacent_posts_rel_link/
          */
         remove_action(
             hook_name: 'wp_head', callback: 'adjacent_posts_rel_link', priority: 10
@@ -41,7 +56,9 @@ class Links implements GenericInterface {
         );
 
         /**
-         * Removing shortlink
+         * Removing short link
+         *
+         * @see https://developer.wordpress.org/reference/functions/wp_shortlink_wp_head/
          */
         remove_action(
             hook_name: 'wp_head', callback: 'wp_shortlink_wp_head', priority: 10
@@ -49,12 +66,16 @@ class Links implements GenericInterface {
 
         /**
          * Removing RSS feeds
+         *
+         * @see https://developer.wordpress.org/reference/functions/feed_links/
          */
         remove_action(hook_name: 'wp_head', callback: 'feed_links', priority: 2);
         remove_action(hook_name: 'wp_head', callback: 'feed_links_extra', priority: 3);
 
         /**
-         * Removing <link rel='https://api.w.org/' href='http://link.net/wp-json/' />
+         * Removing `<link rel='https://api.w.org/' href='http://link.net/wp-json/' />`
+         *
+         * @see https://developer.wordpress.org/reference/functions/rest_output_link_wp_head/
          */
         remove_action(
             hook_name: 'wp_head', callback: 'rest_output_link_wp_head', priority: 10
@@ -64,7 +85,9 @@ class Links implements GenericInterface {
         );
 
         /**
-         * Removing <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://link.net/wp-includes/wlwmanifest.xml" />
+         * Removing `<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://link.net/wp-includes/wlwmanifest.xml" />`
+         *
+         * @see https://developer.wordpress.org/reference/functions/wlwmanifest_link/
          */
         remove_action(hook_name: 'wp_head', callback: 'wlwmanifest_link');
     }
