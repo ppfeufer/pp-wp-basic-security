@@ -1,24 +1,26 @@
 # Languages add-on <noreply-addon-languages@weblate.org>, 2024.
+# Peter Pfeufer <info@ppfeufer.de>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PP WordPress Basic Security\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-15 19:33+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2024-03-02 12:02+0000\n"
+"Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
+"Language-Team: German (Switzerland) <https://weblate.ppfeufer.de/projects/"
+"wordpress-plugins/pp-wp-basic-security/de_CH/>\n"
 "Language: de_CH\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Loco https://localise.biz/\n"
+"X-Generator: Weblate 5.4.2\n"
 "X-Loco-Version: 2.6.6; wp-6.4-alpha-56569\n"
 "X-Domain: pp-wp-basic-security\n"
 
 #. Author of the plugin
 msgid "H. Peter Pfeufer"
-msgstr ""
+msgstr "H. Peter Pfeufer"
 
 #. URI of the plugin
 msgid "https://github.com/ppfeufer/pp-wp-basic-security"
@@ -26,7 +28,7 @@ msgstr ""
 
 #. Author URI of the plugin
 msgid "https://ppfeufer.de"
-msgstr ""
+msgstr "https://ppfeufer.de"
 
 #. Description of the plugin
 msgid "Removing all non-needed stuff from the HTML Output"
