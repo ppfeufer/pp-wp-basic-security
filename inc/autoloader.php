@@ -10,8 +10,6 @@
 
 namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity;
 
-spl_autoload_register(callback: '\WordPress\Ppfeufer\Plugin\WpBasicSecurity\autoload');
-
 /**
  * Autoload the required files for the plugin
  *
@@ -20,9 +18,9 @@ spl_autoload_register(callback: '\WordPress\Ppfeufer\Plugin\WpBasicSecurity\auto
  * @since 1.0.0
  * @package WordPress\Ppfeufer\Plugin\WpBasicSecurity
  */
-function autoload($className): void {
+function autoload(string $className): void {
     // If the specified $className does not include our namespace, duck out.
-    if (!str_contains($className, 'WordPress\Ppfeufer\Plugin\WpBasicSecurity')) {
+    if (!str_contains(haystack: $className, needle: 'WordPress\Ppfeufer\Plugin\WpBasicSecurity')) {
         return;
     }
 
@@ -34,13 +32,13 @@ function autoload($className): void {
     // Do a reverse loop through $fileParts to build the path to the file.
     $namespace = '';
 
-    for ($i = count(value: $fileParts) - 1; $i > 0; $i--) {
+    for ($i = count($fileParts) - 1; $i > 0; $i--) {
         // Read the current component of the file part.
         $current = str_ireplace(search: '_', replace: '-', subject: $fileParts[$i]);
         $namespace = '/' . $current . $namespace;
 
         // If we're at the first entry, then we're at the filename.
-        if (count(value: $fileParts) - 1 === $i) {
+        if (count($fileParts) - 1 === $i) {
             $namespace = '';
             $fileName = $current . '.php';
 
@@ -50,10 +48,11 @@ function autoload($className): void {
              * Otherwise, set the $file_name equal to that of the class
              * filename structure.
              */
-            if (stripos($fileParts[count(value: $fileParts) - 1], 'interface')) {
+            if (stripos(haystack: $fileParts[count($fileParts) - 1], needle: 'interface')) {
                 // Grab the name of the interface from its qualified name.
                 $interfaceNameParts = explode(
-                    separator: '_', string: $fileParts[count($fileParts) - 1]
+                    separator: '_',
+                    string: $fileParts[count($fileParts) - 1]
                 );
                 $interfaceName = $interfaceNameParts[0];
 
@@ -69,7 +68,12 @@ function autoload($className): void {
 
         // If the file exists in the specified path, then include it.
         if ($fileName !== null && file_exists(filename: $filepath)) {
-            include_once($filepath);
+            include_once $filepath;
         }
     }
 }
+
+// Register the autoloader function
+// phpcs:disable
+spl_autoload_register(callback: '\WordPress\Ppfeufer\Plugin\WpBasicSecurity\autoload');
+// phpcs:enable

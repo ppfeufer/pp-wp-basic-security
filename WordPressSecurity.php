@@ -21,8 +21,8 @@ defined(constant_name: 'ABSPATH') or die();
  * Include the autoloader, so we can dynamically include the rest of the classes.
  * Also include the update checker.
  */
-require_once(trailingslashit(value: __DIR__) . 'inc/autoloader.php');
-require_once(trailingslashit(value: __DIR__) . 'Libs/YahnisElsts/PluginUpdateChecker/plugin-update-checker.php');
+require_once trailingslashit(value: __DIR__) . 'inc/autoloader.php';
+require_once trailingslashit(value: __DIR__) . 'Libs/YahnisElsts/PluginUpdateChecker/plugin-update-checker.php';
 
 use WordPress\Ppfeufer\Plugin\WpBasicSecurity\Libs\YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
@@ -36,14 +36,14 @@ class WordPressSecurity {
     /**
      * Text domain
      *
-     * @var string $textDomain
+     * @var string $textDomain The text domain
      */
     private string $textDomain;
 
     /**
      * Localization directory
      *
-     * @var string $localizationDirectory
+     * @var string $localizationDirectory The localization directory
      */
     private string $localizationDirectory;
 
@@ -89,7 +89,8 @@ class WordPressSecurity {
     public function loadTextDomain(): void {
         if (function_exists(function: 'load_plugin_textdomain')) {
             load_plugin_textdomain(
-                domain: $this->textDomain, plugin_rel_path: $this->localizationDirectory
+                domain: $this->textDomain,
+                plugin_rel_path: $this->localizationDirectory
             );
         }
     }

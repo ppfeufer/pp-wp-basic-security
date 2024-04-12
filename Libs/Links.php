@@ -49,10 +49,14 @@ class Links implements GenericInterface {
          * @see https://developer.wordpress.org/reference/functions/adjacent_posts_rel_link/
          */
         remove_action(
-            hook_name: 'wp_head', callback: 'adjacent_posts_rel_link', priority: 10
+            hook_name: 'wp_head',
+            callback: 'adjacent_posts_rel_link',
+            priority: 10
         );
         remove_action(
-            hook_name: 'wp_head', callback: 'adjacent_posts_rel_link_wp_head', priority: 10
+            hook_name: 'wp_head',
+            callback: 'adjacent_posts_rel_link_wp_head',
+            priority: 10
         );
 
         /**
@@ -61,7 +65,9 @@ class Links implements GenericInterface {
          * @see https://developer.wordpress.org/reference/functions/wp_shortlink_wp_head/
          */
         remove_action(
-            hook_name: 'wp_head', callback: 'wp_shortlink_wp_head', priority: 10
+            hook_name: 'wp_head',
+            callback: 'wp_shortlink_wp_head',
+            priority: 10
         );
 
         /**
@@ -78,10 +84,14 @@ class Links implements GenericInterface {
          * @see https://developer.wordpress.org/reference/functions/rest_output_link_wp_head/
          */
         remove_action(
-            hook_name: 'wp_head', callback: 'rest_output_link_wp_head', priority: 10
+            hook_name: 'wp_head',
+            callback: 'rest_output_link_wp_head',
+            priority: 10
         );
         remove_action(
-            hook_name: 'template_redirect', callback: 'rest_output_link_header', priority: 11
+            hook_name: 'template_redirect',
+            callback: 'rest_output_link_header',
+            priority: 11
         );
 
         /**

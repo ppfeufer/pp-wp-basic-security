@@ -38,7 +38,8 @@ class Login implements GenericInterface {
      */
     public function execute(): void {
         add_filter(
-            hook_name: 'login_errors', callback: [$this, 'removeLoginErrorMessages']
+            hook_name: 'login_errors',
+            callback: [$this, 'removeLoginErrorMessages']
         );
     }
 
@@ -50,6 +51,6 @@ class Login implements GenericInterface {
      * @access public
      */
     public function removeLoginErrorMessages(): string {
-        return __(text: 'Ups! Something went wrong!', domain: 'pp-wp-basic-security');
+        return __('Ups! Something went wrong!', 'pp-wp-basic-security');
     }
 }

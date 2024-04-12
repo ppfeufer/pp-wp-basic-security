@@ -39,7 +39,9 @@ class EnfoldTheme implements GenericInterface {
      */
     public function execute(): void {
         add_action(
-            hook_name: 'wp_loaded', callback: [$this, 'removeAviaDebug'], priority: 9999
+            hook_name: 'wp_loaded',
+            callback: [$this, 'removeAviaDebug'],
+            priority: 9999
         );
     }
 
@@ -52,7 +54,9 @@ class EnfoldTheme implements GenericInterface {
      */
     public function removeAviaDebug(): void {
         remove_action(
-            hook_name: 'wp_head', callback: 'avia_debugging_info', priority: 9999999
+            hook_name: 'wp_head',
+            callback: 'avia_debugging_info',
+            priority: 9999999
         );
         remove_action(
             hook_name: 'admin_print_scripts',
