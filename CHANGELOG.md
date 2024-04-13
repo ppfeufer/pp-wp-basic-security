@@ -9,10 +9,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-- Argument keywords
+- Argument names wherever possible
 
 ### Changed
 
+- General code cleanup
 - Autoloader refactored
 - Switched to the composer version of the update checker
 
