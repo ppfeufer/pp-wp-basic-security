@@ -1,37 +1,28 @@
 <?php
 
+namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity;
+
 /**
  * Autoloader for the plugin classes and interfaces to be loaded dynamically.
  * This will allow us to include only the files we need when we need them.
  *
- * @package WordPress\Ppfeufer\Plugin\WpBasicSecurity
- * @since 1.0.0
- */
-
-namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity;
-
-/**
- * Autoload the required files for the plugin
- *
  * @param string $className The name of the class to load
  * @return void
- * @since 1.0.0
  * @package WordPress\Ppfeufer\Plugin\WpBasicSecurity
  */
-function autoload(string $className): void {
+spl_autoload_register(callback: static function (string $className): void {
     // If the specified $className does not include our namespace, duck out.
     if (!str_contains(haystack: $className, needle: 'WordPress\Ppfeufer\Plugin\WpBasicSecurity')) {
         return;
     }
 
+    $namespace = '';
     $fileName = null;
 
     // Split the class name into an array to read the namespace and class.
     $fileParts = explode(separator: '\\', string: $className);
 
     // Do a reverse loop through $fileParts to build the path to the file.
-    $namespace = '';
-
     for ($i = count($fileParts) - 1; $i > 0; $i--) {
         // Read the current component of the file part.
         $current = str_ireplace(search: '_', replace: '-', subject: $fileParts[$i]);
@@ -71,9 +62,4 @@ function autoload(string $className): void {
             include_once $filepath;
         }
     }
-}
-
-// Register the autoloader function
-// phpcs:disable
-spl_autoload_register(callback: '\WordPress\Ppfeufer\Plugin\WpBasicSecurity\autoload');
-// phpcs:enable
+});
