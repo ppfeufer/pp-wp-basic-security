@@ -1,0 +1,52 @@
+{
+    "name": "ppfeufer/pp-wp-basic-security",
+    "description": "WP Basic Security - A WordPress plugin to improve the security of your WordPress installation.",
+    "authors": [
+        {
+            "name": "Peter Pfeufer",
+            "email": "develop@ppfeufer.de"
+        }
+    ],
+    "require": {
+        "yahnis-elsts/plugin-update-checker": "*"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest",
+        "wp-cli/wp-cli-bundle": "*",
+        "squizlabs/php_codesniffer": "*",
+        "brianhenryie/strauss": "^0.17.0"
+    },
+    "extra": {
+        "strauss": {
+            "target_directory": "Sources/Libs",
+            "namespace_prefix": "WordPress\\Ppfeufer\\Plugin\\WpBasicSecurity\\Libs\\"
+        }
+    },
+    "scripts": {
+        "strauss": [
+            "Composer\\Config::disableProcessTimeout",
+            "vendor/bin/strauss",
+            "composer dump-autoload"
+        ],
+        "post-install-cmd": [
+            "@strauss"
+        ],
+        "post-update-cmd": [
+            "@strauss"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "classmap-authoritative": true,
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "WordPress\\Ppfeufer\\Plugin\\WpBasicSecurity\\": "Sources"
+        },
+        "classmap": [
+            "vendor"
+        ]
+    }
+}

@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Argument keywords
 
+### Changed
+
+- Autoloader refactored
+- Switched to the composer version of the update checker
+
 ## \[1.1.2\] - 2023-10-03
 
 ### Changed
