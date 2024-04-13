@@ -55,7 +55,12 @@ class YoutubeEmbed implements GenericInterface {
      * @since 1.0.0
      * @access public
      */
-    public function youtubeNoCookieEmbed($html, $url, $attr, $post_ID): string {
+    public function youtubeNoCookieEmbed(
+        string $html,
+        string $url,
+        array $attr,
+        int $post_ID
+    ): string {
         $returnValue = $html;
 
         if (preg_match(pattern: '#https?://(www\.)?youtu#i', subject: $url)) {

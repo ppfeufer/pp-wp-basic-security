@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Remove the login error messages
+ * Remove the oembed stuff
  */
 
 namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity\Tweaks;

@@ -45,6 +45,7 @@ class Emoji implements GenericInterface {
             callback: 'print_emoji_detection_script'
         );
         remove_action(hook_name: 'wp_print_styles', callback: 'print_emoji_styles');
+
         remove_filter(hook_name: 'wp_mail', callback: 'wp_staticize_emoji_for_email');
         remove_filter(hook_name: 'the_content_feed', callback: 'wp_staticize_emoji');
         remove_filter(hook_name: 'comment_text_rss', callback: 'wp_staticize_emoji');
