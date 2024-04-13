@@ -2,12 +2,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PP WordPress Basic Security\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-15 19:33+0000\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pp-wp-basic-"
+"security\n"
+"POT-Creation-Date: 2024-04-13T16:06:03+00:00\n"
 "PO-Revision-Date: 2023-09-25 22:42+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
-"Language-Team: Ukrainian <https://weblate.ppfeufer.de/projects/"
-"wordpress-plugins/pp-wp-basic-security/uk/>\n"
+"Language-Team: Ukrainian <https://weblate.ppfeufer.de/projects/wordpress-"
+"plugins/pp-wp-basic-security/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,26 +17,31 @@ msgstr ""
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 5.0.2\n"
 
-#. Author of the plugin
-msgid "H. Peter Pfeufer"
-msgstr "H. Peter Pfeufer"
+#. Plugin Name of the plugin
+#: WordPressSecurity.php
+msgid "WordPress Basic Security"
+msgstr "WordPress Basic Security"
 
-#. URI of the plugin
+#. Plugin URI of the plugin
+#: WordPressSecurity.php
 msgid "https://github.com/ppfeufer/pp-wp-basic-security"
 msgstr "https://github.com/ppfeufer/pp-wp-basic-security"
 
-#. Author URI of the plugin
-msgid "https://ppfeufer.de"
-msgstr "https://ppfeufer.de"
-
 #. Description of the plugin
+#: WordPressSecurity.php
 msgid "Removing all non-needed stuff from the HTML Output"
 msgstr ""
 
-#: Libs/Login.php:20
+#. Author of the plugin
+#: WordPressSecurity.php
+msgid "H. Peter Pfeufer"
+msgstr "H. Peter Pfeufer"
+
+#. Author URI of the plugin
+#: WordPressSecurity.php
+msgid "https://ppfeufer.de"
+msgstr "https://ppfeufer.de"
+
+#: Sources/Tweaks/Login.php:52
 msgid "Ups! Something went wrong!"
 msgstr ""
-
-#. Name of the plugin
-msgid "WordPress Basic Security"
-msgstr "WordPress Basic Security"

@@ -2,8 +2,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PP WordPress Basic Security\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-15 19:33+0000\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pp-wp-basic-"
+"security\n"
+"POT-Creation-Date: 2024-04-13T16:06:03+00:00\n"
 "PO-Revision-Date: 2024-02-02 17:06+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: German (formal) <https://weblate.ppfeufer.de/projects/"
@@ -17,26 +18,31 @@ msgstr ""
 "X-Loco-Version: 2.6.6; wp-6.4-alpha-56569\n"
 "X-Domain: pp-wp-basic-security\n"
 
-#. Author of the plugin
-msgid "H. Peter Pfeufer"
-msgstr "H. Peter Pfeufer"
+#. Plugin Name of the plugin
+#: WordPressSecurity.php
+msgid "WordPress Basic Security"
+msgstr "WordPress Basic Security"
 
-#. URI of the plugin
+#. Plugin URI of the plugin
+#: WordPressSecurity.php
 msgid "https://github.com/ppfeufer/pp-wp-basic-security"
 msgstr "https://github.com/ppfeufer/pp-wp-basic-security"
 
-#. Author URI of the plugin
-msgid "https://ppfeufer.de"
-msgstr "https://ppfeufer.de"
-
 #. Description of the plugin
+#: WordPressSecurity.php
 msgid "Removing all non-needed stuff from the HTML Output"
 msgstr "Entfernen aller nicht benötigten Inhalte aus der HTML-Ausgabe"
 
-#: Libs/Login.php:20
+#. Author of the plugin
+#: WordPressSecurity.php
+msgid "H. Peter Pfeufer"
+msgstr "H. Peter Pfeufer"
+
+#. Author URI of the plugin
+#: WordPressSecurity.php
+msgid "https://ppfeufer.de"
+msgstr "https://ppfeufer.de"
+
+#: Sources/Tweaks/Login.php:52
 msgid "Ups! Something went wrong!"
 msgstr "Ups! Etwas ist schief gelaufen!"
-
-#. Name of the plugin
-msgid "WordPress Basic Security"
-msgstr "WordPress Basic Security"
