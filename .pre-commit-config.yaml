@@ -17,8 +17,25 @@ ci:
   autoupdate_branch: 'master'
   autoupdate_commit_msg: '[pre-commit.ci] pre-commit autoupdate'
   autoupdate_schedule: monthly
-  skip: []
+  skip:
+    - eslint  # Skip ESLint checks in CI due to missing node environment
+    - php-lint-all  # Skip PHP lint checks in CI due to missing PHP environment
+    - php-cs  # Skip PHP Code Sniffer checks in CI due to missing PHP environment
   submodules: false
+
+# Globally exclude files
+# https://pre-commit.com/#top_level-exclude
+exclude: |
+  (?x)(
+    LICENSE|
+    .min(.css|.css.map|.js|.js.map)|
+    Sources/Libs/|
+    css/libs/|
+    .vscode/|
+    .idea/|
+    vendor/|
+    ISSUE_TEMPLATE/
+  )
 
 # pre-commit setup
 repos:
@@ -26,86 +43,113 @@ repos:
     rev: v4.5.0
     hooks:
       # Identify invalid files
-      - id: check-ast
       - id: check-yaml
+        name: Check YAML
+        description: This hook checks that your YAML is parseable.
+
       - id: check-json
-      - id: check-toml
+        name: Check JSON
+        description: This hook checks that your JSON is parseable.
+
       - id: check-xml
+        name: Check XML
+        description: This hook checks that your XML is parseable.
 
       # git checks
       - id: check-merge-conflict
+        name: Check Merge Conflict
+        description: This hook checks for files that contain merge conflict strings.
+
       - id: check-added-large-files
+        name: Check Added Large Files
+        description: This hook checks for large files that have been added to the repository.
         args:
           - --maxkb=1000
+
       - id: detect-private-key
+        name: Detect Private Key
+        description: This hook detects private keys.
+
       - id: check-case-conflict
+        name: Check Case Conflict
+        description: This hook checks for files with names that differ only in case.
 
       # General quality checks
       - id: mixed-line-ending
+        name: Mixed Line Ending
+        description: This hook checks for files that have mixed line endings.
         args:
           - --fix=lf
+
       - id: trailing-whitespace
+        name: Trailing Whitespace
+        description: This hook removes trailing whitespace.
         args:
           - --markdown-linebreak-ext=md
-        exclude: |
-          (?x)(
-            .min(.css|.css.map|.js|.js.map)|
-            Libs/YahnisElsts/PluginUpdateChecker/
-          )
-      - id: check-executables-have-shebangs
-      - id: end-of-file-fixer
-        exclude: |
-          (?x)(
-            .min(.css|.css.map|.js|.js.map)|
-            Libs/YahnisElsts/PluginUpdateChecker/
-          )
 
-  - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v9.0.0-rc.0
+      - id: check-executables-have-shebangs
+        name: Check Executables Have Shebangs
+        description: This hook checks that all executable files have a shebang.
+
+      - id: end-of-file-fixer
+        name: End of File Fixer
+        description: This hook ensures that files end with a newline.
+
+  - repo: https://github.com/digitalpulp/pre-commit-php.git
+    rev: 1.4.0
+    hooks:
+      - id: php-lint-all
+        name: PHP Lint (All)
+        description: This hook checks for PHP syntax errors in all PHP files.
+
+      - id: php-cs
+        name: PHP Code Sniffer
+        description: This hook checks for coding standard violations.
+        files: \.(php)$
+        args:
+          - --standard=PSR2,./phpcs.xml
+          - -p
+          - --colors
+          - --report=full
+
+  - repo: https://github.com/eslint/eslint
+    rev: v8.57.0
     hooks:
       - id: eslint
-        exclude: |
-          (?x)(
-            .min(.js|.js.map)|
-            Libs/YahnisElsts/PluginUpdateChecker/
-          )
+        name: ESLint
+        description: This hook checks for problems in JavaScript code.
+#        additional_dependencies:
+#          # eslint itself needs to be here when using additional_dependencies.
+#          - eslint@8.56.0  # https://github.com/eslint/eslint/releases/latest
+#          - globals@13.24.0  # https://github.com/sindresorhus/globals/releases/latest
 
   - repo: https://github.com/thibaudcolas/pre-commit-stylelint
     rev: v16.3.1
     hooks:
       - id: stylelint
-        exclude: |
-          (?x)(
-            .min(.css|.css.map)|
-            Libs/YahnisElsts/PluginUpdateChecker/ |
-            css/libs/
-          )
+        name: Stylelint
+        description: This hook checks for problems in CSS code.
         args:
           - --formatter=compact
         additional_dependencies:
-          - stylelint@15.11.0  # https://github.com/stylelint/stylelint/releases/latest
-          - stylelint-config-standard@34.0.0  # https://github.com/stylelint/stylelint-config-standard/releases/latest
+          # stylelint itself needs to be here when using additional_dependencies.
+          - stylelint@16.2.1  # https://github.com/stylelint/stylelint/releases/latest
+          - stylelint-config-standard@36.0.0  # https://github.com/stylelint/stylelint-config-standard/releases/latest
+          - stylelint-config-standard-scss@13.0.0  # https://github.com/stylelint-scss/stylelint-config-standard-scss/releases/latest
 
   - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
     rev: 2.7.3
     hooks:
       - id: editorconfig-checker
-        exclude: |
-          (?x)(
-            LICENSE|
-            .min(.css|.css.map|.js|.js.map)|
-            Libs/YahnisElsts/PluginUpdateChecker/
-          )
+        name: EditorConfig Checker
+        description: This hook checks for compliance with definitions made in EditorConfig files.
 
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.17
     hooks:
       - id: mdformat
-        exclude: |
-          (?x)(
-            .github/|
-            Libs/YahnisElsts/PluginUpdateChecker/
-          )
+        name: Mdformat
+        description: This hook checks for Markdown formatting issues.
         additional_dependencies:  # https://mdformat.readthedocs.io/en/stable/users/plugins.html#code-formatter-plugins
           - mdformat-gfm==0.3.5  # Mdformat plugin for GitHub Flavored Markdown compatibility » https://github.com/hukkin/mdformat-gfm/tags
           - mdformat-toc==0.3.0  # Mdformat plugin to generate a table of contents » https://github.com/hukkin/mdformat-toc/tags
