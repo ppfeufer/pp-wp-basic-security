@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## \[In Development\] - Unreleased
 
+## \[1.2.0\] - 2024-04-14
+
 ### Added
 
 - Argument names wherever possible
