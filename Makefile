@@ -1,6 +1,9 @@
 # Makefile for the WordPress plugin WordPress Memory Usage
 
-wp_cli = ./vendor/bin/wp
+# Default goal and help message for the Makefile
+.DEFAULT_GOAL := help
+
+wp_cli = /usr/local/bin/wp-cli
 wp_path = ./../../../../WP-Sources
 
 plugin_name = WordPress Basic Security
@@ -16,6 +19,7 @@ help:
 	@echo "  clear-transient    Clear all transient caches"
 	@echo "  deactivate         Deactivate the plugin"
 	@echo "  pot                Create the plugin .pot file"
+	@echo "  pre-commit-checks  Run pre-commit checks"
 
 activate:
 	$(wp_cli) plugin activate \
@@ -39,3 +43,7 @@ clear-transient:
 	$(wp_cli) transient delete \
 		--all \
 		--path=$(wp_path)
+
+pre-commit-checks:
+	@echo "Running pre-commit checks"
+	pre-commit run --all-files
