@@ -15,8 +15,8 @@ A clear and concise description of what the bug is.
 
 Steps to reproduce the behavior:
 1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
+2. Click on '...'
+3. Scroll down to '...'
 4. See error
 
 
@@ -32,8 +32,8 @@ If applicable, add screenshots to help explain your problem.
 
 ### Please complete the following information:
 
-- App Version:
-- Alliance Auth Version:
+- Plugin Version:
+- WordPress Version:
 - Browser and Version:
 
 

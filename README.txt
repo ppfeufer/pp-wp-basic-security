@@ -2,10 +2,10 @@
 Contributors: ppfeufer
 Donate link: https://ko-fi.com/ppfeufer
 Tags: security
-Requires at least: 6.0
-Tested up to: 6.4
+Requires at least: 6.5
+Tested up to: 6.6
 
-Provides some basic security by removing WordPress' tendency to talk to much.
+Provides some basic security by removing WordPress' tendency to talk too much.
 
 == Description ==
 
