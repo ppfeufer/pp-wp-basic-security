@@ -40,7 +40,7 @@ exclude: |
 # pre-commit setup
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v4.6.0
     hooks:
       # Identify invalid files
       - id: check-yaml
@@ -113,7 +113,7 @@ repos:
           - --report=full
 
   - repo: https://github.com/eslint/eslint
-    rev: v8.57.0
+    rev: v9.2.0
     hooks:
       - id: eslint
         name: ESLint
@@ -124,7 +124,7 @@ repos:
 #          - globals@13.24.0  # https://github.com/sindresorhus/globals/releases/latest
 
   - repo: https://github.com/thibaudcolas/pre-commit-stylelint
-    rev: v16.3.1
+    rev: v16.5.0
     hooks:
       - id: stylelint
         name: Stylelint
