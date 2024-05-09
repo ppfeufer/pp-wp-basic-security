@@ -8,7 +8,8 @@
         }
     ],
     "require": {
-        "yahnis-elsts/plugin-update-checker": "*"
+        "yahnis-elsts/plugin-update-checker": "*",
+        "iconicwp/wpsf": "dev-master"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
@@ -48,5 +49,19 @@
         "classmap": [
             "vendor"
         ]
-    }
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "iconicwp/wpsf",
+                "version": "master",
+                "source": {
+                    "url": "https://github.com/iconicwp/WordPress-Settings-Framework.git",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
+        }
+    ]
 }
