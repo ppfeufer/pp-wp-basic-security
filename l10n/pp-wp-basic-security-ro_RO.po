@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: PP WordPress Basic Security\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pp-wp-basic-"
 "security\n"
-"POT-Creation-Date: 2024-04-13T16:06:03+00:00\n"
+"POT-Creation-Date: 2024-05-09T11:33:17+00:00\n"
 "PO-Revision-Date: 2024-03-02 12:18+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: Romanian <https://weblate.ppfeufer.de/projects/wordpress-"
@@ -44,6 +44,118 @@ msgstr "H. Peter Pfeufer"
 msgid "https://ppfeufer.de"
 msgstr "https://ppfeufer.de"
 
-#: Sources/Tweaks/Login.php:52
+#: Settings/WordPressSecuritySettings.php:6
+msgid "Security Tweaks"
+msgstr ""
+
+#: Settings/WordPressSecuritySettings.php:7
+msgid "Select which security tweaks you want to apply …"
+msgstr ""
+
+#: Settings/WordPressSecuritySettings.php:15
+msgid "Canonical link"
+msgstr ""
+
+#: Settings/WordPressSecuritySettings.php:16
+msgid "Remove the canonical link from the `<head>` section"
+msgstr ""
+
+#: Settings/WordPressSecuritySettings.php:25
+msgid "Emoji Support"
+msgstr ""
+
+#: Settings/WordPressSecuritySettings.php:26
+msgid "Disable Emoji Support"
+msgstr ""
+
+#: Settings/WordPressSecuritySettings.php:32
+msgid "Enfold Debug"
+msgstr ""
+
+#: Settings/WordPressSecuritySettings.php:33
+msgid "Remove the debug from html output when the Enfold theme is used"
+msgstr ""
+
+#: Settings/WordPressSecuritySettings.php:42
+msgid "Generator Name"
+msgstr ""
+
+#: Settings/WordPressSecuritySettings.php:43
+msgid ""
+"Remove the `<meta name=\"generator\" content=\"WordPress x.y.z\" />` tag "
+"from the `<head>` section"
+msgstr ""
+
+#: Settings/WordPressSecuritySettings.php:52
+msgid "Meta Links Tags"
+msgstr ""
+
+#: Settings/WordPressSecuritySettings.php:53
+msgid ""
+"Remove some definitions from the `<head>` section, like XMLRPC header, RSS "
+"feeds and WLW Manifests"
+msgstr ""
+
+#: Settings/WordPressSecuritySettings.php:62
+msgid "Login Error Messages"
+msgstr ""
+
+#: Settings/WordPressSecuritySettings.php:63
+msgid "Remove the login error messages"
+msgstr ""
+
+#: Settings/WordPressSecuritySettings.php:69
+msgid "oEmbed"
+msgstr ""
+
+#: Settings/WordPressSecuritySettings.php:70
+msgid "Disable oEmbed discovery"
+msgstr ""
+
+#: Settings/WordPressSecuritySettings.php:76
+msgid "Pingback Header"
+msgstr ""
+
+#: Settings/WordPressSecuritySettings.php:77
+msgid "Remove the X-Pingback header"
+msgstr ""
+
+#: Settings/WordPressSecuritySettings.php:83
+msgid "Version Strings"
+msgstr ""
+
+#: Settings/WordPressSecuritySettings.php:84
+msgid "Remove the WordPress version from the scripts and styles"
+msgstr ""
+
+#: Settings/WordPressSecuritySettings.php:90
+msgid "WooCommerce"
+msgstr ""
+
+#: Settings/WordPressSecuritySettings.php:91
+msgid "Remove the WooCommerce generator tag"
+msgstr ""
+
+#: Settings/WordPressSecuritySettings.php:97
+msgid "YouTube Embed (no cookie)"
+msgstr ""
+
+#: Settings/WordPressSecuritySettings.php:98
+msgid "Change the YouTube embed to use the no-cookie domain"
+msgstr ""
+
+#: Sources/Settings.php:73
+msgid "WP Basic Security Settings"
+msgstr ""
+
+#: Sources/Settings.php:74
+msgid "WP Basic Security"
+msgstr ""
+
+#: Sources/Settings.php:91
+msgid "Plugin Settings"
+msgstr ""
+
+#: Sources/Tweaks/Login.php:54
 msgid "Ups! Something went wrong!"
 msgstr ""
