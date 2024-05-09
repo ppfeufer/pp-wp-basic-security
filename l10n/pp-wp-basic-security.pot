@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-05-09T10:55:23+00:00\n"
+"POT-Creation-Date: 2024-05-09T11:33:17+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: pp-wp-basic-security\n"
@@ -84,7 +84,7 @@ msgid "Meta Links Tags"
 msgstr ""
 
 #: Settings/WordPressSecuritySettings.php:53
-msgid "Remove some link definitions link from the `<head>` section, like XMLRPC header, RSS feeds and WLW Manifests"
+msgid "Remove some definitions from the `<head>` section, like XMLRPC header, RSS feeds and WLW Manifests"
 msgstr ""
 
 #: Settings/WordPressSecuritySettings.php:62

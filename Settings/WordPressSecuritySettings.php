@@ -51,7 +51,7 @@ function wordpress_security_settings(array $wpsf_settings): array {
                 'id' => 'tweak_links',
                 'title' => __('Meta Links Tags', 'pp-wp-basic-security'),
                 'desc' => __(
-                    'Remove some link definitions link from the `<head>` section, like XMLRPC header, RSS feeds and WLW Manifests',
+                    'Remove some definitions from the `<head>` section, like XMLRPC header, RSS feeds and WLW Manifests',
                     'pp-wp-basic-security'
                 ),
                 'type' => 'checkbox',
