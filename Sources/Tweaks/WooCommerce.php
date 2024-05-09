@@ -24,7 +24,9 @@ class WooCommerce implements GenericInterface {
      * @return void
      */
     public function __construct() {
-        $this->execute();
+        if (wpsf_get_setting('wp-basic-security', 'wp-basic-security-tweaks', 'tweak_woocommerce')) {
+            $this->execute();
+        }
     }
 
     /**
