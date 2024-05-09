@@ -88,35 +88,39 @@ class Main {
     }
 
     /**
+     * Get the libraries
+     *
+     * @return array
+     * @access private
+     */
+    private function getTweakClasses(): array {
+        return [
+            Canonical::class,
+            Emoji::class,
+            EnfoldTheme::class,
+            GeneratorName::class,
+            Links::class,
+            Login::class,
+            Oembed::class,
+            Pingback::class,
+            VersionStrings::class,
+            WooCommerce::class,
+            YoutubeEmbed::class
+        ];
+    }
+
+    /**
      * Load the libraries
      *
      * @return void
-     * @since 1.0.0
      * @access public
-     * @uses Canonical
-     * @uses EnfoldTheme
-     * @uses Emoji
-     * @uses GeneratorName
-     * @uses Links
-     * @uses Oembed
-     * @uses Pingback
-     * @uses VersionStrings
-     * @uses WooCommerce
-     * @uses YoutubeEmbed
-     * @uses Login
      */
     public function loadLibraries(): void {
-        new Canonical;
-        new Emoji;
-        new EnfoldTheme;
-        new GeneratorName;
-        new Links;
-        new Login;
-        new Oembed;
-        new Pingback;
-        new VersionStrings;
-        new WooCommerce;
-        new YoutubeEmbed;
+        $tweakClasses = $this->getTweakClasses();
+
+        foreach ($tweakClasses as $tweakClass) {
+            new $tweakClass;
+        }
     }
 
     /**
