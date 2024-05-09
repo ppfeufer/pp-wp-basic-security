@@ -37,7 +37,7 @@ Section Order:
 
 ### Added
 
-- Setting to enable/disable the various tweaks
+- Setting to enable/disable the various tweaks. (Disabled by default)
 
 ## \[1.2.0\] - 2024-04-14
 
