@@ -23,7 +23,9 @@ class EnfoldTheme implements GenericInterface {
      * @return void
      */
     public function __construct() {
-        if (esc_html(text: get_template()) === 'Enfold') {
+        if (wpsf_get_setting('wp-basic-security', 'wp-basic-security-tweaks', 'tweak_enfold_theme')
+            && esc_html(text: get_template()) === 'Enfold'
+        ) {
             $this->execute();
         }
     }

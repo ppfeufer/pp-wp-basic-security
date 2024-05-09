@@ -20,6 +20,14 @@ define(
     constant_name: 'PP_WP_BASIC_SECURITY_PLUGIN_DIR',
     value: plugin_dir_path(file: __FILE__)
 );
+define(
+    constant_name: 'PP_WP_BASIC_SECURITY_PLUGIN_URI',
+    value: plugin_dir_url(file: __FILE__)
+);
+define(
+    constant_name: 'PP_WP_BASIC_SECURITY_PLUGIN_FILE',
+    value: plugin_basename(file: __FILE__)
+);
 
 require_once trailingslashit(value: __DIR__) . 'Sources/autoloader.php';
 require_once trailingslashit(value: __DIR__) . 'Sources/Libs/autoload.php';

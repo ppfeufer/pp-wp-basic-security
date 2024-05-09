@@ -33,7 +33,6 @@ class Main {
     /**
      * WordPressSecurity constructor.
      *
-     * @since 1.0.0
      * @access public
      * @return void
      */
@@ -49,7 +48,6 @@ class Main {
      * Initialize the plugin
      *
      * @return void
-     * @since 1.0.0
      * @access public
      * @uses loadTextDomain()
      * @uses loadLibraries()
@@ -57,6 +55,7 @@ class Main {
      */
     public function init(): void {
         $this->loadTextDomain();
+        $this->loadSettings();
         $this->loadLibraries();
         $this->doUpdateCheck();
     }
@@ -65,7 +64,6 @@ class Main {
      * Load the text domain
      *
      * @return void
-     * @since 1.0.0
      * @access public
      * @uses load_plugin_textdomain()
      */
@@ -76,6 +74,17 @@ class Main {
                 plugin_rel_path: $this->localizationDirectory
             );
         }
+    }
+
+    /**
+     * Load the settings
+     *
+     * @return void
+     * @access public
+     * @uses Settings
+     */
+    public function loadSettings(): void {
+        new Settings;
     }
 
     /**
@@ -98,23 +107,22 @@ class Main {
      */
     public function loadLibraries(): void {
         new Canonical;
-        new EnfoldTheme;
         new Emoji;
+        new EnfoldTheme;
         new GeneratorName;
         new Links;
+        new Login;
         new Oembed;
         new Pingback;
         new VersionStrings;
         new WooCommerce;
         new YoutubeEmbed;
-        new Login;
     }
 
     /**
      * Check for updates
      *
      * @return void
-     * @since 1.0.0
      * @access public
      * @uses PucFactory::buildUpdateChecker()
      */
