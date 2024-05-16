@@ -1,13 +1,14 @@
 # Languages add-on <noreply-addon-languages@weblate.org>, 2024.
 # Peter Pfeufer <info@ppfeufer.de>, 2024.
+# SAM_FPS <sam_fps@163.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PP WordPress Basic Security\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pp-wp-basic-"
 "security\n"
 "POT-Creation-Date: 2024-05-09T11:33:17+00:00\n"
-"PO-Revision-Date: 2024-03-02 12:18+0000\n"
-"Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
+"PO-Revision-Date: 2024-05-16 02:20+0000\n"
+"Last-Translator: SAM_FPS <sam_fps@163.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.ppfeufer.de/projects/"
 "wordpress-plugins/pp-wp-basic-security/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -15,14 +16,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.4.2\n"
+"X-Generator: Weblate 5.5.5\n"
 "X-Loco-Version: 2.6.6; wp-6.4-alpha-56569\n"
 "X-Domain: pp-wp-basic-security\n"
 
 #. Plugin Name of the plugin
 #: WordPressSecurity.php
 msgid "WordPress Basic Security"
-msgstr ""
+msgstr "WordPress基本安全性"
 
 #. Plugin URI of the plugin
 #: WordPressSecurity.php
@@ -32,7 +33,7 @@ msgstr "https://github.com/ppfeufer/pp-wp-basic-security"
 #. Description of the plugin
 #: WordPressSecurity.php
 msgid "Removing all non-needed stuff from the HTML Output"
-msgstr ""
+msgstr "从HTML输出中删除所有不需要的东西"
 
 #. Author of the plugin
 #: WordPressSecurity.php
@@ -46,116 +47,118 @@ msgstr "https://ppfeufer.de"
 
 #: Settings/WordPressSecuritySettings.php:6
 msgid "Security Tweaks"
-msgstr ""
+msgstr "安全调整"
 
 #: Settings/WordPressSecuritySettings.php:7
 msgid "Select which security tweaks you want to apply …"
-msgstr ""
+msgstr "选择您想要应用的安全调整…"
 
 #: Settings/WordPressSecuritySettings.php:15
 msgid "Canonical link"
-msgstr ""
+msgstr "规范的链接"
 
 #: Settings/WordPressSecuritySettings.php:16
 msgid "Remove the canonical link from the `<head>` section"
-msgstr ""
+msgstr "从' <head> '部分删除规范链接"
 
 #: Settings/WordPressSecuritySettings.php:25
 msgid "Emoji Support"
-msgstr ""
+msgstr "表情符号支持"
 
 #: Settings/WordPressSecuritySettings.php:26
 msgid "Disable Emoji Support"
-msgstr ""
+msgstr "禁用表情符号支持"
 
 #: Settings/WordPressSecuritySettings.php:32
 msgid "Enfold Debug"
-msgstr ""
+msgstr "折叠调试"
 
 #: Settings/WordPressSecuritySettings.php:33
 msgid "Remove the debug from html output when the Enfold theme is used"
-msgstr ""
+msgstr "当使用折叠主题时，从html输出中移除调试"
 
 #: Settings/WordPressSecuritySettings.php:42
 msgid "Generator Name"
-msgstr ""
+msgstr "创建者名字"
 
 #: Settings/WordPressSecuritySettings.php:43
 msgid ""
 "Remove the `<meta name=\"generator\" content=\"WordPress x.y.z\" />` tag "
 "from the `<head>` section"
 msgstr ""
+"从' <head>部分删除' <meta name=\"generator\" content=\"WordPress x.y.z\" /> "
+"'标签"
 
 #: Settings/WordPressSecuritySettings.php:52
 msgid "Meta Links Tags"
-msgstr ""
+msgstr "元链接标签"
 
 #: Settings/WordPressSecuritySettings.php:53
 msgid ""
 "Remove some definitions from the `<head>` section, like XMLRPC header, RSS "
 "feeds and WLW Manifests"
-msgstr ""
+msgstr "从“<head>”部分删除一些定义，如XMLRPC头、RSS提要和WLW清单"
 
 #: Settings/WordPressSecuritySettings.php:62
 msgid "Login Error Messages"
-msgstr ""
+msgstr "注册错误信息"
 
 #: Settings/WordPressSecuritySettings.php:63
 msgid "Remove the login error messages"
-msgstr ""
+msgstr "删除登录错误信息"
 
 #: Settings/WordPressSecuritySettings.php:69
 msgid "oEmbed"
-msgstr ""
+msgstr "oEmbed"
 
 #: Settings/WordPressSecuritySettings.php:70
 msgid "Disable oEmbed discovery"
-msgstr ""
+msgstr "禁用oEmbed搜寻"
 
 #: Settings/WordPressSecuritySettings.php:76
 msgid "Pingback Header"
-msgstr ""
+msgstr "Pingback头"
 
 #: Settings/WordPressSecuritySettings.php:77
 msgid "Remove the X-Pingback header"
-msgstr ""
+msgstr "移除X-Pingback头"
 
 #: Settings/WordPressSecuritySettings.php:83
 msgid "Version Strings"
-msgstr ""
+msgstr "版本字符串"
 
 #: Settings/WordPressSecuritySettings.php:84
 msgid "Remove the WordPress version from the scripts and styles"
-msgstr ""
+msgstr "从脚本和样式中删除WordPress版本"
 
 #: Settings/WordPressSecuritySettings.php:90
 msgid "WooCommerce"
-msgstr ""
+msgstr "WooCommerce"
 
 #: Settings/WordPressSecuritySettings.php:91
 msgid "Remove the WooCommerce generator tag"
-msgstr ""
+msgstr "删除WooCommerce生成器标签"
 
 #: Settings/WordPressSecuritySettings.php:97
 msgid "YouTube Embed (no cookie)"
-msgstr ""
+msgstr "YouTube嵌入（无cookie）"
 
 #: Settings/WordPressSecuritySettings.php:98
 msgid "Change the YouTube embed to use the no-cookie domain"
-msgstr ""
+msgstr "更改YouTube嵌入使用无cookie域"
 
 #: Sources/Settings.php:73
 msgid "WP Basic Security Settings"
-msgstr ""
+msgstr "WP基本安全设置"
 
 #: Sources/Settings.php:74
 msgid "WP Basic Security"
-msgstr ""
+msgstr "WP基本安全"
 
 #: Sources/Settings.php:91
 msgid "Plugin Settings"
-msgstr ""
+msgstr "插件设置"
 
 #: Sources/Tweaks/Login.php:54
 msgid "Ups! Something went wrong!"
-msgstr ""
+msgstr "哎呀！出了点问题！"
