@@ -1,4 +1,5 @@
 # Create a new release archive
+.PHONY: release-archive
 release-archive:
 	@echo "Creating a new release archive …"
 	@rm -f $(plugin_slug).zip
@@ -14,6 +15,8 @@ release-archive:
 		$(plugin_slug)/
 	@rm -rf $(plugin_slug)/
 
+# Help message for the Release commands
+.PHONY: help
 help::
 	@echo "  $(TEXT_UNDERLINE)Release:$(TEXT_UNDERLINE_END)"
 	@echo "    release-archive           Create a release archive."

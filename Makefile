@@ -8,6 +8,7 @@ plugin_name = WordPress Basic Security
 plugin_slug = pp-wp-basic-security
 
 # Help message for the Makefile
+.PHONY: help
 help::
 	@echo "$(TEXT_BOLD)$(plugin_name)$(TEXT_BOLD_END) Makefile"
 	@echo ""

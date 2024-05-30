@@ -3,6 +3,7 @@ wp_cli = vendor/bin/wp
 wp_path = ./../../../../WP-Sources
 
 # Activate the plugin
+.PHONY: activate
 activate:
 	@echo "Activating the plugin …"
 	@$(wp_cli) plugin activate \
@@ -10,6 +11,7 @@ activate:
 		--path=$(wp_path)
 
 # Clear all transient caches
+.PHONY: clear-transient
 clear-transient:
 	@echo "Clearing all transient caches …"
 	@$(wp_cli) transient delete \
@@ -17,6 +19,7 @@ clear-transient:
 		--path=$(wp_path)
 
 # Deactivate the plugin
+.PHONY: deactivate
 deactivate:
 	@echo "Deactivating the plugin …"
 	@$(wp_cli) plugin deactivate \
@@ -24,6 +27,7 @@ deactivate:
 		--path=$(wp_path)
 
 # Create the plugin .pot file
+.PHONY: pot
 pot:
 	@echo "Creating the plugin .pot file …"
 	@$(wp_cli) i18n make-pot \
@@ -34,12 +38,14 @@ pot:
 		--include="/"
 
 # Start the WP-CLI shell
+.PHONY: shell
 shell:
 	@echo "Starting the WP-CLI shell …"
 	@$(wp_cli) shell \
 		--path=$(wp_path)
 
 # Help message for the WP-CLI commands
+.PHONY: help
 help::
 	@echo "  $(TEXT_UNDERLINE)WP-CLI:$(TEXT_UNDERLINE_END)"
 	@echo "    activate                  Activate the plugin"
