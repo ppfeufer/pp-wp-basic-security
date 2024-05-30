@@ -20,7 +20,9 @@
     "extra": {
         "strauss": {
             "target_directory": "Sources/Libs",
-            "namespace_prefix": "WordPress\\Ppfeufer\\Plugin\\WpBasicSecurity\\Libs\\"
+            "namespace_prefix": "WordPress\\Ppfeufer\\Plugin\\WpBasicSecurity\\Libs\\",
+            "include_modified_date": false,
+            "include_author": false
         }
     },
     "scripts": {
