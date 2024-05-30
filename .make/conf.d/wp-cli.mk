@@ -41,7 +41,7 @@ shell:
 
 # Help message for the WP-CLI commands
 help::
-	@echo "  $(FONT_UNDERLINE)WP-CLI:$(FONT_UNDERLINE_END)"
+	@echo "  $(TEXT_UNDERLINE)WP-CLI:$(TEXT_UNDERLINE_END)"
 	@echo "    activate                  Activate the plugin"
 	@echo "    clear-transient           Clear all transient caches"
 	@echo "    deactivate                Deactivate the plugin"
