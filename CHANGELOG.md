@@ -39,6 +39,10 @@ Section Order:
 
 - Setting to enable/disable the various tweaks. (Disabled by default)
 
+### Changed
+
+- Put constants under our namespace to avoid potential conflicts
+
 ## \[1.2.0\] - 2024-04-14
 
 ### Added
