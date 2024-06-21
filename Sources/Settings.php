@@ -87,7 +87,7 @@ class Settings {
     public function pluginActionsLink(array $links): array {
         $new_links = [];
         $new_links[] = sprintf(
-            '<a href="' . admin_url(path: 'options-general.php?page=wp-basic-security') . '">%s</a>',
+            '<a href="' . admin_url(path: 'options-general.php?page=wp-basic-security-settings') . '">%s</a>',
             __('Plugin Settings', 'pp-wp-basic-security')
         );
 

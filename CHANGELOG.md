@@ -39,6 +39,10 @@ Section Order:
 
 - Setting to enable/disable the various tweaks. (Disabled by default)
 
+### Fixed
+
+- Settings link in the plugin list
+
 ### Changed
 
 - Put constants under our namespace to avoid potential conflicts
