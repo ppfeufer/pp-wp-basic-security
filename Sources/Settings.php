@@ -26,7 +26,7 @@ class Settings {
      */
     public function __construct() {
         $this->wpsf = new WordPressSettingsFramework(
-            settings_file: PP_WP_BASIC_SECURITY_PLUGIN_DIR . 'Settings/WordPressSecuritySettings.php',
+            settings_file: PLUGIN_DIR . 'Settings/WordPressSecuritySettings.php',
             option_group: 'wp-basic-security'
         );
 
@@ -49,7 +49,7 @@ class Settings {
 
         // Add a settings link to plugin actions.
         add_action(
-            hook_name: 'plugin_action_links_' . PP_WP_BASIC_SECURITY_PLUGIN_FILE,
+            hook_name: 'plugin_action_links_' . PLUGIN_FILE,
             callback: [$this, 'pluginActionsLink']
         );
 

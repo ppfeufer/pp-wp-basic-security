@@ -136,7 +136,7 @@ class Main {
          */
         $myUpdateChecker = PucFactory::buildUpdateChecker(
             metadataUrl: 'https://github.com/ppfeufer/pp-wp-basic-security/',
-            fullPath: PP_WP_BASIC_SECURITY_PLUGIN_DIR . 'WordPressSecurity.php',
+            fullPath: PLUGIN_DIR . 'WordPressSecurity.php',
             slug: 'pp-wp-basic-security'
         );
 

@@ -17,15 +17,15 @@ namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity;
 
 // phpcs:disable
 define(
-    constant_name: __NAMESPACE__ . '\PP_WP_BASIC_SECURITY_PLUGIN_DIR',
+    constant_name: __NAMESPACE__ . '\PLUGIN_DIR',
     value: plugin_dir_path(file: __FILE__)
 );
 define(
-    constant_name: __NAMESPACE__ . '\PP_WP_BASIC_SECURITY_PLUGIN_URI',
+    constant_name: __NAMESPACE__ . '\PLUGIN_URI',
     value: plugin_dir_url(file: __FILE__)
 );
 define(
-    constant_name: __NAMESPACE__ . '\PP_WP_BASIC_SECURITY_PLUGIN_FILE',
+    constant_name: __NAMESPACE__ . '\PLUGIN_FILE',
     value: plugin_basename(file: __FILE__)
 );
 
