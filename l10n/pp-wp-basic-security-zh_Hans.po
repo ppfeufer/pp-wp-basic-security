@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: PP WordPress Basic Security\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pp-wp-basic-"
 "security\n"
-"POT-Creation-Date: 2024-05-09T11:33:17+00:00\n"
+"POT-Creation-Date: 2024-06-27T11:06:10+00:00\n"
 "PO-Revision-Date: 2024-05-16 02:20+0000\n"
 "Last-Translator: SAM_FPS <sam_fps@163.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.ppfeufer.de/projects/"
@@ -45,107 +45,13 @@ msgstr "H. Peter Pfeufer"
 msgid "https://ppfeufer.de"
 msgstr "https://ppfeufer.de"
 
-#: Settings/WordPressSecuritySettings.php:6
+#: Settings/WordPressSecuritySettings.php:15
 msgid "Security Tweaks"
 msgstr "安全调整"
 
-#: Settings/WordPressSecuritySettings.php:7
+#: Settings/WordPressSecuritySettings.php:16
 msgid "Select which security tweaks you want to apply …"
 msgstr "选择您想要应用的安全调整…"
-
-#: Settings/WordPressSecuritySettings.php:15
-msgid "Canonical link"
-msgstr "规范的链接"
-
-#: Settings/WordPressSecuritySettings.php:16
-msgid "Remove the canonical link from the `<head>` section"
-msgstr "从' <head> '部分删除规范链接"
-
-#: Settings/WordPressSecuritySettings.php:25
-msgid "Emoji Support"
-msgstr "表情符号支持"
-
-#: Settings/WordPressSecuritySettings.php:26
-msgid "Disable Emoji Support"
-msgstr "禁用表情符号支持"
-
-#: Settings/WordPressSecuritySettings.php:32
-msgid "Enfold Debug"
-msgstr "折叠调试"
-
-#: Settings/WordPressSecuritySettings.php:33
-msgid "Remove the debug from html output when the Enfold theme is used"
-msgstr "当使用折叠主题时，从html输出中移除调试"
-
-#: Settings/WordPressSecuritySettings.php:42
-msgid "Generator Name"
-msgstr "创建者名字"
-
-#: Settings/WordPressSecuritySettings.php:43
-msgid ""
-"Remove the `<meta name=\"generator\" content=\"WordPress x.y.z\" />` tag "
-"from the `<head>` section"
-msgstr ""
-"从' <head>部分删除' <meta name=\"generator\" content=\"WordPress x.y.z\" /> "
-"'标签"
-
-#: Settings/WordPressSecuritySettings.php:52
-msgid "Meta Links Tags"
-msgstr "元链接标签"
-
-#: Settings/WordPressSecuritySettings.php:53
-msgid ""
-"Remove some definitions from the `<head>` section, like XMLRPC header, RSS "
-"feeds and WLW Manifests"
-msgstr "从“<head>”部分删除一些定义，如XMLRPC头、RSS提要和WLW清单"
-
-#: Settings/WordPressSecuritySettings.php:62
-msgid "Login Error Messages"
-msgstr "注册错误信息"
-
-#: Settings/WordPressSecuritySettings.php:63
-msgid "Remove the login error messages"
-msgstr "删除登录错误信息"
-
-#: Settings/WordPressSecuritySettings.php:69
-msgid "oEmbed"
-msgstr "oEmbed"
-
-#: Settings/WordPressSecuritySettings.php:70
-msgid "Disable oEmbed discovery"
-msgstr "禁用oEmbed搜寻"
-
-#: Settings/WordPressSecuritySettings.php:76
-msgid "Pingback Header"
-msgstr "Pingback头"
-
-#: Settings/WordPressSecuritySettings.php:77
-msgid "Remove the X-Pingback header"
-msgstr "移除X-Pingback头"
-
-#: Settings/WordPressSecuritySettings.php:83
-msgid "Version Strings"
-msgstr "版本字符串"
-
-#: Settings/WordPressSecuritySettings.php:84
-msgid "Remove the WordPress version from the scripts and styles"
-msgstr "从脚本和样式中删除WordPress版本"
-
-#: Settings/WordPressSecuritySettings.php:90
-msgid "WooCommerce"
-msgstr "WooCommerce"
-
-#: Settings/WordPressSecuritySettings.php:91
-msgid "Remove the WooCommerce generator tag"
-msgstr "删除WooCommerce生成器标签"
-
-#: Settings/WordPressSecuritySettings.php:97
-msgid "YouTube Embed (no cookie)"
-msgstr "YouTube嵌入（无cookie）"
-
-#: Settings/WordPressSecuritySettings.php:98
-msgid "Change the YouTube embed to use the no-cookie domain"
-msgstr "更改YouTube嵌入使用无cookie域"
 
 #: Sources/Settings.php:73
 msgid "WP Basic Security Settings"
@@ -159,6 +65,100 @@ msgstr "WP基本安全"
 msgid "Plugin Settings"
 msgstr "插件设置"
 
-#: Sources/Tweaks/Login.php:54
+#: Sources/Tweaks/Canonical.php:39
+msgid "Canonical link"
+msgstr "规范的链接"
+
+#: Sources/Tweaks/Canonical.php:40
+msgid "Remove the canonical link from the `<head>` section"
+msgstr "从' <head> '部分删除规范链接"
+
+#: Sources/Tweaks/Emoji.php:50
+msgid "Emoji Support"
+msgstr "表情符号支持"
+
+#: Sources/Tweaks/Emoji.php:51
+msgid "Disable Emoji Support"
+msgstr "禁用表情符号支持"
+
+#: Sources/Tweaks/EnfoldTheme.php:41
+msgid "Enfold Debug"
+msgstr "折叠调试"
+
+#: Sources/Tweaks/EnfoldTheme.php:42
+msgid "Remove the debug from html output when the Enfold theme is used"
+msgstr "当使用折叠主题时，从html输出中移除调试"
+
+#: Sources/Tweaks/GeneratorName.php:39
+msgid "Generator Name"
+msgstr "创建者名字"
+
+#: Sources/Tweaks/GeneratorName.php:40
+msgid ""
+"Remove the `<meta name=\"generator\" content=\"WordPress x.y.z\" />` tag "
+"from the `<head>` section"
+msgstr ""
+"从' <head>部分删除' <meta name=\"generator\" content=\"WordPress x.y.z\" /> "
+"'标签"
+
+#: Sources/Tweaks/Links.php:39
+msgid "Meta Links Tags"
+msgstr "元链接标签"
+
+#: Sources/Tweaks/Links.php:40
+msgid ""
+"Remove some definitions from the `<head>` section, like XMLRPC header, RSS "
+"feeds and WLW Manifests"
+msgstr "从“<head>”部分删除一些定义，如XMLRPC头、RSS提要和WLW清单"
+
+#: Sources/Tweaks/Login.php:39
+msgid "Login Error Messages"
+msgstr "注册错误信息"
+
+#: Sources/Tweaks/Login.php:40
+msgid "Remove the login error messages"
+msgstr "删除登录错误信息"
+
+#: Sources/Tweaks/Login.php:66
 msgid "Ups! Something went wrong!"
 msgstr "哎呀！出了点问题！"
+
+#: Sources/Tweaks/Oembed.php:39
+msgid "oEmbed"
+msgstr "oEmbed"
+
+#: Sources/Tweaks/Oembed.php:40
+msgid "Disable oEmbed discovery"
+msgstr "禁用oEmbed搜寻"
+
+#: Sources/Tweaks/Pingback.php:39
+msgid "Pingback Header"
+msgstr "Pingback头"
+
+#: Sources/Tweaks/Pingback.php:40
+msgid "Remove the X-Pingback header"
+msgstr "移除X-Pingback头"
+
+#: Sources/Tweaks/VersionStrings.php:39
+msgid "Version Strings"
+msgstr "版本字符串"
+
+#: Sources/Tweaks/VersionStrings.php:40
+msgid "Remove the WordPress version from the scripts and styles"
+msgstr "从脚本和样式中删除WordPress版本"
+
+#: Sources/Tweaks/WooCommerce.php:39
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: Sources/Tweaks/WooCommerce.php:40
+msgid "Remove the WooCommerce generator tag"
+msgstr "删除WooCommerce生成器标签"
+
+#: Sources/Tweaks/YoutubeEmbed.php:40
+msgid "YouTube Embed (no cookie)"
+msgstr "YouTube嵌入（无cookie）"
+
+#: Sources/Tweaks/YoutubeEmbed.php:41
+msgid "Change the YouTube embed to use the no-cookie domain"
+msgstr "更改YouTube嵌入使用无cookie域"
