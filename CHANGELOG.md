@@ -35,13 +35,11 @@ Section Order:
 ### Security
 -->
 
+## \[1.3.0\] - 2024-06-27
+
 ### Added
 
 - Setting to enable/disable the various tweaks. (Disabled by default)
-
-### Fixed
-
-- Settings link in the plugin list
 
 ### Changed
 
