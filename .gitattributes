@@ -19,6 +19,7 @@ README.md export-ignore
 
 # other files
 .editorconfig export-ignore
+.make export-ignore
 .nvmrc export-ignore
 .pre-commit-config.yaml export-ignore
 .stylelintrc.json export-ignore
