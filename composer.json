@@ -15,7 +15,7 @@
         "roave/security-advisories": "dev-latest",
         "wp-cli/wp-cli-bundle": "*",
         "squizlabs/php_codesniffer": "*",
-        "brianhenryie/strauss": "^0.19.1"
+        "brianhenryie/strauss": "^0.19.2"
     },
     "extra": {
         "strauss": {
