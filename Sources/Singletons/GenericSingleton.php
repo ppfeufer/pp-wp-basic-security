@@ -2,7 +2,7 @@
 
 namespace WordPress\Ppfeufer\Plugin\WpBasicSecurity\Singletons;
 
-use Exception;
+use RuntimeException;
 
 /**
  * General Singleton
@@ -52,14 +52,15 @@ class GenericSingleton {
     }
 
     /**
-     * Prevent from being unserialized.
+     * Prevent from being deserialized.
      *
-     * This method is public to comply with the PHP internals handling of unserialization.
+     * This method is public to comply with the PHP internals handling of deserialization.
      *
      * @return void
-     * @throws Exception
+     * @throws RuntimeException
+     * @scope public
      */
     public function __wakeup() {
-        throw new Exception(message: 'Cannot unserialize a singleton.');
+        throw new RuntimeException(message: 'Cannot deserialize a singleton.');
     }
 }
