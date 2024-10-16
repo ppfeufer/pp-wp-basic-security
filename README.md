@@ -2,9 +2,13 @@
 
 ![License](https://img.shields.io/badge/license-GPLv3-green "License")
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/ppfeufer/pp-wp-basic-security/master.svg)](https://results.pre-commit.ci/latest/github/ppfeufer/pp-wp-basic-security/master)
-[![Translation status](https://weblate.ppfeufer.de/widget/wordpress-plugins/pp-wp-basic-security/svg-badge.svg)](https://weblate.ppfeufer.de/engage/wordpress-plugins/)
 
 **Provides some basic security by removing WordPress's tendency to talk too much**
+
+> \[!IMPORTANT\]
+>
+> This plugin has been replaced by a more comprehensive solution.\
+> Use [pp-wordpress-tweaks](https://github.com/ppfeufer/pp-wordpress-tweaks) instead.
 
 ______________________________________________________________________
 
@@ -14,7 +18,6 @@ ______________________________________________________________________
   - [What Will Be Removed](#what-will-be-removed)
   - [What Will Be Changed](#what-will-be-changed)
   - [Minimum Requirements](#minimum-requirements)
-  - [Translation Status](#translation-status)
 
 <!-- mdformat-toc end -->
 
@@ -47,14 +50,3 @@ ______________________________________________________________________
 
 - WordPress 6.0
 - PHP 8.2
-
-### Translation Status<a name="translation-status"></a>
-
-[![Translation status](https://weblate.ppfeufer.de/widget/wordpress-plugins/pp-wp-basic-security/multi-auto.svg)](https://weblate.ppfeufer.de/engage/wordpress-plugins/)
-
-Do you want to help translate this plugin into your language or improve the existing
-translation? - [Join our team of translators][weblate engage]!
-
-<!-- Links -->
-
-[weblate engage]: https://weblate.ppfeufer.de/engage/wordpress-plugins/ "Weblate Translations"
